@@ -443,6 +443,7 @@ button {
 	width: 50vw;
 	line-height: 7vw;
 	margin-top: 3vw;
+	font-size:4vw;
 	outline: none;
 }
 .mytest_form input:focus{
@@ -450,6 +451,60 @@ button {
 	border-top-width: 0;
 	border-right-width: 0;
 	border-left-width: 0;
+}
+.time{
+	padding-left:5vw;
+}
+.time p{
+	position:relative;
+	top:3vw;
+	color:red;
+	font-size:15vw;
+	display:inline;
+	line-height:1vw;
+}
+.time div{
+	color:#777777;
+	border:0.4vw solid #777777;
+	border-top-width: 0;
+	border-right-width: 0;
+	border-left-width: 0;
+	display:inline-block;
+}
+.time div span{
+	font-size:4vw;
+}
+#starttime{
+	margin-left:3vw;
+	border:0vw;
+	height:2vw;
+	width:10vw;
+	background-color:#777777;
+}
+.line{
+	margin-bottom:1vw;
+	width:5vw;
+	height:0.3vw;
+	background-color:#777777;
+	display:inline-block;
+}
+#closetime{
+	margin-right:3vw;
+	border:0vw;
+	height:2vw;
+	width:10vw;
+	background-color:#777777;
+}
+.a_pm{
+	display:inline-block;
+	width:10vw;
+	height:10vw;
+	overflow:auto;
+}
+.a_pm div{
+	display:inline-block;
+	width:10vw;
+	height:5vw;
 }
 input:focus::-webkit-input-placeholder {
 color: transparent;

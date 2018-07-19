@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>课程表</title>
+        <link rel="stylesheet" type="text/css" href="styles/table.css">
+    </head>
+    <body>
+        <header>
+            <div class="tool">
+            	<div class="tool-button"  onclick="showList()">
+					<!-- tool-button -->
+                    <div></div><div></div><div></div>
+				</div>
+            	<ul class="tool-list">
+            		<li class="changeColor" onclick="changeColor()">修改背景</li>
+            		<li class="tool-feedback" onclick="openFeedback()">错误反馈</li>
+            	</ul>
+            </div>
+            <div id="presentweek">
+                    <div class="words">当前周</div>
+            </div>
+            <div class="week">
+                <div class="week-num">
+                    <div id="tb-week"></div>
+                    <div class="week-listbtn" onclick="clickSelect($('.week-listbtn'));"></div>
+                    <ul class="select" id="select-week">
+                    </ul>
+                </div>
+            </div>
+          
+        </header>
+        <div class="addMyClass">
+            	<div class="plus" onclick="openLoad()">
+					<p>+</p>
+				</div>
+        </div>
+        <div class=plus_shadow></div>
+        <section id="table">
+            <div id="tb-time"></div>
+            <div id="tb-right">
+                <!-- <div id="tb-week"></div> -->
+                <div id="tb-main">
+                    <div id="tb-day"></div>
+                    <div id="tb-class"></div>
+                </div>
+            </div>
+        </section>
+        
+        <div id="overlay" style="display: none;"></div>
+        <div id="detail" style="display: none;">
+            <div class="info"></div>
+            <div class="info"></div>
+            <div class="info"></div>
+            <div class="info"></div>
+            <div class="btns">
+                <button class="btn" id="hide">知道了</button>
+            </div>
+        </div>
+        <div class="changeBackcolor" style="display: none;">
+        	<div class="changeBackcolor-bg"></div>
+        	<div class="color1" onclick="color1()"></div>
+        	<div class="color2" onclick="color2()"></div>
+        	<div class="color3" onclick="color3()"></div>
+        	<div class="color4" onclick="color4()"></div>
+        </div>
+       <div class="feedback">
+			<p>错误反馈请在后台输入“客服”呼叫小i</p>
+		</div>
+        <div class="load">
+        	<div class="loadmytest" onclick="openLoadMyTest()">
+				<p>添加考试</p>
+			</div>
+			<div class="loadmyclass" onclick="openLoadMyClass()">
+				<p>添加课程</p>
+			</div>
+        </div>
+		<div class="mytest">
+			<p>添加考试</p>
+			<form class="mytest_form" action="<!-- 未定 -->" method="post">
+				<input type="text" name="test_name"  placeholder="课程名称"></p>
+				<input type="text" name="test_place" placeholder="考试地点"></p>
+				<!-- 起止时间 -->
+				<!-- 周次选择 -->
+				<input type="text" name="test_teacher" placeholder="任课老师"></p>
+				<input type="text" name="point" placeholder="学分情况"></p>
+				<input type="submit" style="border:0vw;" id="submitMyTest" value="添加">
+			</form>
+
+		</div>
+		<div class="myclass">
+			<p>添加课程</p>
+			<form class="myclass_form" action="" method="post">
+				<input type="text" name="class_name"  placeholder="课程名称"></p>
+				<input type="text" name="class_place" placeholder="上课地点"></p>
+				<!-- 起止时间 -->
+				<!-- 周次选择 -->
+				<input type="text" name="class_teacher" placeholder="任课老师"></p>
+				<input type="text" name="note" placeholder="备注信息"></p>
+				<input type="submit" style="border:0vw;" id="submitMyClass" value="添加">
+			</form>
+
+
+		</div>
+        <script src="scripts/jquery-3.1.1.min.js"></script><!-- scripts/jquery-3.1.1.min.js -->
+        <script src="scripts/table.js"></script>
+    </body>
+</html>

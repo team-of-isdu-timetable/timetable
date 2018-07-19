@@ -1,0 +1,514 @@
+*{
+	margin: 0;
+}
+body {
+	margin: 0;
+	width: 100%;
+	font-family: "Microsoft Yahei";
+}
+header {
+	position: relative;
+	height: 12vw;
+	background:#0c516b;
+	color: #fff;
+}
+.tool-button {
+	float: left;
+	display: inline-block;
+	margin: 0;
+	margin-top: 3vw;
+	margin-left: 4vw;
+	font-size: 6vw;
+	font-weight: 400;
+	height: 7vw;
+	width: 7vw;
+}
+.tool-button div{
+	width:7vw;
+	height:1vw;
+	background-color:#fff;
+	margin-bottom:1.4vw;
+}
+.tool-list li:active{
+	background-color: #c4c6c8;
+}
+.tool-list{
+	padding-top: 0;
+	padding-left: 0;
+	display: none;
+	position: absolute;
+	list-style-type: none;
+	z-index: 1;
+	margin-top: 12vw;
+	font-size: 4vw;
+	background-color: #ffffff;
+	color:#333333;
+	line-height: 15vw;
+	width: 35vw;
+	height: 30vw;
+	border: 0.05vw solid #d8d8d8;
+}
+.tool-list li{
+	text-align: center;
+	
+}
+.addMyClass{
+	position:fixed;
+	bottom:10vw;
+	right:10vw;
+	z-index:1;
+}
+.plus{
+	width:10vw;
+	height:10vw;
+	border-radius:5vw;
+	color:#fff;
+	font-size:13vw;
+	background-color:#0c516b;
+	text-align:center;
+	z-index:1;
+	/*box-shadow: 1vw 1vw 1vw #c6c6c6;*/
+}
+.plus p{
+	position:relative;
+	top:-4.5vw;
+}
+.plus_shadow{
+	width:10vw;
+	height:10vw;
+	border-radius:5vw;
+	color:#fff;
+	box-shadow: 1vw 1vw 1vw #c6c6c6;
+	position:fixed;
+	bottom:10vw;
+	right:10vw;
+}
+.week {
+	display: inline-block;
+	padding-left: 51vw;
+	padding-top: 0vw;
+	height: 10vw;
+}
+#tb-week {
+	display: inline-block;
+	font-size: 4.5vw;
+	padding-top: 4vw;
+}
+.week-listbtn {
+	content:'';
+	position: relative;
+	display:inline-block;
+	margin-left: 1.5vw;
+	height:3vw;
+	width:3vw;
+	border:0.3vw solid white;
+	border-right-width:0;
+	border-bottom-width:0;
+	transform:rotate(-135deg);
+	-webkit-transform:rotate(-135deg);
+	-moz-transform:rotate(-135deg);
+	-o-transform:rotate(-135deg);
+	-ms-transform:rotate(-135deg);
+}
+.circle {
+	display: inline-block;
+	width: 1.8vw;
+	height: 1.8vw;
+	background: white;
+	-moz-border-radius: 0.9vw;
+	-webkit-border-radius: 0.9vw;
+	border-radius: 0.9vw;
+}
+#presentweek{
+	display: inline-block;
+	position:relative;
+	left: 25vw;
+	top: 0vw;
+}
+#presentweek>.words {
+	display: inline-block;
+	font-size: 5vw;
+	color: white;
+}
+.week-num {
+	position: relative;
+}
+.week-num .select {
+	display: none;
+
+	position: absolute;
+	left: 0;
+	top: 9vw;
+	width: 27vw;
+	font-size: 4vw;
+	color: #5aa2e0;
+	padding: 1.5vw 0;
+	-moz-border-radius: 1vw;
+	-webkit-border-radius: 1vw;
+	border-radius: 1.5vw;
+	box-shadow: 0 0 1vw #ccc;
+	-moz-box-shadow: 0 0 1vw #ccc;
+
+	overflow-y: scroll;
+	height: 27vw;
+	list-style-type: none;
+	margin: 0;
+	background-color: #e9f3fb;
+}
+.week-num .select li {
+	position: relative;
+	width: 26vw;
+	height: 5vw;
+	padding-left: 1.5vw;
+	padding-right: 1.5vw;
+	padding-bottom: 1.2vw;
+}
+.week-num .select li p {
+	width: 24vw;
+	margin: 0;
+	display: inline-block;
+	border-bottom: #cce2f6 0.3vw solid;
+}
+.week-num .select li img {
+	visibility: hidden;
+	width: 4vw;
+	height: 4vw;
+	float: right;
+	/*position: absolute;
+	top: 0;
+	right: -15px;*/
+}
+li.checked {
+	box-shadow: 0 0 0 #ccc,
+	0 -0.6vw 0 #ccc,
+	0 0.6vw 0 #ccc,
+	0 0 0 #ccc;
+	-moz-box-shadow: 0 0 0 #ccc,
+	0 -0.6vw 0 #ccc,
+	0 0.2vw 0 #ccc,
+	0 0 0 #ccc;
+	height: 5.4vw;
+}
+.week-num .select li.checked p {
+	border-bottom: 0 #ccc solid;
+}
+.week-num .select li.checked img {
+	visibility: visible;
+}
+
+
+#table {
+	background: #ffffff;
+	font-size: 3.6vw;
+	line-height: 9.6vw;
+	text-align: center;
+	margin-bottom: 6vw;
+}
+#tb-time {
+	color:#2f6391;
+	float: left;
+	width: 7.2vw;
+	margin-top: 10vw;
+	background: #ffffff;
+	border-collapse:collapse;
+	font-size: 4vw;
+	font-weight:bold;
+}
+#tb-time div {
+	position: relative;
+	height: 20vw;
+	line-height: 14.7vw;
+	/*margin-top: 4vw;*/
+	border: 0.1vw solid #d8d8d8;
+	border-left-width:0vw;
+	
+}
+#tb-time div>p {
+	color:#a4a4a4;
+	position: absolute;
+	top: 20vw;
+	left: 0;
+	margin: 0;
+	margin-top: -5vw;
+	width: 100%;
+	letter-spacing: -0.15vw;
+	text-align: center;
+	font-size: 2.5vw;
+	line-height: 3vw;
+	font-weight:normal;
+}
+#tb-time div p{
+	position:relative;
+	top:-0.5vw;
+}
+#tb-right {
+	margin-left: 7.2vw;
+	background: #ddeaf9;
+}
+#tb-day {
+	height: 10vw;
+	line-height: 5vw;
+	font-size: 3vw;
+}
+#tb-day div{
+	border: 0.05vw solid #d8d8d8;
+	border-top-width:0vw;
+
+}
+#tb-class {
+	height: 201.5vw;
+	color: #fff;
+	background: #ffffff;
+}
+
+#tb-day {
+	display: flex;
+}
+#tb-day div {
+	flex: 1;
+	background-color:#ffffff;
+}
+#tb-day{
+	color:#fc5f46;
+}
+.row {
+	display: flex;
+	height: 40vw;
+}
+.row div {
+	flex: 1;
+	display: -webkit-box;
+	-webkit-line-clamp: 6;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	border-radius:3vw;
+}
+
+
+input[type="button"],
+button {
+	-webkit-appearance: none;
+}
+.btns {
+	text-align: center;
+}
+.btn {
+	display: block;
+	margin: 6vw auto;
+	padding: 2.4vw 4.8vw;
+	border: none; outline: none;
+	font: 4.2vw/6vw 'Microsoft Yahei';
+	color: #fff;
+	background: #5aa2e0;
+	box-shadow: 0 0.3vw 2.4vw #666;
+	cursor: pointer;
+}
+.btns .btn {
+	display: inline-block;
+	margin: 6vw 6vw;
+}
+.btn.disable {
+	color: #fff;
+	background: #ccc;
+	border-color: #ccc;
+}
+#overlay {
+	position: fixed;
+	width: 200%; height: 200%;
+	top: -50%; left: -50%;
+	background: #000;
+	opacity: 0.7;
+}
+#detail {
+	position: fixed;
+	width: 72vw; height: 70%;
+	top: 15%; left: 50%;
+	margin-left: -36vw;
+	background-color: #fff;
+	overflow: auto;
+}
+.info {
+	font-size: 4.2vw;
+	margin: 6vw;
+}
+.changeBackcolor-bg{
+	height: 85vw;
+	width:80vw;
+	background-color: #f6f5f5;
+	position: absolute;
+	left: 10%;
+	top:20%;
+	border-radius: 1vw;
+}
+.color1{
+	height: 25vw;
+	width: 25vw;
+	background-color: #fff;
+	position: absolute;
+	top: 25%;
+	left: 20%;
+	box-shadow: 1vw 1vw 1vw  #8f9597;
+	
+}
+.color2{
+	height: 25vw;
+	width: 25vw;
+	background-color: #4b4f50;
+	position: absolute;
+	top: 25%;
+	left: 55%;
+	box-shadow: 1vw 1vw 1vw  #8f9597;
+	
+}
+.color3{
+	height: 25vw;
+	width: 25vw;
+	background-color: #e8decc;
+	position: absolute;
+	top: 45%;
+	left: 20%;
+	box-shadow: 1vw 1vw 1vw  #8f9597;
+}
+.color4{
+	height: 25vw;
+	width: 25vw;
+	background-color:#000000;
+	position: absolute;
+	top: 45%;
+	left: 55%;
+	box-shadow: 1vw 1vw 1vw  #8f9597;
+	
+}
+.feedback{
+	width: 70vw;
+	height: 50vw;
+	margin-left:20vw;
+	position: absolute;
+	top:40vw;
+	border: 0.1vw solid #000000;
+	background-color:#fff;
+}
+.feedback{
+	display: none;
+}
+
+.form-img1{
+	top: 27vw;
+	height: 9vw;
+	width: 25vw;
+}
+
+.load{
+	width: 75vw;
+	height: 40vw;
+	background-color:#fff;
+	margin-left:14vw;
+	position: absolute;
+	top:70vw;
+	border: 0.1vw solid #000000;
+	border-radius:2vw;
+	color:#1588b4;
+	display: none;
+	font-weight: bold;
+}
+.load div{
+	width: 40vw;
+	position:relative;
+	left:27vw;
+	margin-top:8vw;
+	font-size:4.5vw;
+}
+.mytest{
+	position:absolute;
+	left:15vw;
+	top:10vw;
+	width: 70vw;
+	height: 154vw;
+	background-color:#fff;
+	border:0.1vw solid #000;
+	border-radius:2vw;
+	display:none;
+}
+.mytest p{
+	text-align:center;
+	line-height: 14vw;
+}
+.mytest_form input{
+	border:0.4vw solid #777777;
+	border-top-width: 0;
+	border-right-width: 0;
+	border-left-width: 0;
+	margin-left: 10vw;
+	width: 50vw;
+	line-height: 7vw;
+	margin-top: 3vw;
+	outline: none;
+}
+.mytest_form input:focus{
+	border:0.4vw solid #1588b4;
+	border-top-width: 0;
+	border-right-width: 0;
+	border-left-width: 0;
+}
+input:focus::-webkit-input-placeholder {
+color: transparent;
+/* transparent是全透明黑色(black)的速记法，即一个类似rgba(0,0,0,0)这样的值 */
+}
+#submitMyTest{
+	width: 10vw;
+	border:0vw;
+	border-bottom-width: 0;
+	background-color: white;
+	color: #1588b4;
+	position: absolute;
+	top:130vw;
+	left: 40vw; 
+}
+.myclass{
+	position:absolute;
+	left:15vw;
+	top:10vw;
+	width: 70vw;
+	height: 154vw;
+	background-color:#fff;
+	border:0.1vw solid #000;
+	border-radius:2vw;
+	display:none;
+
+}
+.myclass p{
+	text-align:center;
+	line-height: 14vw;
+}
+.myclass_form input{
+	border:0.4vw solid #777777;
+	border-top-width: 0;
+	border-right-width: 0;
+	border-left-width: 0;
+	margin-left: 10vw;
+	width: 50vw;
+	line-height: 7vw;
+	margin-top: 3vw;
+	outline: none;
+}
+.myclass_form input:focus{
+	border:0.4vw solid #1588b4;
+	border-top-width: 0;
+	border-right-width: 0;
+	border-left-width: 0;
+}
+input:focus::-webkit-input-placeholder {
+color: transparent;
+/* transparent是全透明黑色(black)的速记法，即一个类似rgba(0,0,0,0)这样的值 */
+}
+#submitMyClass{
+	width: 10vw;
+	border:0vw;
+	border-bottom-width: 0;
+	background-color: white;
+	color: #1588b4;
+	position: absolute;
+	top:130vw;
+	left: 40vw; 
+}

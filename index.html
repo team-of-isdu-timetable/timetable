@@ -83,21 +83,19 @@
 				<input type="text" name="test_place" placeholder="考试地点"></p>
 				<!-- 起止时间 -->
 				<!-- 周次选择 -->
-				<div class="time">
+				<div class="time"  onclick="chooseTime()">
 					<p>·</P>
 					<div>
 						<span>起止时间</span>
-						<div id="starttime" onclick="choosetime()">
-							
+						<div id="starttime">
 						</div>
 						<div class="line">
 						</div>
-						<div id="closetime" onclick="choosetime()">
-						
+						<div id="closetime">
 						</div>
 					</div>
 				</div>
-					<div class="choosetime">
+				<div class="choosetime">
 						<div class="a_pm">
 							<div class="am" onclick="am()">
 							AM
@@ -105,17 +103,17 @@
 							<div class="pm" onclick="pm()">
 							PM
 							</div>
+							<div class="colon">:</div>
+							<div class="submit_time" onclick="addTime1()">确定</div>
 						</div>
-						<div class="hour">
-							
-						</div>
-						<div class="minite">
-							
 					</div>
+				<div class="choosetime_place"></div>
 				<input type="text" name="test_teacher" placeholder="任课老师"></p>
 				<input type="text" name="point" placeholder="学分情况"></p>
 				<input type="submit" style="border:0vw;" id="submitMyTest" value="添加">
+				<div class="overlay-transp" onclick="loseFocus()"></div>
 			</form>
+
 		</div>
 		<div class="myclass">
 			<p>添加课程</p>

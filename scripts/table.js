@@ -1,18 +1,18 @@
-	webView = new WebView(context);
-    if (webView != null) {
-        webView.clearFormData();
-        webView.clearHistory();
-        webView.clearMatches();
-        webView.clearSslPreferences();
-		CookieSyncManager.createInstance(context);  
-		CookieManager cookieManager = CookieManager.getInstance(); 
-        cookieManager.removeAllCookie();
-        CookieSyncManager.getInstance().sync(); 
-        webView.setWebChromeClient(null);
-        webView.setWebViewClient(null);
-        webView.getSettings().setJavaScriptEnabled(false);
-        webView.clearCache(true);
-	}
+	// webView = new WebView(context);
+    // if (webView != null) {
+     //    webView.clearFormData();
+     //    webView.clearHistory();
+     //    webView.clearMatches();
+     //    webView.clearSslPreferences();
+	// 	CookieSyncManager.createInstance(context);
+	// 	CookieManager cookieManager = CookieManager.getInstance();
+     //    cookieManager.removeAllCookie();
+     //    CookieSyncManager.getInstance().sync();
+     //    webView.setWebChromeClient(null);
+     //    webView.setWebViewClient(null);
+     //    webView.getSettings().setJavaScriptEnabled(false);
+     //    webView.clearCache(true);
+	// }
 var colors = ['#fb7f88', '#fcf497', '#9fe4cf', '#5fcff1', '#b4a7f3', '#f4a7ce'],
     colorUsed = [],
     existingName = {};
@@ -25,6 +25,7 @@ function getColor() {
 
 //清空表格
 var tbClass = $('#tb-class');
+var choosetime = $('.choosetime');
 function clear() {
     tbClass.empty();
     colors = colors.concat(colorUsed);
@@ -37,6 +38,41 @@ function clear() {
             $row.append('<div class="cell" data-day="'+ (j+1) +'" data-class="'+ (i+1) +'"></div>')
         }
         tbClass.append($row);
+    }
+    for (var i = 0; i < 1; i++) {
+        var $hour = $('<div class="hour"></div>');
+        for (var z=0; z<2;z++){
+            $hour.append('<div class="hournum" ></div>')
+        }
+        for (var j = 0; j < 12; j++) {
+            if (j<9) {
+                $hour.append('<div class="hournum" >'+ "0"+(j+1) +'</div>')
+            }else{
+                $hour.append('<div class="hournum" >'+ (j+1) +'</div>')
+            }
+        }
+        for (var z=0; z<2;z++){
+            $hour.append('<div class="hournum" ></div>')
+        }
+        choosetime.append($hour);
+    }
+    for (var i = 0; i < 1; i++) {
+        var $minute = $('<div class="minute"></div>');
+        for (var z=0; z<2;z++){
+            $minute.append('<div class="minutenum" ></div>')
+        }
+        for (var j = 00; j < 60; j++) {
+            if (j<10){
+                $minute.append('<div class="minutenum" >'+ "0"+(j) +'</div>')
+            } else{
+                $minute.append('<div class="minutenum" >'+ (j) +'</div>')
+            }
+
+        }
+        for (var z=0; z<2;z++){
+            $minute.append('<div class="minutenum" ></div>')
+        }
+        choosetime.append($minute);
     }
 }
 
@@ -274,6 +310,29 @@ function color4(){
     $(".changeBackcolor").css({"display":"none"});
      $('#overlay').stop().fadeOut(300);
 }
+function chooseTime() {
+    $(".choosetime").css({"display":"block"});
+    $(".overlay-transp").css({"display":"block"});
+    $(".choosetime_place").css({"display":"block"});
+}
+function loseFocus() {
+    $(".choosetime").css({"display":"none"});
+    $(".overlay-transp").css({"display":"none"});
+    $(".choosetime_place").css({"display":"none"});
+}
+function am() {
+    $(".am").css({"color":"#1588b4"})
+    $(".am").css({"font-size":"5vw"})
+    $(".pm").css({"color":"#777777"})
+    $(".pm").css({"font-size":"4.5vw"})
+
+}
+function pm() {
+    $(".pm").css({"color":"#1588b4"})
+    $(".pm").css({"font-size":"5vw"})
+    $(".am").css({"color":"#777777"})
+    $(".am").css({"font-size":"4.5vw"})
+    }
 function openFeedback(){
      $(".feedback").css({"display":"block"});
      $("#overlay").css({"display":"block"});

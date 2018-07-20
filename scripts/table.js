@@ -1,3 +1,18 @@
+	webView = new WebView(context);
+    if (webView != null) {
+        webView.clearFormData();
+        webView.clearHistory();
+        webView.clearMatches();
+        webView.clearSslPreferences();
+		CookieSyncManager.createInstance(context);  
+		CookieManager cookieManager = CookieManager.getInstance(); 
+        cookieManager.removeAllCookie();
+        CookieSyncManager.getInstance().sync(); 
+        webView.setWebChromeClient(null);
+        webView.setWebViewClient(null);
+        webView.getSettings().setJavaScriptEnabled(false);
+        webView.clearCache(true);
+	}
 var colors = ['#fb7f88', '#fcf497', '#9fe4cf', '#5fcff1', '#b4a7f3', '#f4a7ce'],
     colorUsed = [],
     existingName = {};

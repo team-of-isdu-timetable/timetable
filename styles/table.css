@@ -428,7 +428,7 @@ button {
 	background-color:#fff;
 	border:0.1vw solid #000;
 	border-radius:2vw;
-	display:none;
+	/*display:none;*/
 }
 .mytest p{
 	text-align:center;
@@ -495,16 +495,37 @@ button {
 	width:10vw;
 	background-color:#777777;
 }
+.choosetime{
+	width:70vw;
+	height:40vw;
+}
 .a_pm{
 	display:inline-block;
 	width:10vw;
 	height:10vw;
-	overflow:auto;
 }
-.a_pm div{
-	display:inline-block;
+.am{
+	position:relative;
+	left:17vw;
+	top:-8vw;
+	color:#1588b4;
+	font-size:5vw;
+}
+.pm{
+	position:relative;
+	left:17.5vw;
+	top:-8vw;
+	color:#777777;
+	font-size:4.5vw;
+}
+.hour{
 	width:10vw;
-	height:5vw;
+	height:40vw;
+	position:relative;
+	left:25vw;
+	color:#777777;
+	font-size:4.5vw;
+	display:inline-block;
 }
 input:focus::-webkit-input-placeholder {
 color: transparent;

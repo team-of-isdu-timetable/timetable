@@ -110,7 +110,7 @@
 				<input type="text" name="test_teacher" placeholder="任课老师"></p>
 				<input type="text" name="point" placeholder="学分情况"></p>
 				<input type="submit" style="border:0vw;" id="submitMyTest" value="添加">
-				<div class="overlay-transp" onclick="loseFocus()"></div>
+
 			</form>
 
 		</div>
@@ -119,14 +119,59 @@
 			<form class="myclass_form" action="" method="post">
 				<input type="text" name="class_name"  placeholder="课程名称"></p>
 				<input type="text" name="class_place" placeholder="上课地点"></p>
-				<!-- 起止时间 -->
+				<div class="time"  onclick="chooseStartTime()">
+					<p>·</P>
+					<div>
+						<span>开始时间</span>
+						<div id="choosen_hour"></div>
+						<div id="choosen_colon">:</div>
+						<div id="choosen_minute"></div>
+					</div>
+				</div>
+				<div class="choosestarttime">
+					<div class="a_pm">
+						<div class="am" onclick="am()">
+							AM
+						</div>
+						<div class="pm" onclick="pm()">
+							PM
+						</div>
+						<div class="colon">:</div>
+						<div class="submit_time" onclick="addTime1()">确定</div>
+					</div>
+				</div>
+				<div class="choosestarttime_place"></div>
+				<div class="time"  onclick="chooseEndTime()">
+					<p>·</P>
+					<div>
+						<span>结束时间</span>
+						<div id="choosen_end_hour"></div>
+						<div id="choosen_end_colon">:</div>
+						<div id="choosen_end_minute"></div>
+					</div>
+				</div>
+				<div class="chooseendtime">
+					<div class="a_pm">
+						<div class="am" onclick="am()">
+							AM
+						</div>
+						<div class="pm" onclick="pm()">
+							PM
+						</div>
+						<div class="colon">:</div>
+						<div class="submit_time" onclick="addTime1()">确定</div>
+					</div>
+				</div>
+				<div class="chooseendtime_place"></div>
 				<!-- 周次选择 -->
 				<input type="text" name="class_teacher" placeholder="任课老师"></p>
 				<input type="text" name="note" placeholder="备注信息"></p>
 				<input type="submit" style="border:0vw;" id="submitMyClass" value="添加">
+				<div class="overlay-transp" onclick="loseFocus()"></div>
 			</form>
-
-
+			<div class="testdiv">
+				<p class="test"></p>
+			</div>
 		</div>
         <script src="scripts/jquery-3.1.1.min.js"></script><!-- scripts/jquery-3.1.1.min.js -->
         <script src="scripts/table.js"></script>

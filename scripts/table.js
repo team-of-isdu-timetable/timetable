@@ -24,9 +24,11 @@ function getColor() {
 }
 
 //清空表格
-var tbClass = $('#tb-class');
-var choosetime = $('.choosetime');
+    var tbClass = $('#tb-class');
 function clear() {
+
+    var choosestarttime = $('.choosestarttime');
+    var chooseendtime=$('.chooseendtime');
     tbClass.empty();
     colors = colors.concat(colorUsed);
     colorUsed = [];
@@ -40,41 +42,35 @@ function clear() {
         tbClass.append($row);
     }
     for (var i = 0; i < 1; i++) {
-        var $hour = $('<div class="hour"></div>');
-        for (var z=0; z<2;z++){
-            $hour.append('<div class="hournum" ></div>')
-        }
+        var $hour = '<div class="hour">';
+            $hour+='<div class="hournum" ></div><div class="hournum" ></div>';
         for (var j = 0; j < 12; j++) {
             if (j<9) {
-                $hour.append('<div class="hournum" >'+ "0"+(j+1) +'</div>')
+                $hour+='<div class="hournum" >'+ "0"+(j+1) +'</div>';
             }else{
-                $hour.append('<div class="hournum" >'+ (j+1) +'</div>')
+                $hour+='<div class="hournum" >'+ (j+1) +'</div>';
             }
         }
-        for (var z=0; z<2;z++){
-            $hour.append('<div class="hournum" ></div>')
-        }
-        choosetime.append($hour);
+        $hour+='<div class="hournum" ></div><div class="hournum" ></div></div>';
+        choosestarttime.append($hour);
+        chooseendtime.append($hour);
+
     }
     for (var i = 0; i < 1; i++) {
-        var $minute = $('<div class="minute"></div>');
-        for (var z=0; z<2;z++){
-            $minute.append('<div class="minutenum" ></div>')
-        }
-        for (var j = 00; j < 60; j++) {
-            if (j<10){
-                $minute.append('<div class="minutenum" >'+ "0"+(j) +'</div>')
-            } else{
-                $minute.append('<div class="minutenum" >'+ (j) +'</div>')
+        var $minute = '<div class="minute">';
+        $minute+='<div class="minutenum" ></div><div class="minutenum" ></div>';
+        for (var j = 0; j < 12; j++) {
+            if (j<9) {
+                $minute+='<div class="minutenum" >'+ "0"+(j+1) +'</div>';
+            }else{
+                $minute+='<div class="minutenum" >'+ (j+1) +'</div>';
             }
-
         }
-        for (var z=0; z<2;z++){
-            $minute.append('<div class="minutenum" ></div>')
+        $minute+='<div class="minutenum" ></div><div class="minutenum" ></div></div>';
+        choosestarttime.append($minute);
+        chooseendtime.append($minute);
         }
-        choosetime.append($minute);
     }
-}
 
 var days = ['一<br>MON ', ' 二<br>TUE', '三<br>WED', '四<br>THU', '五<br>FRI', '六<br>SAT', '日<br>SUN'];
 // 初始化表格
@@ -310,15 +306,23 @@ function color4(){
     $(".changeBackcolor").css({"display":"none"});
      $('#overlay').stop().fadeOut(300);
 }
-function chooseTime() {
-    $(".choosetime").css({"display":"block"});
+function chooseStartTime() {
+    $(".choosestarttime").css({"display":"block"});
     $(".overlay-transp").css({"display":"block"});
-    $(".choosetime_place").css({"display":"block"});
+    $(".choosestarttime_place").css({"display":"block"});
 }
 function loseFocus() {
-    $(".choosetime").css({"display":"none"});
+    $(".choosestarttime").css({"display":"none"});
+    $(".chooseendtime").css({"display":"none"});
     $(".overlay-transp").css({"display":"none"});
-    $(".choosetime_place").css({"display":"none"});
+    $(".choosestarttime_place").css({"display":"none"});
+    $(".chooseendtime_place").css({"display":"none"});
+
+}
+function chooseEndTime() {
+    $(".chooseendtime").css({"display":"block"});
+    $(".overlay-transp").css({"display":"block"});
+    $(".chooseendtime_place").css({"display":"block"});
 }
 function am() {
     $(".am").css({"color":"#1588b4"})
@@ -399,3 +403,14 @@ function openLoadMyClass(){
 //         for(var i=0;i<name_arr.length;i++){
 //                     myClass[j+1][name_arr[i]]=value_arr[i];        
 //             }
+    var $hour = document.querySelector(".hour");
+    $hour.addEventListener("touchend", function (){
+        var $Num=$(".hour").scrollTop();
+        for (var i=0;i<12;i++) {
+            if (i*24<=$Num && $Num<(i+1)*24) {
+                $Num=i*24
+            }
+        }
+        $(".hour").scrollTop($Num);
+    })
+       

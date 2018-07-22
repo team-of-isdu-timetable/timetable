@@ -429,39 +429,6 @@ button {
 	margin-top:8vw;
 	font-size:4.5vw;
 }
-.mytest{
-	position:absolute;
-	left:15vw;
-	top:10vw;
-	width: 70vw;
-	height: 154vw;
-	background-color:#fff;
-	border:0.1vw solid #000;
-	border-radius:2vw;
-	display:none;
-}
-.mytest p{
-	text-align:center;
-	line-height: 14vw;
-}
-.mytest_form input{
-	border:0.4vw solid #777777;
-	border-top-width: 0;
-	border-right-width: 0;
-	border-left-width: 0;
-	margin-left: 10vw;
-	width: 50vw;
-	line-height: 7vw;
-	margin-top: 3vw;
-	font-size:4vw;
-	outline: none;
-}
-.mytest_form input:focus{
-	border:0.4vw solid #1588b4;
-	border-top-width: 0;
-	border-right-width: 0;
-	border-left-width: 0;
-}
 /*添加课程/考试公用样式  起*/
 .time{
 	padding-left:5vw;
@@ -634,16 +601,6 @@ input:focus::-webkit-input-placeholder {
 color: transparent;
 /* transparent是全透明黑色(black)的速记法，即一个类似rgba(0,0,0,0)这样的值 */
 }
-#submitMyTest{
-	width: 10vw;
-	border:0vw;
-	border-bottom-width: 0;
-	background-color: white;
-	color: #1588b4;
-	position: absolute;
-	top:130vw;
-	left: 40vw; 
-}
 .myclass{
 	position:absolute;
 	left:15vw;
@@ -691,4 +648,5 @@ color: transparent;
 	margin-top: 3vw;
 	margin-left: 50vw;
 	margin-bottom: 2vw;
+
 }

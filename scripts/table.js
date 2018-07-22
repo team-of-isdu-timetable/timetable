@@ -43,15 +43,15 @@ function clear() {
     }
     for (var i = 0; i < 1; i++) {
         var $hour = '<div class="hour">';
-            $hour+='<div class="hournum" ></div><div class="hournum" ></div>';
+            $hour+='<div class="hournum"  order="-1"></div><div class="hournum" order="0" ></div>';
         for (var j = 0; j < 12; j++) {
             if (j<9) {
-                $hour+='<div class="hournum" >'+ "0"+(j+1) +'</div>';
+                $hour+='<div class="hournum" order="'+(j+1)+'" >'+ "0"+(j+1) +'</div>';
             }else{
-                $hour+='<div class="hournum" >'+ (j+1) +'</div>';
+                $hour+='<div class="hournum" order="'+(j+1)+'">'+ (j+1) +'</div>';
             }
         }
-        $hour+='<div class="hournum" ></div><div class="hournum" ></div></div>';
+        $hour+='<div class="hournum" order="13" ></div><div class="hournum" order="14" ></div></div>';
         choosestarttime.append($hour);
         chooseendtime.append($hour);
 
@@ -412,5 +412,15 @@ function openLoadMyClass(){
             }
         }
         $(".hour").scrollTop($Num);
-    })
+        // document.querySelector("[order="+($Num/24)+"]")  ;
+
+        // $(".hour").css({"color":"#777777"});
+        // console.log( $(".choosestarttime>.hour>.hournum").eq(3))
+        $(".choosestarttime>.hour>.hournum").css({color:"#777777","font-weight":"normal"});
+
+        $(".choosestarttime>.hour>.hournum").eq($Num/24+2).css({"color":"#1588b4","font-weight": "bold"});
+        var $selected;
+
+        document.querySelector("#choosen_hour").innerHTML=0+($Num/24+1);
+        })
        

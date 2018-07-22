@@ -32,7 +32,7 @@
           
         </header>
         <div class="addMyClass">
-            	<div class="plus" onclick="openLoad()">
+            	<div class="plus" onclick="openLoadMyClass()">
 					<p>+</p>
 				</div>
         </div>
@@ -68,14 +68,6 @@
        <div class="feedback">
 			<p>错误反馈请在后台输入“客服”呼叫小i</p>
 		</div>
-        <div class="load">
-        	<div class="loadmytest" onclick="openLoadMyTest()">
-				<p>添加考试</p>
-			</div>
-			<div class="loadmyclass" onclick="openLoadMyClass()">
-				<p>添加课程</p>
-			</div>
-        </div>
 		<div class="myclass">
 			<p>添加课程</p>
 			<form class="myclass_form" action="" method="post">
@@ -92,14 +84,13 @@
 				</div>
 				<div class="choosestarttime">
 					<div class="a_pm">
-						<div class="am" onclick="am()">
+						<div class="am">
 							AM
 						</div>
-						<div class="pm" onclick="pm()">
+						<div class="pm">
 							PM
 						</div>
 						<div class="colon">:</div>
-						<div class="submit_time" onclick="addTime1()">确定</div>
 					</div>
 				</div>
 				<div class="choosestarttime_place"></div>
@@ -114,26 +105,30 @@
 				</div>
 				<div class="chooseendtime">
 					<div class="a_pm">
-						<div class="am" onclick="am()">
+						<div class="am" >
 							AM
 						</div>
-						<div class="pm" onclick="pm()">
+						<div class="pm">
 							PM
 						</div>
 						<div class="colon">:</div>
-						<div class="submit_time" onclick="addTime1()">确定</div>
 					</div>
 				</div>
 				<div class="chooseendtime_place"></div>
+				<!--周次选择-->
+				<div class="chooseWeek">
+					<div class="chooseWeekName">周次选择</div>
+					<div id="choosenWeekDay"></div>
+				</div>
+				<div id="chooseAllWeek">全部周</div>
+				<div id="chooseByMyMind">自定义</div>
+				<div class="chooseWeekList"></div>
 				<!-- 周次选择 -->
 				<input type="text" name="class_teacher" placeholder="任课老师"></p>
 				<input type="text" name="note" placeholder="备注信息"></p>
 				<input type="submit" style="border:0vw;" id="submitMyClass" value="添加">
 				<div class="overlay-transp" onclick="loseFocus()"></div>
 			</form>
-			<div class="testdiv">
-				<p class="test"></p>
-			</div>
 		</div>
         <script src="scripts/jquery-3.1.1.min.js"></script><!-- scripts/jquery-3.1.1.min.js -->
         <script src="scripts/table.js"></script>

@@ -43,15 +43,15 @@ function clear() {
     }
     for (var i = 0; i < 1; i++) {
         var $hour = '<div class="hour">';
-            $hour+='<div class="hournum"  order="-1"></div><div class="hournum" order="0" ></div>';
-        for (var j = 0; j < 12; j++) {
-            if (j<9) {
-                $hour+='<div class="hournum" order="'+(j+1)+'" >'+ "0"+(j+1) +'</div>';
-            }else{
-                $hour+='<div class="hournum" order="'+(j+1)+'">'+ (j+1) +'</div>';
-            }
-        }
-        $hour+='<div class="hournum" order="13" ></div><div class="hournum" order="14" ></div></div>';
+            $hour+='<div class="hournum"></div><div class="hournum"></div>';
+                for (var j = 0; j < 12; j++) {
+                    if (j<9) {
+                        $hour+='<div class="hournum">'+ "0"+(j+1) +'</div>';
+                    }else{
+                        $hour+='<div class="hournum">'+ (j+1) +'</div>';
+                    }
+                }
+        $hour+='<div class="hournum"></div><div class="hournum"></div></div>';
         choosestarttime.append($hour);
         chooseendtime.append($hour);
 
@@ -59,7 +59,7 @@ function clear() {
     for (var i = 0; i < 1; i++) {
         var $minute = '<div class="minute">';
         $minute+='<div class="minutenum" ></div><div class="minutenum" ></div>';
-        for (var j = 0; j < 12; j++) {
+        for (var j = 0; j < 60; j++) {
             if (j<9) {
                 $minute+='<div class="minutenum" >'+ "0"+(j+1) +'</div>';
             }else{
@@ -67,6 +67,7 @@ function clear() {
             }
         }
         $minute+='<div class="minutenum" ></div><div class="minutenum" ></div></div>';
+
         choosestarttime.append($minute);
         chooseendtime.append($minute);
         }
@@ -196,8 +197,6 @@ function hideInfo() {
     $('.changeBackcolor').stop().fadeOut(300);
     $('.tool-list').stop().fadeOut(300);
     $('#detail').stop().fadeOut(300);
-    $('.load').stop().fadeOut(300);
-    $('.mytest').stop().fadeOut(300);
     $('.tool-list').stop().fadeOut(300);
     $('.myclass').stop().fadeOut(300);
 }
@@ -324,43 +323,20 @@ function chooseEndTime() {
     $(".overlay-transp").css({"display":"block"});
     $(".chooseendtime_place").css({"display":"block"});
 }
-function am() {
-    $(".am").css({"color":"#1588b4"})
-    $(".am").css({"font-size":"5vw"})
-    $(".pm").css({"color":"#777777"})
-    $(".pm").css({"font-size":"4.5vw"})
 
-}
-function pm() {
-    $(".pm").css({"color":"#1588b4"})
-    $(".pm").css({"font-size":"5vw"})
-    $(".am").css({"color":"#777777"})
-    $(".am").css({"font-size":"4.5vw"})
-    }
 function openFeedback(){
      $(".feedback").css({"display":"block"});
      $("#overlay").css({"display":"block"});
      $(".tool-list").css({"display":"none"});
 }
-function openLoad(){
+function openLoadMyClass(){
     var content=$("#overlay").css("display");
     if (content=="none"){
-        $(".load").css({"display":"block"});
+        $(".myclass").css({"display":"block"});
         $('#overlay').css({"display":"block"});
-        $(".plus").css({"box-shadow":" 0 0 0 #4b4f50"});
     }else{
-        
+
     }
-}
-function openLoadMyTest(){
-    $(".mytest").css({"display":"block"});
-	$(".load").css({"display":"none"});
-    $('#overlay').css({"display":"block"});
-}
-function openLoadMyClass(){
-    $(".myclass").css({"display":"block"});
-	$(".load").css({"display":"none"});
-    $('#overlay').css({"display":"block"});
 }
 
 
@@ -403,24 +379,114 @@ function openLoadMyClass(){
 //         for(var i=0;i<name_arr.length;i++){
 //                     myClass[j+1][name_arr[i]]=value_arr[i];        
 //             }
-    var $hour = document.querySelector(".hour");
-    $hour.addEventListener("touchend", function (){
-        var $Num=$(".hour").scrollTop();
+    //------------------------------------选择开始时间-----------------------
+    var $startHour = document.querySelector(".choosestarttime>.hour");
+    $startHour.addEventListener("touchend", function (){
+        var $Num=$(".choosestarttime>.hour").scrollTop();
         for (var i=0;i<12;i++) {
             if (i*24<=$Num && $Num<(i+1)*24) {
                 $Num=i*24
             }
         }
-        $(".hour").scrollTop($Num);
-        // document.querySelector("[order="+($Num/24)+"]")  ;
-
-        // $(".hour").css({"color":"#777777"});
-        // console.log( $(".choosestarttime>.hour>.hournum").eq(3))
+        $(".choosestarttime>.hour").scrollTop($Num);
         $(".choosestarttime>.hour>.hournum").css({color:"#777777","font-weight":"normal"});
-
         $(".choosestarttime>.hour>.hournum").eq($Num/24+2).css({"color":"#1588b4","font-weight": "bold"});
-        var $selected;
-
-        document.querySelector("#choosen_hour").innerHTML=0+($Num/24+1);
+        if ($Num/24+1<10) {
+            document.querySelector("#choosen_hour").innerHTML="0"+($Num/24+1);
+        }else{
+            document.querySelector("#choosen_hour").innerHTML=($Num/24+1);
+        }
         })
-       
+
+    var $startMin = document.querySelector(".choosestarttime>.minute");
+    $startMin.addEventListener("touchend", function (){
+        var $minNum=$(".choosestarttime>.minute").scrollTop();
+        for (var j=0;j<60;j++) {
+            if (j*24<=$minNum && $minNum<(j+1)*24) {
+                $minNum=j*24
+            }
+        }
+        $(".choosestarttime>.minute").scrollTop($minNum);
+        $(".choosestarttime>.minute>.minutenum").css({color:"#777777","font-weight":"normal"});
+        $(".choosestarttime>.minute>.minutenum").eq($minNum/24+2).css({"color":"#1588b4","font-weight": "bold"});
+        if ($minNum/24+1<10) {
+            document.querySelector("#choosen_minute").innerHTML="0"+($minNum/24+1);
+        }else{
+            document.querySelector("#choosen_minute").innerHTML=($minNum/24+1);
+        }
+    })
+    //  ---------------------------结束时间--------------------------
+    var $endHour = document.querySelector(".chooseendtime>.hour");
+    $endHour.addEventListener("touchend", function (){
+        var $Num=$(".chooseendtime>.hour").scrollTop();
+
+        for (var i=0;i<12;i++) {
+            if (i*24<=$Num && $Num<(i+1)*24) {
+                $Num=i*24
+            }
+        }
+
+        $(".chooseendtime>.hour").scrollTop($Num);
+
+        // console.log( $(".choosestarttime>.hour>.hournum").eq(3))
+        $(".chooseendtime>.hour>.hournum").css({color:"#777777","font-weight":"normal"});
+        $(".chooseendtime>.hour>.hournum").eq($Num/24+2).css({"color":"#1588b4","font-weight": "bold"});
+        if ($Num/24+1<10) {
+            document.querySelector("#choosen_end_hour").innerHTML="0"+($Num/24+1);
+        }else{
+            document.querySelector("#choosen_end_hour").innerHTML=($Num/24+1);
+        }
+    })
+
+    var $endMin = document.querySelector(".chooseendtime>.minute");
+    $endMin.addEventListener("touchend", function (){
+        var $minNum=$(".chooseendtime>.minute").scrollTop();
+        for (var j=0;j<60;j++) {
+            if (j*24<=$minNum && $minNum<(j+1)*24) {
+                $minNum=j*24
+            }
+        }
+        $(".chooseendtime>.minute").scrollTop($minNum);
+        $(".chooseendtime>.minute>.minutenum").css({color:"#777777","font-weight":"normal"});
+        $(".chooseendtime>.minute>.minutenum").eq($minNum/24+2).css({"color":"#1588b4","font-weight": "bold"});
+        if ($minNum/24+1<10) {
+            document.querySelector("#choosen_end_minute").innerHTML="0"+($minNum/24+1);
+        }else{
+            document.querySelector("#choosen_end_minute").innerHTML=($minNum/24+1);
+        }
+    })
+    //-------------------------am  pm-----------------------------
+    $(".choosestarttime>.a_pm>.am").click(function(){
+        $(".choosestarttime>.a_pm>.am").css({color:"#1588b4","font-size":"5vw"});
+        $(".choosestarttime>.a_pm>.pm").css({"color":"#777777","font-size":"4.5vw"});
+    });
+    $(".choosestarttime>.a_pm>.pm").click(function(){
+        $(".choosestarttime>.a_pm>.pm").css({"color":"#1588b4","font-size":"5vw"});
+        $(".choosestarttime>.a_pm>.am").css({"color":"#777777","font-size":"4.5vw"});
+    });
+    $(".chooseendtime>.a_pm>.am").click(function(){
+        $(".chooseendtime>.a_pm>.am").css({"color":"#1588b4","font-size":"5vw"});
+        $(".chooseendtime>.a_pm>.pm").css({"color":"#777777","font-size":"4.5vw"});
+    });
+    $(".chooseendtime>.a_pm>.pm").click(function(){
+        $(".chooseendtime>.a_pm>.pm").css({"color":"#1588b4","font-size":"5vw"});
+        $(".chooseendtime>.a_pm>.am").css({"color":"#777777","font-size":"4.5vw"});
+    });
+    //-----------------------------填充周次选择---------------------
+    $("#chooseAllWeek").click(function () {
+        $("#chooseAllWeek").css({"color":"#1588b4"});
+        $("#chooseByMyMind").css({"color":"#777777"});
+    })
+    $("#chooseByMyMind").click(function () {
+        $("#chooseByMyMind").css({"color":"#1588b4"});
+        $("#chooseAllWeek").css({"color":"#777777"});
+        var $weekList = '<div class="weekList">';
+            for (var j = 0; j < 12; j++) {
+                if (j<9) {
+                    $weekList+='<div class="chooseWeekNum">'+ "0"+(j+1) +'</div>';
+                }else{
+                    $weekList+='<div class="chooseWeekNum">'+ (j+1) +'</div>';}
+            }
+             $(".chooseWeekList").append($weekList);
+    })
+

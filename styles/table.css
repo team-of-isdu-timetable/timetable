@@ -122,8 +122,8 @@ header {
 #presentweek{
 	display: inline-block;
 	position:relative;
-	left: 25vw;
-	top: 0vw;
+	left: 28vw;
+	top: 3vw;
 }
 #presentweek>.words {
 	display: inline-block;
@@ -256,7 +256,7 @@ li.checked {
 
 }
 #tb-class {
-	height: 201.5vw;
+	height: 200vw;
 	color: #fff;
 	background: #ffffff;
 }
@@ -408,27 +408,6 @@ button {
 	height: 9vw;
 	width: 25vw;
 }
-
-.load{
-	width: 75vw;
-	height: 40vw;
-	background-color:#fff;
-	margin-left:14vw;
-	position: absolute;
-	top:70vw;
-	border: 0.1vw solid #000000;
-	border-radius:2vw;
-	color:#1588b4;
-	display: none;
-	font-weight: bold;
-}
-.load div{
-	width: 40vw;
-	position:relative;
-	left:27vw;
-	margin-top:8vw;
-	font-size:4.5vw;
-}
 /*添加课程/考试公用样式  起*/
 .time{
 	padding-left:5vw;
@@ -520,13 +499,6 @@ button {
 }
 .minutenum{
 	height: 24px;
-}
-.submit_time{
-	position: relative;
-	left: 57vw;
-	top: 2vw;
-	font-size: 4vw;
-	color: #1588b4;
 }
 /*添加课程/考试公用样式   end*/
 #choosen_hour{
@@ -635,10 +607,6 @@ color: transparent;
 	border-right-width: 0;
 	border-left-width: 0;
 }
-input:focus::-webkit-input-placeholder {
-color: transparent;
-/* transparent是全透明黑色(black)的速记法，即一个类似rgba(0,0,0,0)这样的值 */
-}
 #submitMyClass{
 	width: 10vw;
 	border:0vw;
@@ -649,4 +617,43 @@ color: transparent;
 	margin-left: 50vw;
 	margin-bottom: 2vw;
 
+}
+.chooseWeek{
+	border:0.4vw solid #777777;
+	border-top-width: 0;
+	border-right-width: 0;
+	border-left-width: 0;
+	margin-left:10vw;
+	width: 30vw;
+	display: inline-block;
+	line-height: 7vw;
+	font-size: 3.5vw;
+	margin-top: 3vw;
+	color: #777777;
+}
+.chooseWeek>.chooseWeekName{
+	font-size: 3.5vw;
+	width: 15vw;
+	display: inline-block;
+
+}
+#choosenWeekDay{
+	font-size: 4vw;
+	width: 9vw;
+}
+#chooseAllWeek{
+	color: #777777;
+	margin-left: 1vw;
+	height: 5vw;
+	width: 8vw;
+	display: inline-block;
+	font-size: 2.5vw;
+}
+#chooseByMyMind{
+	color: #777777;
+	margin-left: 1vw;
+	height: 5vw;
+	width: 8vw;
+	display: inline-block;
+	font-size: 2.5vw;
 }

@@ -590,7 +590,7 @@ color: transparent;
 /* transparent是全透明黑色(black)的速记法，即一个类似rgba(0,0,0,0)这样的值 */
 }
 .myclass{
-	position:absolute;
+	position:fixed;
 	left:15vw;
 	top:40vw;
 	width: 70vw;
@@ -696,7 +696,7 @@ color: transparent;
 #choosenWeekDay>form{
 	height: 7vw;
 }
-select{
+#choosenWeekDay select{
 	width: 12vw;
 	font-size: 3vw;
 	display: inline-block;

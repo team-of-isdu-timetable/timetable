@@ -1,18 +1,3 @@
-	// webView = new WebView(context);
-    // if (webView != null) {
-     //    webView.clearFormData();
-     //    webView.clearHistory();
-     //    webView.clearMatches();
-     //    webView.clearSslPreferences();
-	// 	CookieSyncManager.createInstance(context);
-	// 	CookieManager cookieManager = CookieManager.getInstance();
-     //    cookieManager.removeAllCookie();
-     //    CookieSyncManager.getInstance().sync();
-     //    webView.setWebChromeClient(null);
-     //    webView.setWebViewClient(null);
-     //    webView.getSettings().setJavaScriptEnabled(false);
-     //    webView.clearCache(true);
-	// }
 var colors = ['#fb7f88', '#fcf497', '#9fe4cf', '#5fcff1', '#b4a7f3', '#f4a7ce'],
     colorUsed = [],
     existingName = {};
@@ -190,6 +175,8 @@ function showData(data, weekNum){
 tbClass.on('click', '.cell', function() {
     var $infos = $('.info'), $this = $(this);
     if(!$this.attr('name')) {
+        $(".myclass").css({"display":"block"});
+        $('#overlay').fadeIn(300);
         return;
     }
     $infos.eq(0).html('课程名称：'+$this.attr('name'));
@@ -249,6 +236,7 @@ function weekChange(obj) {
     }
     showData(data, weekNum);
 }
+//--------------------左上角工具列表------------------------------
 function showList(){
     var content=$(".tool-list").css("display");
     if (content=="none") {
@@ -313,10 +301,31 @@ function color4(){
     $(".changeBackcolor").css({"display":"none"});
      $('#overlay').stop().fadeOut(300);
 }
+function openFeedback(){
+    $(".feedback").css({"display":"block"});
+    $("#overlay").css({"display":"block"});
+    $(".tool-list").css({"display":"none"});
+}
+//------------------------------打开添加自定义课表----------
+function openLoadMyClass(){
+    var content=$("#overlay").css("display");
+    if (content=="none"){
+        $(".myclass").css({"display":"block"});
+        $('#overlay').css({"display":"block"});
+    }else{
+
+    }
+
+}
 function chooseStartTime() {
     $(".choosestarttime").css({"display":"block"});
     $(".overlay-transp").css({"display":"block"});
     $(".choosestarttime_place").css({"display":"block"});
+}
+function chooseEndTime() {
+    $(".chooseendtime").css({"display":"block"});
+    $(".overlay-transp").css({"display":"block"});
+    $(".chooseendtime_place").css({"display":"block"});
 }
 function loseFocus() {
     $(".choosestarttime").css({"display":"none"});
@@ -327,27 +336,6 @@ function loseFocus() {
     $(".chooseWeekList").css({"display":"none"});
 
 }
-function chooseEndTime() {
-    $(".chooseendtime").css({"display":"block"});
-    $(".overlay-transp").css({"display":"block"});
-    $(".chooseendtime_place").css({"display":"block"});
-}
-
-function openFeedback(){
-     $(".feedback").css({"display":"block"});
-     $("#overlay").css({"display":"block"});
-     $(".tool-list").css({"display":"none"});
-}
-function openLoadMyClass(){
-    var content=$("#overlay").css("display");
-    if (content=="none"){
-        $(".myclass").css({"display":"block"});
-        $('#overlay').css({"display":"block"});
-    }else{
-
-    }
-}
-
 
 // function submitMyClass(){
 //     var myClassName=getElementById("#myClassName");

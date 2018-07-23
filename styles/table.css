@@ -144,9 +144,9 @@ header {
 	font-size: 4vw;
 	color: #5aa2e0;
 	padding: 1.5vw 0;
-	-moz-border-radius: 1vw;
-	-webkit-border-radius: 1vw;
-	border-radius: 1.5vw;
+	-moz-border-radius: 0.5vw;
+	-webkit-border-radius: 0.5vw;
+	border-radius: 0.5vw;
 	box-shadow: 0 0 1vw #ccc;
 	-moz-box-shadow: 0 0 1vw #ccc;
 
@@ -154,7 +154,7 @@ header {
 	height: 27vw;
 	list-style-type: none;
 	margin: 0;
-	background-color: #e9f3fb;
+	background-color: #fff;
 }
 .week-num .select li {
 	position: relative;

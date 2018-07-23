@@ -627,6 +627,7 @@ color: transparent;
 	width: 30vw;
 	display: inline-block;
 	line-height: 7vw;
+	height: 7vw;
 	font-size: 3.5vw;
 	margin-top: 3vw;
 	color: #777777;
@@ -656,4 +657,30 @@ color: transparent;
 	width: 8vw;
 	display: inline-block;
 	font-size: 2.5vw;
+}
+.chooseWeekList{
+	display:none;
+	width: 40vw;
+	margin-left: 15vw;
+	margin-top: 5vw;
+	margin-bottom: 5vw;
+	z-index: 10;
+	position: relative;
+}
+.chooseWeekNum{
+	width: 8vw;
+	display: inline-block;
+	color: #777777;
+}
+#choosenWeekDay>form{
+	height: 7vw;
+}
+.select{
+	width: 7.5vw;
+	font-size: 3vw;
+	display: inline-block;
+	margin: 0vw;
+ }
+#choosenWeekDay{
+	display: inline-block;
 }

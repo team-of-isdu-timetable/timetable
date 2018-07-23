@@ -107,6 +107,14 @@ function init() {
         }
 
     }
+    var $weekList = '<div class="weekList">';
+    for (var j = 0; j < 20; j++) {
+        if (j<9) {
+            $weekList+='<div class="chooseWeekNum">'+ "0"+(j+1) +'</div>';
+        }else{
+            $weekList+='<div class="chooseWeekNum">'+ (j+1) +'</div>';}
+    }
+    $(".chooseWeekList").append($weekList);
 
     clear();
 }
@@ -316,6 +324,7 @@ function loseFocus() {
     $(".overlay-transp").css({"display":"none"});
     $(".choosestarttime_place").css({"display":"none"});
     $(".chooseendtime_place").css({"display":"none"});
+    $(".chooseWeekList").css({"display":"none"});
 
 }
 function chooseEndTime() {
@@ -476,17 +485,22 @@ function openLoadMyClass(){
     $("#chooseAllWeek").click(function () {
         $("#chooseAllWeek").css({"color":"#1588b4"});
         $("#chooseByMyMind").css({"color":"#777777"});
+        $(".chooseWeekList").css({"display":"none"});
     })
     $("#chooseByMyMind").click(function () {
         $("#chooseByMyMind").css({"color":"#1588b4"});
         $("#chooseAllWeek").css({"color":"#777777"});
-        var $weekList = '<div class="weekList">';
-            for (var j = 0; j < 12; j++) {
-                if (j<9) {
-                    $weekList+='<div class="chooseWeekNum">'+ "0"+(j+1) +'</div>';
-                }else{
-                    $weekList+='<div class="chooseWeekNum">'+ (j+1) +'</div>';}
-            }
-             $(".chooseWeekList").append($weekList);
+        $(".chooseWeekList").css({"display":"block"});
+        $(".overlay-transp").css({"display":"block"});
     })
+    $(".chooseWeekList>.weekList>.chooseWeekNum").click(function () {
+        if ($(this).css("color")=="rgb(21, 136, 180)"){
+            $(this).css({"color":"#777777"});
+        }else{
+            $(this).css({"color":"#1588b4"});
+        }
+
+
+    })
+
 

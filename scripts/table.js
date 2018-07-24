@@ -131,7 +131,7 @@ function render(data) {
     }
     showData(data, data.msg)
 }
-
+//--------------------------------------------填课表-------------------------------------
 function showData(data, weekNum){
     var occupyPlace = [];
     for (var i = 0, n = data.obj.length; i < n; i++) {
@@ -491,4 +491,73 @@ function loseFocus() {
 
     })
 
+//-----------------提交我的自定义课表--------------------------
+$("#submitMyClass").click(function () {
+    var start_time;
+    var end_time;
+    var start_a_pm=$(".choosestarttime>.a_pm>.am").css("color");
+    var end_a_pm=$(".chooseendtime>.a_pm>.am").css("color");
+    var class_week="";
+    console.log($("#chooseAllWeek").css("color"));
+    if (start_a_pm=="rgb(21, 136, 180)"){
+        start_time=$("#choosen_hour").html()+":"+$("#choosen_minute").html()
+    }else{
+        start_time=(parseInt($("#choosen_hour").html())+12)+":"+$("#choosen_minute").html()
+    }
+    if (end_a_pm=="rgb(21, 136, 180)"){
+        end_time=$("#choosen_end_hour").html()+":"+$("#choosen_end_minute").html()
+    }else{
+        end_time=(parseInt($("#choosen_end_hour").html())+12)+":"+$("#choosen_end_minute").html()
+    }
+    if ($("#chooseAllWeek").css("color")=="rgb(21, 136, 180)"){
+        for (var i=0;i<20;i++){
+            class_week+="1"
+        }
+    }else{
+        $(".weekList>.chooseWeekNum").each(function () {
+            if ($(this).css("color")=="rgb(21, 136, 180)") {
+                class_week+="1";
+            }else{
+                class_week+="0";
+            }
+            }
+        )
+    }
+
+    $.ajax({type: "post",
+        // url: "text.php",
+        data: {class_name:$(".class_name").val(),
+            class_place:$("#class_place").val(),
+            start_time:start_time,
+            end_time:end_time,
+            week_day:$("#choosenWeekDay>select").val(),
+            class_week:class_week,
+            teacher:$("#class_teacher").val(),
+            note:$("#note").val()},
+        dataType: "json",
+        success: function(){
+            $(".class_name").val("");
+            $("#class_place").val("");
+            $("#choosen_hour").innerHTML="00";
+            $("#choosen_minute").innerHTML="00";
+            $("#choosen_end_hour").innerHTML="00";
+            $("#choosen_end_minute").innerHTML="00";
+            $("#choosenWeekDay>select").val(mon);
+            $("#chooseAllWeek").css({"color":"#1588b4"});
+            $("#chooseByMyMind").css({"color":"#777777"});
+            $("#class_teacher").val("");
+            $("#note").val("");
+            $(".submitSuccess").fadeIn(500);
+            $(".overlay_top").fadeIn(500);
+            $(".submitSuccess").fadeOut(500);
+            $(".overlay_top").fadeOut(500);
+        },
+        error:function () {
+            $(".submitFail").fadeIn(500);
+            $(".overlay_top").fadeIn(500);
+            $(".submitFail").fadeOut(500);
+            $(".overlay_top").fadeOut(500);
+        }
+    });
+})
 

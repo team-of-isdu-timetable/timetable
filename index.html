@@ -70,15 +70,15 @@
 		<div class="myclass">
 			<p>添加课程</p>
 			<form class="myclass_form" action="" method="post">
-				<input type="text" name="class_name"  placeholder="课程名称"></p>
-				<input type="text" name="class_place" placeholder="上课地点"></p>
+				<input type="text" id="class_name"  placeholder="课程名称"></p>
+				<input type="text" id="class_place" placeholder="上课地点"></p>
 				<div class="time"  onclick="chooseStartTime()">
 					<p>·</P>
 					<div>
 						<span>开始时间</span>
-						<div id="choosen_hour"></div>
+						<div id="choosen_hour">00</div>
 						<div id="choosen_colon">:</div>
-						<div id="choosen_minute"></div>
+						<div id="choosen_minute">00</div>
 					</div>
 				</div>
 				<div class="choosestarttime">
@@ -97,9 +97,9 @@
 					<p>·</P>
 					<div>
 						<span>结束时间</span>
-						<div id="choosen_end_hour"></div>
+						<div id="choosen_end_hour">00</div>
 						<div id="choosen_end_colon">:</div>
-						<div id="choosen_end_minute"></div>
+						<div id="choosen_end_minute">00</div>
 					</div>
 				</div>
 				<div class="chooseendtime">
@@ -133,11 +133,22 @@
 				<div id="chooseByMyMind">自定义</div>
 				<div class="chooseWeekList"></div>
 				<!-- 周次选择 -->
-				<input type="text" name="class_teacher" placeholder="任课老师"></p>
-				<input type="text" name="note" placeholder="备注信息"></p>
-				<input type="submit" style="border:0vw;" id="submitMyClass" value="添加">
+				<input type="text" id="class_teacher" placeholder="任课老师"></p>
+				<input type="text" id="note" placeholder="备注信息"></p>
+				<input type="button" style="border:0vw;" id="submitMyClass" value="添加">
 				<div class="overlay-transp" onclick="loseFocus()"></div>
 			</form>
+			<div class="submitSuccess">
+                <img src="img/success.jpg">
+                <p>提交成功</p>
+            </div>
+			<div class="submitFail">
+                <img src="img/fail.jpg">
+                <p>提交失败</p>
+            </div>
+			<div class="overlay_top">
+
+            </div>
 		</div>
         <script src="scripts/jquery-3.1.1.min.js"></script><!-- scripts/jquery-3.1.1.min.js -->
         <script src="scripts/table.js"></script>

@@ -130,11 +130,11 @@ curl_close($SC);
             	</ul>
             </div>
             <div id="presentweek">
-                    <div class="words">ceshi</div>
+                    <div class="words"></div>
             </div>
             <div class="week">
                 <div class="week-num">
-                    <div id="tb-week">ceshi</div>
+                    <div id="tb-week"></div>
                     <div class="week-listbtn" onclick="clickSelect($('.week-listbtn'));"></div>
                     <ul class="select" id="select-week">
                     </ul>

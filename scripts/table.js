@@ -158,8 +158,7 @@ $.ajax({
             data = res;
             render(data);
         }
-    },
-    erro:alert("1")
+    }
 });
 
 function render(data) {
@@ -328,6 +327,7 @@ function color3(){
     $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #bfb09d"});
     $(".plus").css({"background-color":" #0c516b"});
     $(".changeBackcolor").css({"display":"none"});
+    $("#presentweek").css({"color":"#fff"});
      $('#overlay').stop().fadeOut(300);
 }
 function color4(){

@@ -143,7 +143,7 @@ getWeek_day();
 //----------------------------------------------------------------
 var data;
 /*render(data);*/
-$.getJSON('', function (res) {      /*test.json*/
+$.getJSON('php/school.php', function (res) {      /*test.json*/
     if (!res) { alert('网络错误'); return;}
     // if (!res.ok) {
     //     alert(res.msg);

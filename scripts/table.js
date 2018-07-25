@@ -145,6 +145,7 @@ var data;
 /*render(data);*/
 $.ajax({
     type:"get",
+    url:"php/school.php",
     dataType:"json",
     success:function (res) {      /*test.json*/
         if (!res) { alert('网络错误'); return;}
@@ -565,7 +566,7 @@ $("#submitMyClass").click(function () {
     }
 
     $.ajax({type: "post",
-        url: "php/school.php",
+        url: "text.php",
         data: {class_name:$(".class_name").val(),
             class_place:$("#class_place").val(),
             start_time:start_time,

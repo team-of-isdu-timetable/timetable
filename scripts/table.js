@@ -564,7 +564,7 @@ $("#submitMyClass").click(function () {
         )
     }
 
-    $.ajax({type: "post",
+    $.ajax({type: "get",
         url: "php/school.php",
         data: {class_name:$(".class_name").val(),
             class_place:$("#class_place").val(),

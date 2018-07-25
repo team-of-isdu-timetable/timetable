@@ -8,7 +8,7 @@ body {
 }
 header {
 	position: relative;
-	height: 12vw;
+	height: 10vw;
 	background:#0c516b;
 	color: #fff;
 }
@@ -16,7 +16,7 @@ header {
 	float: left;
 	display: inline-block;
 	margin: 0;
-	margin-top: 3vw;
+	margin-top: 2vw;
 	margin-left: 4vw;
 	font-size: 6vw;
 	font-weight: 400;
@@ -39,7 +39,7 @@ header {
 	position: absolute;
 	list-style-type: none;
 	z-index: 1;
-	margin-top: 12vw;
+	margin-top: 10vw;
 	font-size: 4vw;
 	background-color: #ffffff;
 	color:#333333;
@@ -54,8 +54,8 @@ header {
 }
 .addMyClass{
 	position:fixed;
-	bottom:10vw;
-	right:10vw;
+	bottom:7vw;
+	right:7vw;
 	z-index:1;
 }
 .plus{
@@ -85,8 +85,8 @@ header {
 	color:#fff;
 	box-shadow: 1vw 1vw 1vw #c6c6c6;
 	position:fixed;
-	bottom:10vw;
-	right:10vw;
+	bottom:7vw;
+	right:7vw;
 }
 .week {
 	display: inline-block;
@@ -97,7 +97,7 @@ header {
 #tb-week {
 	display: inline-block;
 	font-size: 4.5vw;
-	padding-top: 4vw;
+	padding-top: 3vw;
 }
 .week-listbtn {
 	content:'';
@@ -128,7 +128,7 @@ header {
 	display: inline-block;
 	position:relative;
 	left: 28vw;
-	top: 0vw;
+	top: -1vw;
 }
 #presentweek>.words {
 	display: inline-block;
@@ -213,7 +213,7 @@ li.checked {
 	color:#2f6391;
 	float: left;
 	width: 7.2vw;
-	margin-top: 10vw;
+	margin-top: 8vw;
 	background: #ffffff;
 	border-collapse:collapse;
 	font-size: 4vw;
@@ -221,7 +221,7 @@ li.checked {
 }
 #tb-time div {
 	position: relative;
-	height: 20vw;
+	height: 18vw;
 	line-height: 14.7vw;
 	/*margin-top: 4vw;*/
 	/*border: 0.1vw solid #d8d8d8;*/
@@ -251,9 +251,9 @@ li.checked {
 	background: #ddeaf9;
 }
 #tb-day {
-	height: 10vw;
-	line-height: 5vw;
-	font-size: 3vw;
+	height: 8vw;
+	line-height: 4vw;
+	font-size: 2.5vw;
 }
 #tb-day div{
 	border: 0.05vw solid #d8d8d8;
@@ -261,7 +261,7 @@ li.checked {
 
 }
 #tb-class {
-	height: 200vw;
+	height: 180vw;
 	color: #fff;
 	background: #ffffff;
 }
@@ -278,7 +278,7 @@ li.checked {
 }
 .row {
 	display: flex;
-	height: 40vw;
+	height: 36vw;
 }
 .row div {
 	flex: 1;
@@ -400,7 +400,7 @@ button {
 	height: 60vw;
 	margin-left:5vw;
 	position: absolute;
-	top:60vw;
+	top:30vw;
 	border: 0.1vw solid #000000;
 	background-color:#fff;
 	display: none;
@@ -596,7 +596,7 @@ color: transparent;
 .myclass{
 	position:fixed;
 	left:15vw;
-	top:20vw;
+	top:15vw;
 	width: 70vw;
 	/*height: 154vw;*/
 	background-color:#fff;
@@ -716,10 +716,10 @@ color: transparent;
 }
 .submitSuccess{
 	position: fixed;
-	top:35%;
-	left: 20%;
-	height: 20%;
-	width: 60%;
+	top:30vw;
+	left: 20vw;
+	height: 40vw;
+	width: 60vw;
 	z-index: 10;
 	background-color: #ffffff;
 	border-radius: 2vw;
@@ -737,10 +737,10 @@ color: transparent;
 }
 .submitFail{
 	position: fixed;
-	top:35%;
-	left: 20%;
-	height: 20%;
-	width: 60%;
+	top:30vw;
+	left: 20vw;
+	height: 40vw;
+	width: 60vw;
 	z-index: 10;
 	background-color: #ffffff;
 	border-radius: 2vw;

@@ -100,18 +100,54 @@ function init() {
             $weekList+='<div class="chooseWeekNum">'+ (j+1) +'</div>';}
     }
     $(".chooseWeekList").append($weekList);
-
     clear();
 }
 init();
 
+
+//-----------------------------------------------第几周-----------------------------------------------------
+var termBegin = { year:2018, month: 9, date: 10 }//开学第一周星期一
+var now_week;
+function getWeek_day() {//获取当前周、星期
+    var current = {};//当前时间
+    var now = new Date()
+    var year = now.getFullYear()
+    var month = now.getMonth()
+    var date = now.getDate()
+    var day = now.getDay()
+    current.day = day;
+    if (day == 0){
+        current.day = 7;
+    }
+    var month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0){
+        month_days[1] = 29
+    }
+    var days = date - termBegin.date;
+    if (termBegin.month > month || termBegin.month == month && days < 0){//当前在假期则判为第一周第一天
+        current = { week: 0, day: 1 };
+    } else {
+        for (let m = termBegin.month; m < month; m++){
+            days += month_days[m];
+            var week = Math.floor(days / 7)
+            current.week = week>19?19:week
+        }
+    }
+    now_week=current.week
+    console.log(current.week);
+    return current;
+
+}
+getWeek_day();
+
+//----------------------------------------------------------------
 var data;
 /*render(data);*/
-$.getJSON('/isdu/wx/api/getSchedule', function (res) {      /*test.json*/
+$.getJSON('', function (res) {      /*test.json*/
     if (!res) { alert('网络错误'); return;}
-    if (!res.ok) {
-        alert(res.msg);
-    }
+    // if (!res.ok) {
+    //     alert(res.msg);
+    // }
     else if (res.obj.length === 0){
         alert('当前课表为空, 请登录教务系统核对.');
     }else {
@@ -121,26 +157,26 @@ $.getJSON('/isdu/wx/api/getSchedule', function (res) {      /*test.json*/
 });
 
 function render(data) {
-    $('#tb-week').html('第' + data.msg + '周');/*data.week*/
+    $('#tb-week').html('第' + now_week+ '周');/*data.week*/
     var weeksNum = data.obj[0].week.length;
     for (var i = 1; i <= weeksNum; i++) {
         $("#select-week").append("<li onclick='weekChange($(this));clickSelect()'><p>第" + i  + "周</p><img src='images/check.png'></li>");
-        if (i == data.msg) {
+        if (i == now_week) {
             $("#select-week").children("li").eq(i-1).addClass("checked");
         }
     }
-    showData(data, data.msg)
+    showData(data, now_week)
 }
 //--------------------------------------------填课表-------------------------------------
 function showData(data, weekNum){
     var occupyPlace = [];
     for (var i = 0, n = data.obj.length; i < n; i++) {
         var item = data.obj[i], color;
-        var day = String(item.day),
+        var day = String(item.weekday),
             courseOrder = String(item.courseOrder);
             
-        if (item.name in existingName) {
-            color = existingName[item.name];
+        if (item.courseName in existingName) {
+            color = existingName[item.courseName];
         } else {
             if (colors.length == 0) {
                 colors = colorUsed;
@@ -148,7 +184,7 @@ function showData(data, weekNum){
             }
             color = colors.splice(getColor(), 1)[0];
             colorUsed.push(color);
-            existingName[item.name] = color;
+            existingName[item.courseName] = color;
         }
 
         if (occupyPlace.indexOf(day + courseOrder) == -1) {//位置为空
@@ -156,16 +192,16 @@ function showData(data, weekNum){
             if (item.week.slice(weekNum - 1,weekNum) != 1) {
                 color = "#ccc";
             }
-            tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(item.day - 1)
-                .html(item.name + '@' + item.posi + ' ' + item.teacher)
+            tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
+                .html(item.courseName + '@' + item.room + ' ' + item.teacher)
                 .css({background: color})
-                .attr({name: item.name, posi: item.posi, teacher: item.teacher});
+                .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
         } else {
             if (item.week.slice(weekNum - 1,weekNum) == 1) {
-                tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(item.day - 1)
-                    .html(item.name + '@' + item.posi + ' ' + item.teacher)
+                tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
+                    .html(item.courseName + '@' + item.room + ' ' + item.teacher)
                     .css({background: color})
-                    .attr({name: item.name, posi: item.posi, teacher: item.teacher});
+                    .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
             }
         }
     }
@@ -498,7 +534,6 @@ $("#submitMyClass").click(function () {
     var start_a_pm=$(".choosestarttime>.a_pm>.am").css("color");
     var end_a_pm=$(".chooseendtime>.a_pm>.am").css("color");
     var class_week="";
-    console.log($("#chooseAllWeek").css("color"));
     if (start_a_pm=="rgb(21, 136, 180)"){
         start_time=$("#choosen_hour").html()+":"+$("#choosen_minute").html()
     }else{

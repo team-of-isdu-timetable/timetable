@@ -525,7 +525,7 @@ $("#submitMyClass").click(function () {
     }
 
     $.ajax({type: "post",
-        // url: "text.php",
+        url: "text.php",
         data: {class_name:$(".class_name").val(),
             class_place:$("#class_place").val(),
             start_time:start_time,

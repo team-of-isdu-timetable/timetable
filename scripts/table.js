@@ -143,17 +143,22 @@ getWeek_day();
 //----------------------------------------------------------------
 var data;
 /*render(data);*/
-$.getJSON('php/school.php', function (res) {      /*test.json*/
-    if (!res) { alert('网络错误'); return;}
-    // if (!res.ok) {
-    //     alert(res.msg);
-    // }
-    else if (res.obj.length === 0){
-        alert('当前课表为空, 请登录教务系统核对.');
-    }else {
-        data = res;
-        render(data);
-    }
+$.ajax({
+    type:"get",
+    dataType:"json",
+    success:function (res) {      /*test.json*/
+        if (!res) { alert('网络错误'); return;}
+        // if (!res.ok) {
+        //     alert(res.msg);
+        // }
+        else if (res.obj.length === 0){
+            alert('当前课表为空, 请登录教务系统核对.');
+        }else {
+            data = res;
+            render(data);
+        }
+    },
+    erro:alert("1")
 });
 
 function render(data) {

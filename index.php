@@ -12,27 +12,27 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $output = curl_exec($ch);
 
 
-function hashCode32( $s )
+/*function hashCode32( $s )
 {
-    $h = 0;
-    $len = strlen($s);
-    for($i = 0; $i < $len; $i++)
-    {
-        $h = overflow32(31 * $h + ord($s[$i]));
-    }
+$h = 0;
+$len = strlen($s);
+for($i = 0; $i < $len; $i++)
+{
+$h = overflow32(31 * $h + ord($s[$i]));
+}
 
-    return $h;
+return $h;
 }
 
 function overflow32($v)
 {
-    $v = $v % 4294967296;
-    if ($v > 2147483647) return $v - 4294967296;
-    elseif ($v < -2147483648) return $v + 4294967296;
-    else return $v;
+$v = $v % 4294967296;
+if ($v > 2147483647) return $v - 4294967296;
+elseif ($v < -2147483648) return $v + 4294967296;
+else return $v;
 }
-
-if(!$_SESSION['token']){
+*/
+if(1){
     $code = $_GET['code'];
 
     $table = curl_init();
@@ -46,35 +46,35 @@ if(!$_SESSION['token']){
     $tableput = curl_exec($table);
     curl_close($table);
 
-    $_SESSION['token']=$_GET['token'];
-    $_SESSION['id']=$_GET['id'];
+    $_SESSION['token']=$_GET['obj']['token'];
+    $_SESSION['id']=$_GET['obj']['id'];
 }
-else{
-    $code = $_GET['code'];
-    $hashCode = hashCode32($code);
-    $url = "https://sduonline.cn/isdu-new/oauth/info/".$code."/".$hashCode;
-    $sc = curl_init();
-    curl_setopt($sc, CURLOPT_URL, $url);
-    curl_setopt($sc, CURLOPT_HEADER, 0);
-    curl_setopt($sc, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
-    curl_setopt($sc, CURLOPT_SSL_VERIFYPEER, FALSE);
-    curl_setopt($sc, CURLOPT_SSL_VERIFYHOST, FALSE);
-    curl_setopt($sc, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($sc, CURLOPT_FOLLOWLOCATION, 1);
-    $scput = curl_exec($sc);
-    curl_close($sc);
-    $_SESSION['openID'] = $jsoninfo['obj']['info']['openId'];
-    $_SESSION['unionID'] = $jsoninfo['obj']['info']['unionID'];
-    $_SESSION['headimgurl'] = $jsoninfo['obj']['info']['headImgUrl'];
-    $_SESSION['nickname'] = $jsoninfo['obj']['info']['nickname'];
+/*else{
+	$code = $_GET['code'];
+	$hashCode = hashCode32($code);
+	$url = "https://sduonline.cn/isdu-new/oauth/info/".$code."/".$hashCode;
+	$sc = curl_init();
+	curl_setopt($sc, CURLOPT_URL, $url);
+	curl_setopt($sc, CURLOPT_HEADER, 0);
+	curl_setopt($sc, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
+	curl_setopt($sc, CURLOPT_SSL_VERIFYPEER, FALSE);
+	curl_setopt($sc, CURLOPT_SSL_VERIFYHOST, FALSE);
+	curl_setopt($sc, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($sc, CURLOPT_FOLLOWLOCATION, 1);
+	$scput = curl_exec($sc);
+	curl_close($sc);
+	$_SESSION['openID'] = $jsoninfo['obj']['info']['openId'];
+	$_SESSION['unionID'] = $jsoninfo['obj']['info']['unionID'];
+	$_SESSION['headimgurl'] = $jsoninfo['obj']['info']['headImgUrl'];
+	$_SESSION['nickname'] = $jsoninfo['obj']['info']['nickname'];
 
-    $jsoninfo = json_decode($scput,true);
-}
+	$jsoninfo = json_decode($scput,true);
+	}
+*/
 
 
 
-
-if(isset($_SESSION['id'])) {
+if(1) {
 
     $headers = array();
     $id = $_SESSION['id'];
@@ -95,10 +95,10 @@ if(isset($_SESSION['id'])) {
     $SCput = curl_exec($SC);
     curl_close($SC);
 
-    $school = json_decode($SCput,true);
+    $school = json_encode($SCput,true);
     $_SESSION['school']=$school;
 }
-ob_flush();
+
 ?>
 <!DOCTYPE html>
 <html>

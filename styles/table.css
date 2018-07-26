@@ -133,12 +133,12 @@ header {
 #presentweek{
 	display: inline-block;
 	position:relative;
-	left: 28vw;
+	left: 31vw;
 	top: -1vw;
 }
 #presentweek>.words {
 	display: inline-block;
-	font-size: 5vw;
+	font-size: 4.5vw;
 	color: white;
 	position: relative;
 	top: 1vw;
@@ -151,7 +151,7 @@ header {
 	display: none;
 
 	position: absolute;
-	left: -7vw;
+	left: -3vw;
 	top: 10vw;
 	width: 27vw;
 	font-size: 4vw;
@@ -218,7 +218,7 @@ li.checked {
 	float: left;
 	width: 7.2vw;
 	margin-top: 12vw;
-	background: #ffffff;
+	background: #39a5ce;
 	border-collapse:collapse;
 	font-size: 4vw;
 	font-weight:bold;
@@ -361,6 +361,7 @@ button {
 	font-size: 4.2vw;
 	margin: 6vw;
 }
+.change-----------------------------------------------------------------------------------------------------
 .changeBackcolor-bg{
 	height: 85vw;
 	width:80vw;

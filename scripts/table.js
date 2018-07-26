@@ -235,6 +235,8 @@ function hideInfo() {
     $('#detail').stop().fadeOut(300);
     $('.tool-list').stop().fadeOut(300);
     $('.myclass').stop().fadeOut(300);
+    $('#select-week').slideUp("100");
+
 }
 $('#overlay').click(hideInfo);
 $('#hide').click(hideInfo);
@@ -242,6 +244,7 @@ $('#hide').click(hideInfo);
 //选周
 var stat = 0;
 function clickSelect() {
+    $("#overlay").css({"display":"block"});
     function step(now,fx) {
         $(this).css('-webkit-transform','rotate('+now+'deg)');
         $(this).css('-moz-transform','rotate('+now+'deg)');

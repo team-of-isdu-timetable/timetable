@@ -205,7 +205,11 @@ function showData(data, weekNum){
             }
             tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
+                .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+>>>>>>> parent of b6b66b5... 111
 =======
                 .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
 >>>>>>> parent of b6b66b5... 111
@@ -215,7 +219,11 @@ function showData(data, weekNum){
             if (item.week.slice(weekNum - 1,weekNum) == 1) {
                 tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
 <<<<<<< HEAD
+<<<<<<< HEAD
                     .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
+                    .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+>>>>>>> parent of b6b66b5... 111
 =======
                     .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
 >>>>>>> parent of b6b66b5... 111

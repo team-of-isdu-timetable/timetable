@@ -1,4 +1,10 @@
-var colors = ['#fb7f88', '#fcf497', '#9fe4cf', '#5fcff1', '#b4a7f3', '#f4a7ce'],
+var u = navigator.userAgent;
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+if (isAndroid!==1) {
+    $("body").css({"font-family":"PingFang SC"});
+}
+
+var colors = ['#f27979', '#f8a66f', '#f2c261', '#b8d574', '#6ad4b3', '#71b5e9','b193d9'],
     colorUsed = [],
     existingName = {};
 function getColor() {
@@ -58,7 +64,7 @@ function clear() {
         }
     }
 
-var days = ['一<br>MON ', ' 二<br>TUE', '三<br>WED', '四<br>THU', '五<br>FRI', '六<br>SAT', '日<br>SUN'];
+var days = ['一<br><p>MON</p> ', ' 二<br><p>TUE</p>', '三<br><p>WED</p>', '四<br><p>THU</p>', '五<br><p>FRI</p>', '六<br><p>SAT</p>', '日<br><p>SUN</p>'];
 // 初始化表格
 function init() {
     var $tbDay = $('#tb-day'),
@@ -165,7 +171,7 @@ function render(data) {
     $('#tb-week').html('第' + now_week+ '周');/*data.week*/
     var weeksNum = data.obj[0].week.length;
     for (var i = 1; i <= weeksNum; i++) {
-        $("#select-week").append("<li onclick='weekChange($(this));clickSelect()'><p>第" + i  + "周</p><img src='images/check.png'></li>");
+        $("#select-week").append("<li onclick='weekChange($(this));clickSelect()'><p>第" + i  + "周</p><img src='img/check.png'></li>");
         if (i == now_week) {
             $("#select-week").children("li").eq(i-1).addClass("checked");
         }
@@ -195,16 +201,16 @@ function showData(data, weekNum){
         if (occupyPlace.indexOf(day + courseOrder) == -1) {//位置为空
             occupyPlace.push(day + courseOrder);
             if (item.week.slice(weekNum - 1,weekNum) != 1) {
-                color = "#ccc";
+                color = "#c5c5c5";
             }
             tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-                .html(item.courseName + '@' + item.room + ' ' + item.teacher)
+                .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
                 .css({background: color})
                 .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
         } else {
             if (item.week.slice(weekNum - 1,weekNum) == 1) {
                 tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-                    .html(item.courseName + '@' + item.room + ' ' + item.teacher)
+                    .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
                     .css({background: color})
                     .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
             }
@@ -235,6 +241,8 @@ function hideInfo() {
     $('#detail').stop().fadeOut(300);
     $('.tool-list').stop().fadeOut(300);
     $('.myclass').stop().fadeOut(300);
+    $('#select-week').slideUp("100");
+
 }
 $('#overlay').click(hideInfo);
 $('#hide').click(hideInfo);
@@ -248,16 +256,17 @@ function clickSelect() {
         $(this).css('-ms-transform','rotate('+now+'deg)');
         $(this).css('-o-transform','rotate('+now+'deg)');
         $(this).css('transform','rotate('+now+'deg)');
+        $("#overlay").css({"display":"block"});
     }
     if (stat == 0) {
         stat = 1;
-        $('.week-listbtn').css({'top':'5px'});
+        $('.week-listbtn').css({'top':'1px'});
         $('.week-listbtn').animate({borderSpacing: 45 }, {step: step,
             duration:'50' },'linear');
         $('#select-week').slideDown("100");
     } else {
         stat = 0;
-        $('.week-listbtn').css({'top':'0px'});
+        $('.week-listbtn').css({'top':'2px'});
         $('.week-listbtn').animate({borderSpacing: -135 }, {step: step,
             duration:'50' },'linear');
         $('#select-week').slideUp("100");
@@ -267,14 +276,17 @@ function weekChange(obj) {
     $("#select-week").children("li.checked").removeClass("checked");
     obj.addClass("checked");
     var weekNum = obj.index() + 1;
-    $('#tb-week').html('第' + weekNum + '周');
-    if (weekNum != data.msg) {
-        $("#presentweek").children(".circle").css({"background":"#c84665"});
-        $("#presentweek").children(".words").css({"color":"#c84665"}).text("非当前周");
-    } else {
-        $("#presentweek").children(".circle").css({"background":"white"});
-        $("#presentweek").children(".words").css({"color":"white"}).text("当前周");
+    if (weekNum==0){
+        $('#tb-week').html("放假中");
+    } else{
+        $('#tb-week').html('第' + weekNum + '周');
+        if (weekNum !==now_week) {
+            $("#presentweek").children(".words").text("非当前周");
+        } else {
+            $("#presentweek").children(".words").css({"color":"white"}).text("当前周");
+        }
     }
+
     showData(data, weekNum);
 }
 //--------------------左上角工具列表------------------------------
@@ -299,22 +311,27 @@ function color1(){
     $("#tb-day").css({"background-color":" #fff"});
     $("#table").css({"background-color":" #fff"});
     $("#tb-day div").css({"background-color":" #fff"});
-    $("header").css({"background-color":" #0c516b"});
-    $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #c6c6c6"});
-    $(".plus").css({"background-color":" #0c516b"});
+    $("header").css({"background-color":" #1588b4"});
+    // $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #c6c6c6"});
+    $(".plus").css({"background-color":" #1588b4"});
     $(".changeBackcolor").css({"display":"none"});
+    $(".changeBackcolor>div>img").css({"display":"none"});
+    $(".color1>img").css({"display":"block"});
      $('#overlay').stop().fadeOut(300);
 }
 function color2(){
-    $("#tb-class").css({"background-color":" #4b4f50"});
-    $("#tb-time").css({"background-color":" #4b4f50"});
-    $("#tb-day").css({"background-color":" #4b4f50"});
-    $("#table").css({"background-color":" #4b4f50"});
-    $("#tb-day div").css({"background-color":" #4b4f50"});
-    $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #2c3133"});
-    $(".plus").css({"background-color":" #0c516b"});
-    $("header").css({"background-color":" #0c516b"});
+    $("#tb-class").css({"background-color":" #3a4043"});
+    $("#tb-time").css({"background-color":" #3a4043"});
+    $("#tb-day").css({"background-color":" #3a4043"});
+    $("#table").css({"background-color":" #3a4043"});
+    $("#tb-day div").css({"background-color":" #3a4043"});
+    // $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #2c3133"});
+    $(".plus").css({"background-color":" #1588b4"});
+    $("header").css({"background-color":" #3a4043"});
     $(".changeBackcolor").css({"display":"none"});
+    $(".cell").css({"opacity":"0.8"});
+    $(".changeBackcolor>div>img").css({"display":"none"});
+    $(".color2>img").css({"display":"block"});
      $('#overlay').stop().fadeOut(300);
 }
 function color3(){
@@ -324,10 +341,12 @@ function color3(){
     $("#table").css({"background-color":" #f5e2ca"});
     $("#tb-day div").css({"background-color":" #f5e2ca"});
     $("header").css({"background-color":" #c43c53"});
-    $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #bfb09d"});
-    $(".plus").css({"background-color":" #0c516b"});
+    // $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #bfb09d"});
+    $(".plus").css({"background-color":" #fb4d4d"});
     $(".changeBackcolor").css({"display":"none"});
     $("#presentweek").css({"color":"#fff"});
+    $(".changeBackcolor>div>img").css({"display":"none"});
+    $(".color3>img").css({"display":"block"});
      $('#overlay').stop().fadeOut(300);
 }
 function color4(){
@@ -338,9 +357,12 @@ function color4(){
     $("#tb-day div").css({"background-color":" #000000"});
     $("header").css({"background-color":" #000000"});
     $(".plus").css({"background-color":" #2a3c4b"});
-    $(".plus_shadow").css({"box-shadow":" 0 0 0 #4b4f50"});
+    // $(".plus_shadow").css({"box-shadow":" 0 0 0 #4b4f50"});
     $("header").css({"background-color":" #000000"});
     $(".changeBackcolor").css({"display":"none"});
+    $(".cell").css({"opacity":"0.7"});
+    $(".changeBackcolor>div>img").css({"display":"none"});
+    $(".color4>img").css({"display":"block"});
      $('#overlay').stop().fadeOut(300);
 }
 function openFeedback(){
@@ -566,7 +588,7 @@ $("#submitMyClass").click(function () {
     }
 
     $.ajax({type: "post",
-        url: "text.php",
+        url: "php/school.php",
         data: {class_name:$(".class_name").val(),
             class_place:$("#class_place").val(),
             start_time:start_time,

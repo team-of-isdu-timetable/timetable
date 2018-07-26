@@ -63,7 +63,7 @@ header {
 	border-radius:50%;
 	color:#fff;
 	font-size:10vw;
-	background-color:#0c516b;
+	background-color:#1588b4;
 	text-align:center;
 	z-index:1;
 	display: table-cell;
@@ -74,11 +74,11 @@ header {
 	/*box-shadow: 1vw 1vw 1vw #c6c6c6;*/
 }
 .addMyClass img{
-	width: 10vw;
-	height: 10vw;
+	width: 8vw;
+	height: 8vw;
 	position:fixed;
-	bottom:7vw;
-	right:7vw;
+	bottom:8vw;
+	right:8vw;
 	z-index:2;
 }
 .plus_shadow{
@@ -152,7 +152,7 @@ header {
 
 	position: absolute;
 	left: 0;
-	top: 9vw;
+	top: 12vw;
 	width: 27vw;
 	font-size: 4vw;
 	color: #5aa2e0;
@@ -164,7 +164,7 @@ header {
 	-moz-box-shadow: 0 0 1vw #ccc;
 
 	overflow-y: scroll;
-	height: 27vw;
+	height: 40vw;
 	list-style-type: none;
 	margin: 0;
 	background-color: #fff;
@@ -176,12 +176,14 @@ header {
 	padding-left: 1.5vw;
 	padding-right: 1.5vw;
 	padding-bottom: 1.2vw;
+	margin-top: 2vw;
+	text-align: center;
 }
 .week-num .select li p {
 	/*width: 24vw;*/
 	margin: 0;
 	display: inline-block;
-	border-bottom: #cce2f6 0.3vw solid;
+	color: #000;
 }
 .week-num .select li img {
 	visibility: hidden;
@@ -193,22 +195,15 @@ header {
 	right: -15px;*/
 }
 li.checked {
-	box-shadow: 0 0 0 #ccc,
-	0 -0.6vw 0 #ccc,
-	0 0.6vw 0 #ccc,
-	0 0 0 #ccc;
-	-moz-box-shadow: 0 0 0 #ccc,
-	0 -0.6vw 0 #ccc,
-	0 0.2vw 0 #ccc,
-	0 0 0 #ccc;
+	color: #1588b4;
 	height: 5.4vw;
 }
-.week-num .select li.checked p {
-	border-bottom: 0 #ccc solid;
-}
-.week-num .select li.checked img {
-	visibility: visible;
-}
+/*.week-num .select li.checked p {*/
+	/*border-bottom: 0 #ccc solid;*/
+/*}*/
+/*.week-num .select li.checked img {*/
+	/*visibility: visible;*/
+/*}*/
 
 
 #table {
@@ -222,7 +217,7 @@ li.checked {
 	color:#2f6391;
 	float: left;
 	width: 7.2vw;
-	margin-top: 8vw;
+	margin-top: 12vw;
 	background: #ffffff;
 	border-collapse:collapse;
 	font-size: 4vw;
@@ -262,15 +257,17 @@ li.checked {
 	background: #ddeaf9;
 }
 #tb-day {
-	height: 8vw;
-	line-height: 4vw;
-	font-size: 2.5vw;
+	height: 12vw;
+	font-size: 3vw;
 }
 #tb-day div{
 	border: 0.05vw solid #d8d8d8;
 	border-top-width:0vw;
 	border-right-width:0vw;
 
+}
+#tb-day div p{
+	color:#a4a4a4;
 }
 #tb-class {
 	height: 150vw;

@@ -1,4 +1,4 @@
-var colors = ['#fb7f88', '#fcf497', '#9fe4cf', '#5fcff1', '#b4a7f3', '#f4a7ce'],
+var colors = ['#f27979', '#f8a66f', '#f2c261', '#b8d574', '#6ad4b3', '#71b519','b193d9'],
     colorUsed = [],
     existingName = {};
 function getColor() {
@@ -58,7 +58,7 @@ function clear() {
         }
     }
 
-var days = ['一<br>MON ', ' 二<br>TUE', '三<br>WED', '四<br>THU', '五<br>FRI', '六<br>SAT', '日<br>SUN'];
+var days = ['一<br><p>MON</p> ', ' 二<br><p>TUE</p>', '三<br><p>WED</p>', '四<br><p>THU</p>', '五<br><p>FRI</p>', '六<br><p>SAT</p>', '日<br><p>SUN</p>'];
 // 初始化表格
 function init() {
     var $tbDay = $('#tb-day'),
@@ -195,7 +195,7 @@ function showData(data, weekNum){
         if (occupyPlace.indexOf(day + courseOrder) == -1) {//位置为空
             occupyPlace.push(day + courseOrder);
             if (item.week.slice(weekNum - 1,weekNum) != 1) {
-                color = "#ccc";
+                color = "#c5c5c5";
             }
             tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
                 .html(item.courseName + '@' + item.room + ' ' + item.teacher)
@@ -271,7 +271,7 @@ function weekChange(obj) {
         $('#tb-week').html("放假中");
     } else{
         $('#tb-week').html('第' + weekNum + '周');
-        if (weekNum != data.msg) {
+        if (weekNum !==now_week) {
             $("#presentweek").children(".words").css({"color":"#c84665"}).text("非当前周");
         } else {
             $("#presentweek").children(".circle").css({"background":"white"});

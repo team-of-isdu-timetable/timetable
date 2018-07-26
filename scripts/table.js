@@ -267,14 +267,18 @@ function weekChange(obj) {
     $("#select-week").children("li.checked").removeClass("checked");
     obj.addClass("checked");
     var weekNum = obj.index() + 1;
-    $('#tb-week').html('第' + weekNum + '周');
-    if (weekNum != data.msg) {
-        $("#presentweek").children(".circle").css({"background":"#c84665"});
-        $("#presentweek").children(".words").css({"color":"#c84665"}).text("非当前周");
-    } else {
-        $("#presentweek").children(".circle").css({"background":"white"});
-        $("#presentweek").children(".words").css({"color":"white"}).text("当前周");
+    if (weekNum==0){
+        $('#tb-week').html("放假中");
+    } else{
+        $('#tb-week').html('第' + weekNum + '周');
+        if (weekNum != data.msg) {
+            $("#presentweek").children(".words").css({"color":"#c84665"}).text("非当前周");
+        } else {
+            $("#presentweek").children(".circle").css({"background":"white"});
+            $("#presentweek").children(".words").css({"color":"white"}).text("当前周");
+        }
     }
+
     showData(data, weekNum);
 }
 //--------------------左上角工具列表------------------------------

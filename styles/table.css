@@ -345,11 +345,13 @@ button {
 }
 #detail {
 	position: fixed;
-	width: 72vw; height: 70%;
+	width: 72vw;
+	/*height: 140vw;*/
 	top: 15%; left: 50%;
 	margin-left: -36vw;
 	background-color: #fff;
 	overflow: auto;
+	border-radius: 2vw;
 }
 .info {
 	font-size: 4.2vw;

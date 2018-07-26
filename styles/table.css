@@ -99,11 +99,12 @@ header {
 #tb-week {
 	display: inline-block;
 	font-size: 4.5vw;
-	padding-top: 3vw;
+	padding-top: 2vw;
 }
 .week-listbtn {
 	content:'';
 	position: relative;
+	bottom: 1vw;
 	display:inline-block;
 	margin-left: 1.5vw;
 	height:3vw;
@@ -136,9 +137,12 @@ header {
 	display: inline-block;
 	font-size: 5vw;
 	color: white;
+	position: relative;
+	top: 1vw;
 }
 .week-num {
 	position: relative;
+	bottom: 0.5vw;
 }
 .week-num .select {
 	display: none;
@@ -263,7 +267,7 @@ li.checked {
 
 }
 #tb-class {
-	height: 180vw;
+	height: 150vw;
 	color: #fff;
 	background: #ffffff;
 }

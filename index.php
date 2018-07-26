@@ -135,7 +135,7 @@ curl_close($SC);
             <div class="week" >
                 <div class="week-num">
                     <div id="tb-week"></div>
-                    <div class="week-listbtn"  onclick="clickSelect($('.week-listbtn'));></div>
+                    <div class="week-listbtn" onclick="clickSelect($('.week-listbtn'));"></div>
                     <ul class="select" id="select-week">
                     </ul>
                 </div>

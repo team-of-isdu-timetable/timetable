@@ -23,12 +23,6 @@ header {
 	height: 7vw;
 	width: 7vw;
 }
-.tool-button div{
-	width:7vw;
-	height:1vw;
-	background-color:#fff;
-	margin-bottom:1.4vw;
-}
 .tool-list li:active{
 	background-color: #c4c6c8;
 }
@@ -91,6 +85,7 @@ header {
 	position:fixed;
 	bottom:7vw;
 	right:7vw;
+	opacity: 0.5;
 }
 .week {
 	display: inline-block;
@@ -232,10 +227,12 @@ li.checked {
 	position: relative;
 	height: 15vw;
 	line-height: 14.7vw;
-	/*margin-top: 4vw;*/
-	/*border: 0.1vw solid #d8d8d8;*/
-	/*border-left-width:0vw;*/
-	outline:#d8d8d8 solid 0.1px;
+	margin-top: 4vw;
+	border: 0.1vw solid #d8d8d8;
+	border-left-width:0vw;
+	border-bottom-width:0vw;
+	/*outline:#d8d8d8 solid 0.1px;*/
+	box-sizing:border-box;
 }
 #tb-time div>p {
 	color:#a4a4a4;
@@ -267,6 +264,7 @@ li.checked {
 #tb-day div{
 	border: 0.05vw solid #d8d8d8;
 	border-top-width:0vw;
+	border-right-width:0vw;
 
 }
 #tb-class {

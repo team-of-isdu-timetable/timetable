@@ -221,7 +221,7 @@ li.checked {
 	/*margin-bottom: 6vw;*/
 }
 #tb-time {
-	/*color:#2f6391;*/
+	color:#2f6391;
 	float: left;
 	width: 7.2vw;
 	margin-top: 12vw;
@@ -321,11 +321,11 @@ button {
 	top: -50%; left: -50%;
 	background: #000;
 	opacity: 0.7;
-	/*-webkit-filter: blur(15px);*/
-	/*-moz-filter: blur(15px);*/
-	/*-o-filter: blur(15px);*/
-	/*-ms-filter: blur(15px);*/
-	/*filter: blur(15px);*/
+	-webkit-filter: blur(15px);
+	-moz-filter: blur(15px);
+	-o-filter: blur(15px);
+	-ms-filter: blur(15px);
+	filter: blur(15px);
 }
 .overlay-transp{
 	position: fixed;
@@ -335,11 +335,11 @@ button {
 	opacity: 0;
 	display: none;
 	z-index: 1;
-	/*-webkit-filter: blur(15px);*/
-	/*-moz-filter: blur(15px);*/
-	/*-o-filter: blur(15px);*/
-	/*-ms-filter: blur(15px);*/
-	/*filter: blur(15px);*/
+	-webkit-filter: blur(15px);
+	-moz-filter: blur(15px);
+	-o-filter: blur(15px);
+	-ms-filter: blur(15px);
+	filter: blur(15px);
 
 }
 #detail {
@@ -350,7 +350,7 @@ button {
 	margin-left: -36vw;
 	background-color: #fff;
 	overflow: auto;
-	border-radius: 0.5vw;
+	border-radius: 2vw;
 }
 .info {
 	font-size: 4.2vw;
@@ -358,13 +358,6 @@ button {
 }
 .changeBackcolor>div>img{
 	width: 10vw;
-	position: absolute;
-	bottom: 3vw;
-	right: 3vw;
-	display: none;
-}
-.color1 img{
-	display: block;
 }
 .changeBackcolor-bg{
 	height: 85vw;
@@ -783,11 +776,11 @@ color: transparent;
 	opacity: 0.7;
 	z-index: 5;
 	display: none;
-	/*-webkit-filter: blur(15px);*/
-	/*-moz-filter: blur(15px);*/
-	/*-o-filter: blur(15px);*/
-	/*-ms-filter: blur(15px);*/
-	/*filter: blur(15px);*/
+	-webkit-filter: blur(15px);
+	-moz-filter: blur(15px);
+	-o-filter: blur(15px);
+	-ms-filter: blur(15px);
+	filter: blur(15px);
 }
 .cell div{
 	height: 2vw;

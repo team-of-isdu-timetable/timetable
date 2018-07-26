@@ -49,7 +49,11 @@ if(!$_SESSION['token']){
 	$_SESSION['id'] = $jsoninfo['obj']['id'];
 	$_SESSION['token'] = $jsoninfo['obj']['token'];
 	$jsoninfo = json_decode($tableput,true);
+<<<<<<< HEAD
+	var_dump($tableput);
+=======
 	var_dump($table);
+>>>>>>> 9cbbac65b8a2dcb8298b7a5a779ebd09404ba532
 	}
 else{
 	$code = $_GET['code'];
@@ -72,7 +76,11 @@ else{
 	$_SESSION['nickname'] = $jsoninfo['obj']['info']['nickname'];
 
 	$jsoninfo = json_decode($scput,true);
+<<<<<<< HEAD
+	var_dump($scput);
+=======
 	var_dump($sc);
+>>>>>>> 9cbbac65b8a2dcb8298b7a5a779ebd09404ba532
 }
 
 

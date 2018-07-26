@@ -61,7 +61,7 @@ header {
 .plus{
 	width:10vw;
 	height:10vw;
-	border-radius:5vw;
+	border-radius:50%;
 	color:#fff;
 	font-size:10vw;
 	background-color:#0c516b;
@@ -70,6 +70,7 @@ header {
 	display: table-cell;
 	vertical-align: middle;
 	line-height: 9vw;
+	overflow: hidden;
 
 	/*box-shadow: 1vw 1vw 1vw #c6c6c6;*/
 }
@@ -205,8 +206,8 @@ li.checked {
 
 #table {
 	background: #ffffff;
-	font-size: 3.6vw;
-	line-height: 7vw;
+	font-size: 3.5vw;
+	line-height: 4vw;
 	text-align: center;
 	/*margin-bottom: 6vw;*/
 }
@@ -222,7 +223,7 @@ li.checked {
 }
 #tb-time div {
 	position: relative;
-	height: 18vw;
+	height: 15vw;
 	line-height: 14.7vw;
 	/*margin-top: 4vw;*/
 	/*border: 0.1vw solid #d8d8d8;*/
@@ -279,7 +280,7 @@ li.checked {
 }
 .row {
 	display: flex;
-	height: 36vw;
+	height: 30vw;
 }
 .row div {
 	flex: 1;

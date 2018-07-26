@@ -130,7 +130,7 @@ curl_close($SC);
             	</ul>
             </div>
             <div id="presentweek">
-                    <div class="words"></div>
+                    <div class="words">当前周</div>
             </div>
             <div class="week">
                 <div class="week-num">

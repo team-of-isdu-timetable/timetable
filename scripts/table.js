@@ -1,4 +1,4 @@
-var colors = ['#f27979', '#f8a66f', '#f2c261', '#b8d574', '#6ad4b3', '#71b519','b193d9'],
+var colors = ['#f27979', '#f8a66f', '#f2c261', '#b8d574', '#6ad4b3', '#71b5e9','b193d9'],
     colorUsed = [],
     existingName = {};
 function getColor() {
@@ -272,9 +272,8 @@ function weekChange(obj) {
     } else{
         $('#tb-week').html('第' + weekNum + '周');
         if (weekNum !==now_week) {
-            $("#presentweek").children(".words").css({"color":"#c84665"}).text("非当前周");
+            $("#presentweek").children(".words").text("非当前周");
         } else {
-            $("#presentweek").children(".circle").css({"background":"white"});
             $("#presentweek").children(".words").css({"color":"white"}).text("当前周");
         }
     }
@@ -303,21 +302,21 @@ function color1(){
     $("#tb-day").css({"background-color":" #fff"});
     $("#table").css({"background-color":" #fff"});
     $("#tb-day div").css({"background-color":" #fff"});
-    $("header").css({"background-color":" #0c516b"});
+    $("header").css({"background-color":" #1588b4"});
     $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #c6c6c6"});
-    $(".plus").css({"background-color":" #0c516b"});
+    $(".plus").css({"background-color":" #1588b4"});
     $(".changeBackcolor").css({"display":"none"});
      $('#overlay').stop().fadeOut(300);
 }
 function color2(){
-    $("#tb-class").css({"background-color":" #4b4f50"});
-    $("#tb-time").css({"background-color":" #4b4f50"});
-    $("#tb-day").css({"background-color":" #4b4f50"});
-    $("#table").css({"background-color":" #4b4f50"});
-    $("#tb-day div").css({"background-color":" #4b4f50"});
+    $("#tb-class").css({"background-color":" #3a4043"});
+    $("#tb-time").css({"background-color":" #3a4043"});
+    $("#tb-day").css({"background-color":" #3a4043"});
+    $("#table").css({"background-color":" #3a4043"});
+    $("#tb-day div").css({"background-color":" #3a4043"});
     $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #2c3133"});
-    $(".plus").css({"background-color":" #0c516b"});
-    $("header").css({"background-color":" #0c516b"});
+    $(".plus").css({"background-color":" #1588b4"});
+    $("header").css({"background-color":" #3a4043"});
     $(".changeBackcolor").css({"display":"none"});
      $('#overlay').stop().fadeOut(300);
 }
@@ -329,7 +328,7 @@ function color3(){
     $("#tb-day div").css({"background-color":" #f5e2ca"});
     $("header").css({"background-color":" #c43c53"});
     $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #bfb09d"});
-    $(".plus").css({"background-color":" #0c516b"});
+    $(".plus").css({"background-color":" #1588b4"});
     $(".changeBackcolor").css({"display":"none"});
     $("#presentweek").css({"color":"#fff"});
      $('#overlay').stop().fadeOut(300);

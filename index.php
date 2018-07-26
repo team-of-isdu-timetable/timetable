@@ -132,10 +132,10 @@ curl_close($SC);
             <div id="presentweek">
                     <div class="words">当前周</div>
             </div>
-            <div class="week">
+            <div class="week"  onclick="clickSelect($('.week-listbtn'))>
                 <div class="week-num">
                     <div id="tb-week"></div>
-                    <div class="week-listbtn" onclick="clickSelect($('.week-listbtn'));"></div>
+                    <div class="week-listbtn"></div>
                     <ul class="select" id="select-week">
                     </ul>
                 </div>
@@ -170,10 +170,10 @@ curl_close($SC);
         </div>
         <div class="changeBackcolor" style="display: none;">
         	<div class="changeBackcolor-bg"></div>
-        	<div class="color1" onclick="color1()"></div>
-        	<div class="color2" onclick="color2()"></div>
-        	<div class="color3" onclick="color3()"></div>
-        	<div class="color4" onclick="color4()"></div>
+        	<div class="color1" onclick="color1()"><img src="img/check.png"> </div>
+        	<div class="color2" onclick="color2()"><img src="img/check.png"></div>
+        	<div class="color3" onclick="color3()"><img src="img/check.png"></div>
+        	<div class="color4" onclick="color4()"><img src="img/check.png"></div>
         </div>
        <div class="feedback">
 			<p>错误反馈请在后台输入“客服”呼叫小i</p>

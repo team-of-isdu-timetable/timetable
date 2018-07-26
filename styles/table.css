@@ -9,7 +9,7 @@ body {
 header {
 	position: relative;
 	height: 10vw;
-	background:#0c516b;
+	background:#1588b4;
 	color: #fff;
 }
 .tool-button {
@@ -151,8 +151,8 @@ header {
 	display: none;
 
 	position: absolute;
-	left: 0;
-	top: 12vw;
+	left: -7vw;
+	top: 10vw;
 	width: 27vw;
 	font-size: 4vw;
 	color: #5aa2e0;
@@ -183,7 +183,7 @@ header {
 	/*width: 24vw;*/
 	margin: 0;
 	display: inline-block;
-	color: #000;
+	color: #515151;
 }
 .week-num .select li img {
 	visibility: hidden;
@@ -264,10 +264,14 @@ li.checked {
 	border: 0.05vw solid #d8d8d8;
 	border-top-width:0vw;
 	border-right-width:0vw;
+	font-size: 4vw;
+	line-height: 6vw;
 
 }
 #tb-day div p{
 	color:#a4a4a4;
+	font-size: 3vw;
+
 }
 #tb-class {
 	height: 150vw;

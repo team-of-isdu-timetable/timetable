@@ -10,11 +10,8 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $output = curl_exec($ch);
-var_dump($_GET);
+var_dump($ch);
 
-
-session_start();
-error_reporting(0);
 
 function hashCode32( $s )
 {
@@ -36,55 +33,53 @@ elseif ($v < -2147483648) return $v + 4294967296;
 else return $v;
 }
 
-if(1)
-{
-$code = $_GET['code'];
+if(!$_SESSION['token']){
+	$code = $_GET['code'];
 
-$table = curl_init();
-curl_setopt($table, CURLOPT_URL, "https://sduonline.cn/isdu-new/oauth/".$code."/isdu");
-curl_setopt($table, CURLOPT_HEADER, 0);
-curl_setopt($table, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
-curl_setopt($table, CURLOPT_SSL_VERIFYPEER, FALSE);
-curl_setopt($table, CURLOPT_SSL_VERIFYHOST, FALSE);
-curl_setopt($table, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($table, CURLOPT_FOLLOWLOCATION, 1);
-$tableput = curl_exec($table);
-curl_close($table);
+	$table = curl_init();
+	curl_setopt($table, CURLOPT_URL, "https://sduonline.cn/isdu-new/oauth/".$code."/isdu");
+	curl_setopt($table, CURLOPT_HEADER, 0);
+	curl_setopt($table, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
+	curl_setopt($table, CURLOPT_SSL_VERIFYPEER, FALSE);
+	curl_setopt($table, CURLOPT_SSL_VERIFYHOST, FALSE);
+	curl_setopt($table, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($table, CURLOPT_FOLLOWLOCATION, 1);
+	$tableput = curl_exec($table);
+	curl_close($table);
+	$_SESSION['id'] = $jsoninfo['obj']['id'];
+	$_SESSION['token'] = $jsoninfo['obj']['token'];
+	$jsoninfo = json_decode($tableput,true);
+	var_dump($tableput);
+	}
+else{
+	$code = $_GET['code'];
+	$hashCode = hashCode32($code);
+	$url = "https://sduonline.cn/isdu-new/oauth/info/".$code."/".$hashCode;
+	$sc = curl_init();
+	curl_setopt($sc, CURLOPT_URL, $url);
+	curl_setopt($sc, CURLOPT_HEADER, 0);
+	curl_setopt($sc, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
+	curl_setopt($sc, CURLOPT_SSL_VERIFYPEER, FALSE);
+	curl_setopt($sc, CURLOPT_SSL_VERIFYHOST, FALSE);
+	curl_setopt($sc, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($sc, CURLOPT_FOLLOWLOCATION, 1);
+	$scput = curl_exec($sc);
+	curl_close($sc);
+	$_SESSION['code'] = $code;
+	$_SESSION['openID'] = $jsoninfo['obj']['info']['openId'];
+	$_SESSION['unionID'] = $jsoninfo['obj']['info']['unionID'];
+	$_SESSION['headimgurl'] = $jsoninfo['obj']['info']['headImgUrl'];
+	$_SESSION['nickname'] = $jsoninfo['obj']['info']['nickname'];
 
-$jsoninfo = json_decode($tableput,true);
-var_dump($tableput);
+	$jsoninfo = json_decode($scput,true);
+	var_dump($scput);
 }
-/*if(1) {
 
 
-$hashCode = hashCode32($code);
-$url = "https://sduonline.cn/isdu-new/oauth/info/".$code."/".$hashCode;
-$sc = curl_init();
-curl_setopt($sc, CURLOPT_URL, $url);
-curl_setopt($sc, CURLOPT_HEADER, 0);
-curl_setopt($sc, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
-curl_setopt($sc, CURLOPT_SSL_VERIFYPEER, FALSE);
-curl_setopt($sc, CURLOPT_SSL_VERIFYHOST, FALSE);
-curl_setopt($sc, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($sc, CURLOPT_FOLLOWLOCATION, 1);
-$scput = curl_exec($sc);
-curl_close($sc);
-$_SESSION['code'] = $code;
-$_SESSION['openID'] = $jsoninfo['obj']['info']['openId'];
-$_SESSION['unionID'] = $jsoninfo['obj']['info']['unionID'];
-$_SESSION['headimgurl'] = $jsoninfo['obj']['info']['headImgUrl'];
-$_SESSION['nickname'] = $jsoninfo['obj']['info']['nickname'];
-
-$jsoninfo = json_decode($scput,true);
-var_dump($scput);
-}
-
-*/
 
 ob_flush();
 
-$_SESSION['id'] = $jsoninfo['obj']['id'];
-$_SESSION['token'] = $jsoninfo['obj']['token'];
+
 if(isset($_SESSION['id'])) {
 
 $headers = array();
@@ -104,11 +99,10 @@ curl_setopt($SC, CURLOPT_SSL_VERIFYHOST, FALSE);
 curl_setopt($SC, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($SC, CURLOPT_FOLLOWLOCATION, 1);
 $SCput = curl_exec($SC);
+$adgwa=json_decode($SCput,ture);
 curl_close($SC);
 
-$jsoninfo = json_decode($SCput,true);
-var_dump($SCput);
 }
-
-
+	var_dump($SCput);
+ $_SESSION['school']=$SCput;
 ?>

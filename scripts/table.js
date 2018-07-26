@@ -321,6 +321,7 @@ function color2(){
     $(".plus").css({"background-color":" #1588b4"});
     $("header").css({"background-color":" #3a4043"});
     $(".changeBackcolor").css({"display":"none"});
+    $(".cell").css({"opacity":"0.8"});
      $('#overlay').stop().fadeOut(300);
 }
 function color3(){
@@ -331,7 +332,7 @@ function color3(){
     $("#tb-day div").css({"background-color":" #f5e2ca"});
     $("header").css({"background-color":" #c43c53"});
     $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #bfb09d"});
-    $(".plus").css({"background-color":" #1588b4"});
+    $(".plus").css({"background-color":" #fb4d4d"});
     $(".changeBackcolor").css({"display":"none"});
     $("#presentweek").css({"color":"#fff"});
      $('#overlay').stop().fadeOut(300);
@@ -347,6 +348,7 @@ function color4(){
     $(".plus_shadow").css({"box-shadow":" 0 0 0 #4b4f50"});
     $("header").css({"background-color":" #000000"});
     $(".changeBackcolor").css({"display":"none"});
+    $(".cell").css({"opacity":"0.7"});
      $('#overlay').stop().fadeOut(300);
 }
 function openFeedback(){

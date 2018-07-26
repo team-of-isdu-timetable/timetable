@@ -11,6 +11,11 @@ header {
 	height: 10vw;
 	background:#1588b4;
 	color: #fff;
+	border: 0.05vw solid #d8d8d8;
+	border-top-width:0 ;
+	border-left-width:0 ;
+	border-right-width:0 ;
+
 }
 .tool-button {
 	float: left;
@@ -361,7 +366,9 @@ button {
 	font-size: 4.2vw;
 	margin: 6vw;
 }
-.change-----------------------------------------------------------------------------------------------------
+.changeBackcolor>div>img{
+	width: 10vw;
+}
 .changeBackcolor-bg{
 	height: 85vw;
 	width:80vw;

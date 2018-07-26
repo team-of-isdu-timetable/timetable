@@ -1,39 +1,37 @@
 <?php
-session_start();
-error_reporting(0);
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4c92caabe8a65cee&&redirect_uri=https%3A%2F%2Fsduonline.cn%2Fplayground%2Ftimetable%2Findex.php&response_type=code&scope=snsapi_base&state=isdu#wechat_redirect");
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-$output = curl_exec($ch);
+	session_start();
+	error_reporting(0);
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4c92caabe8a65cee&&redirect_uri=https%3A%2F%2Fsduonline.cn%2Fplayground%2Ftimetable%2Findex.php&response_type=code&scope=snsapi_base&state=isdu#wechat_redirect");
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	$output = curl_exec($ch);
 
 
 
-session_start();
-error_reporting(0);
+	session_start();
+	error_reporting(0);
 
-function hashCode32( $s )
-{
-	$h = 0;
-	$len = strlen($s);
-	for($i = 0; $i < $len; $i++)
-	{
-		$h = overflow32(31 * $h + ord($s[$i]));
-	}
+	function hashCode32( $s ){
+		$h = 0;
+		$len = strlen($s);
+		for($i = 0; $i < $len; $i++)
+		{
+			$h = overflow32(31 * $h + ord($s[$i]));
+		}
 
-	return $h;
+		return $h;
 }
 
-function overflow32($v)
-{
-	$v = $v % 4294967296;
-	if ($v > 2147483647) return $v - 4294967296;
-	elseif ($v < -2147483648) return $v + 4294967296;
-	else return $v;
+	function overflow32($v){
+		$v = $v % 4294967296;
+		if ($v > 2147483647) return $v - 4294967296;
+		elseif ($v < -2147483648) return $v + 4294967296;
+		else return $v;
 }
 
 
@@ -51,15 +49,10 @@ function overflow32($v)
 	curl_close($table);
 
 	$jsoninfo = json_decode($tableput,true);
+	
 
-
-
-
-
-ob_flush();
-
-$_SESSION['id'] = $jsoninfo['obj']['id'];
-$_SESSION['token'] = $jsoninfo['obj']['token'];
+	$_SESSION['id'] = $jsoninfo['obj']['id'];
+	$_SESSION['token'] = $jsoninfo['obj']['token'];
 
 
 	$headers = array();
@@ -81,38 +74,8 @@ $_SESSION['token'] = $jsoninfo['obj']['token'];
 	$SCput = curl_exec($SC);
 	$adgwa=json_decode($SCput,ture)
 	curl_close($SC);
-$class_name=$_GET['class_name'];
-$class_place=$_GET['class_place'];
-$class_week=$_GET['class_week'];
-$start_time=$_GET['start_time'];
-$end_time=$_GET['end_time'];
-$week_day=$_GET['week_day'];
-$teacher=$_GET['teacher'];
-$note=$_GET['note'];
-$custom=array("${class_name}","${class_place}","${class_week}","${start_time}","${end_time}","${week_day}","${teacher}","${note}",);
-
-$_SESSION['school']=$SCput;
-
-
-$mysqli_con=mysqli_connect("localhost","root","kdm565","isdu_timetable");
-
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
-$name=1;
-$stmt = $mysqli_con->prepare("SELECT `custom` FROM `timetable` WHERE `id` = ?");
-$stmt->bind_param("s",$_SESSION['id']);
-$stmt->execute();
-$stmt->bind_result($cus);
-$stmt->fetch();
-$stmt->close();
-$_SESSION['custom']=$cus;
-$cu=json_decode($cus);
-$tom[]=$cu;
-$jscustom=json_encode($tom);
-$sql = "INSERT INTO timetable (id, name,custom)
-VALUES ('${id}', '${name}', ''${jscustom}')";
+	$_SESSION['school']=$SCput;
+	ob_flush();
 ?>
 <!DOCTYPE html>
 <html>

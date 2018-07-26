@@ -10,11 +10,8 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $output = curl_exec($ch);
+var_dump($ch);
 
-
-
-session_start();
-error_reporting(0);
 
 function hashCode32( $s )
 {
@@ -49,9 +46,10 @@ if(!$_SESSION['token']){
 	curl_setopt($table, CURLOPT_FOLLOWLOCATION, 1);
 	$tableput = curl_exec($table);
 	curl_close($table);
-
+	$_SESSION['id'] = $jsoninfo['obj']['id'];
+	$_SESSION['token'] = $jsoninfo['obj']['token'];
 	$jsoninfo = json_decode($tableput,true);
-
+	var_dump($table);
 	}
 else{
 	$code = $_GET['code'];
@@ -74,15 +72,14 @@ else{
 	$_SESSION['nickname'] = $jsoninfo['obj']['info']['nickname'];
 
 	$jsoninfo = json_decode($scput,true);
-	var_dump($scput);
+	var_dump($sc);
 }
 
 
 
 ob_flush();
 
-$_SESSION['id'] = $jsoninfo['obj']['id'];
-$_SESSION['token'] = $jsoninfo['obj']['token'];
+
 if(isset($_SESSION['id'])) {
 
 $headers = array();

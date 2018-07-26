@@ -165,7 +165,7 @@ function render(data) {
     $('#tb-week').html('第' + now_week+ '周');/*data.week*/
     var weeksNum = data.obj[0].week.length;
     for (var i = 1; i <= weeksNum; i++) {
-        $("#select-week").append("<li onclick='weekChange($(this));clickSelect()'><p>第" + i  + "周</p><img src='images/check.png'></li>");
+        $("#select-week").append("<li onclick='weekChange($(this));clickSelect()'><p>第" + i  + "周</p><img src='img/check.png'></li>");
         if (i == now_week) {
             $("#select-week").children("li").eq(i-1).addClass("checked");
         }

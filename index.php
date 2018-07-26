@@ -132,10 +132,10 @@ curl_close($SC);
             <div id="presentweek">
                     <div class="words">当前周</div>
             </div>
-            <div class="week"  onclick="clickSelect($('.week-listbtn'))>
+            <div class="week" >
                 <div class="week-num">
                     <div id="tb-week"></div>
-                    <div class="week-listbtn"></div>
+                    <div class="week-listbtn"  onclick="clickSelect($('.week-listbtn'));></div>
                     <ul class="select" id="select-week">
                     </ul>
                 </div>

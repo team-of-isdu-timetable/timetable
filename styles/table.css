@@ -321,10 +321,6 @@ button {
 	top: -50%; left: -50%;
 	background: #000;
 	opacity: 0.7;
-	/* Safari for macOS & iOS */
-	-webkit-backdrop-filter: blur(15px);
-	/* Google Chrome */
-	backdrop-filter: blur(15px);
 	/*-webkit-filter: blur(15px);*/
 	/*-moz-filter: blur(15px);*/
 	/*-o-filter: blur(15px);*/
@@ -339,9 +335,6 @@ button {
 	opacity: 0;
 	display: none;
 	z-index: 1;
-	-webkit-backdrop-filter: blur(15px);
-	/* Google Chrome */
-	backdrop-filter: blur(15px);
 	/*-webkit-filter: blur(15px);*/
 	/*-moz-filter: blur(15px);*/
 	/*-o-filter: blur(15px);*/
@@ -790,9 +783,6 @@ color: transparent;
 	opacity: 0.7;
 	z-index: 5;
 	display: none;
-	-webkit-backdrop-filter: blur(15px);
-	/* Google Chrome */
-	backdrop-filter: blur(15px);
 	/*-webkit-filter: blur(15px);*/
 	/*-moz-filter: blur(15px);*/
 	/*-o-filter: blur(15px);*/

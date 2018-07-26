@@ -41,6 +41,7 @@ header {
 	padding-left: 0;
 	display: none;
 	position: absolute;
+	left: 1vw;
 	list-style-type: none;
 	z-index: 1;
 	margin-top: 10vw;
@@ -51,6 +52,7 @@ header {
 	width: 35vw;
 	height: 30vw;
 	border: 0.05vw solid #d8d8d8;
+	border-radius: 0.5vw	;
 }
 .tool-list li{
 	text-align: center;
@@ -270,12 +272,13 @@ li.checked {
 	border-top-width:0vw;
 	border-right-width:0vw;
 	font-size: 4vw;
-	line-height: 6vw;
+	line-height: 7vw;
 
 }
 #tb-day div p{
 	color:#a4a4a4;
 	font-size: 3vw;
+	line-height: 5vw;
 
 }
 #tb-class {
@@ -312,35 +315,17 @@ input[type="button"],
 button {
 	-webkit-appearance: none;
 }
-.btns {
-	text-align: center;
-}
-.btn {
-	display: block;
-	margin: 6vw auto;
-	padding: 2.4vw 4.8vw;
-	border: none; outline: none;
-	font: 4.2vw/6vw 'Microsoft Yahei';
-	color: #fff;
-	background: #5aa2e0;
-	box-shadow: 0 0.3vw 2.4vw #666;
-	cursor: pointer;
-}
-.btns .btn {
-	display: inline-block;
-	margin: 6vw 6vw;
-}
-.btn.disable {
-	color: #fff;
-	background: #ccc;
-	border-color: #ccc;
-}
 #overlay {
 	position: fixed;
 	width: 200%; height: 200%;
 	top: -50%; left: -50%;
 	background: #000;
 	opacity: 0.7;
+	-webkit-filter: blur(15px);
+	-moz-filter: blur(15px);
+	-o-filter: blur(15px);
+	-ms-filter: blur(15px);
+	filter: blur(15px);
 }
 .overlay-transp{
 	position: fixed;
@@ -350,6 +335,11 @@ button {
 	opacity: 0;
 	display: none;
 	z-index: 1;
+	-webkit-filter: blur(15px);
+	-moz-filter: blur(15px);
+	-o-filter: blur(15px);
+	-ms-filter: blur(15px);
+	filter: blur(15px);
 
 }
 #detail {
@@ -786,4 +776,12 @@ color: transparent;
 	opacity: 0.7;
 	z-index: 5;
 	display: none;
+	-webkit-filter: blur(15px);
+	-moz-filter: blur(15px);
+	-o-filter: blur(15px);
+	-ms-filter: blur(15px);
+	filter: blur(15px);
+}
+.cell p{
+	line-height: 2vw;
 }

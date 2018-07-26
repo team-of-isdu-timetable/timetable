@@ -198,13 +198,13 @@ function showData(data, weekNum){
                 color = "#c5c5c5";
             }
             tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-                .html(item.courseName + '@' + item.room + ' ' + item.teacher)
+                .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
                 .css({background: color})
                 .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
         } else {
             if (item.week.slice(weekNum - 1,weekNum) == 1) {
                 tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-                    .html(item.courseName + '@' + item.room + ' ' + item.teacher)
+                    .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
                     .css({background: color})
                     .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
             }
@@ -254,13 +254,13 @@ function clickSelect() {
     }
     if (stat == 0) {
         stat = 1;
-        $('.week-listbtn').css({'top':'5px'});
+        $('.week-listbtn').css({'top':'3px'});
         $('.week-listbtn').animate({borderSpacing: 45 }, {step: step,
             duration:'50' },'linear');
         $('#select-week').slideDown("100");
     } else {
         stat = 0;
-        $('.week-listbtn').css({'top':'0px'});
+        $('.week-listbtn').css({'top':'2px'});
         $('.week-listbtn').animate({borderSpacing: -135 }, {step: step,
             duration:'50' },'linear');
         $('#select-week').slideUp("100");

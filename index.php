@@ -112,8 +112,9 @@ curl_close($SC);
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
         <title>课程表</title>
         <link rel="stylesheet" type="text/css" href="styles/table.css">
     </head>
@@ -164,9 +165,6 @@ curl_close($SC);
             <div class="info"></div>
             <div class="info"></div>
             <div class="info"></div>
-            <div class="btns">
-                <button class="btn" id="hide">知道了</button>
-            </div>
         </div>
         <div class="changeBackcolor" style="display: none;">
         	<div class="changeBackcolor-bg"></div>

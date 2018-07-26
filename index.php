@@ -141,11 +141,10 @@ curl_close($SC);
                 </div>
             </div>
         </header>
-        <div class="addMyClass">
-            	<div class="plus" onclick="openLoadMyClass()">
-					<img src="img/plus.png">
-
-				</div>
+        <div class="addMyClass" onclick="openLoadMyClass()">
+            	<div class="plus" >
+                </div>
+            <img src="img/plus.png">
         </div>
         <div class=plus_shadow></div>
         <section id="table">

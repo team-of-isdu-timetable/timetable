@@ -23,6 +23,9 @@ header {
 	height: 7vw;
 	width: 7vw;
 }
+.tool-button img{
+	width: 5vw;
+}
 .tool-list li:active{
 	background-color: #c4c6c8;
 }

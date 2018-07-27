@@ -234,12 +234,17 @@ function showData(data, weekNum){
         $duringTime=(end_hour-start_hour)*60+(end_min-start_min);
         if (start_hour<=12) {
             top=((start_hour-8)*60+start_min)/4;
-        }else{
+        }else{if(start_hour<19){
             if (isSummer) {
                 top=((start_hour-10)*60+start_min)/4;
             }else{
                 top=((start_hour-10)*60+start_min+30)/4;
             }
+        }
+        // else{
+        //     top=start_hour-11
+        // }
+
         }
         color = colors.splice(getColor(), 1)[0];
         if (c_item.class_week.slice(weekNum - 1,weekNum) != 1) {
@@ -603,7 +608,7 @@ $("#submitMyClass").click(function () {
         end_time=(parseInt($("#choosen_end_hour").html())+12)+":"+$("#choosen_end_minute").html()
     }
     if ($("#chooseAllWeek").css("color")=="rgb(21, 136, 180)"){
-        for (var i=0;i<20;i++){
+        for (var i=0;i<19;i++){
             class_week+="1"
         }
     }else{
@@ -616,6 +621,7 @@ $("#submitMyClass").click(function () {
             }
         )
     }
+    // if (start_time.slice(0,2)<8||start_time>)------------------------------------------------------------------------------------------
     $.ajax({type: "post",
         url: "php/school.php",
         data: {class_name:$(".class_name").val(),

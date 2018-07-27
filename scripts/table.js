@@ -199,6 +199,7 @@ function showData(data, weekNum){
             }
             tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
 =======
 <<<<<<< HEAD
@@ -214,11 +215,15 @@ function showData(data, weekNum){
 >>>>>>> parent of b6b66b5... 111
 >>>>>>> parent of 49402d1... Revert "111"
 >>>>>>> 8aa0ddac91f30bb4281f1df73e7785d1294fbb00
+=======
+                .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+>>>>>>> parent of 3f0e635... 222
                 .css({background: color})
                 .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
         } else {
             if (item.week.slice(weekNum - 1,weekNum) == 1) {
                 tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
+<<<<<<< HEAD
 <<<<<<< HEAD
                     .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
 =======
@@ -235,6 +240,9 @@ function showData(data, weekNum){
 >>>>>>> parent of b6b66b5... 111
 >>>>>>> parent of 49402d1... Revert "111"
 >>>>>>> 8aa0ddac91f30bb4281f1df73e7785d1294fbb00
+=======
+                    .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+>>>>>>> parent of 3f0e635... 222
                     .css({background: color})
                     .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
             }

@@ -825,7 +825,12 @@ color: transparent;
 	/*-ms-filter: blur(15px);*/
 	/*filter: blur(15px);*/
 }
+<<<<<<< HEAD
 .cell div{
 	height: 2vw;
 >>>>>>> 8aa0ddac91f30bb4281f1df73e7785d1294fbb00
+=======
+.cell p{
+	line-height: 2vw;
+>>>>>>> parent of 3f0e635... 222
 }

@@ -154,7 +154,7 @@ curl_close($SC);
                 <!-- <div id="tb-week"></div> -->
                 <div id="tb-main">
                     <div id="tb-day"></div>
-                    <div id="tb-class"><dic class="add"><div></div></div>
+                    <div id="tb-class"></div>
                 </div>
             </div>
         </section>

@@ -1,3 +1,11 @@
+ test_data={"obj":[
+     {"courseName":"a","teacher":"a","week":"1111111111111111111","property":"a","weekday":"2","courseOrder":"2","room":"a","weekReadable":"a"},
+         {"courseName":"b","teacher":"b","week":"1111111111111111111","property":"b","weekday":"1","courseOrder":"1","room":"b","weekReadable":"b"}],
+     "custom":[
+         {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"1","end_time":"16:00","class_place":"b","note":"aaa"},
+         {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"8:00","week_day":"1","end_time":"9:00","class_place":"b","note":"aaa"},
+         {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"5","end_time":"16:00","class_place":"b","note":"aaa"}]};
+data=test_data
 var colors = ['#f27979', '#f8a66f', '#f2c261', '#b8d574', '#6ad4b3', '#71b5e9','b193d9'],
     colorUsed = [],
     existingName = {};
@@ -18,7 +26,8 @@ function clear() {
     colors = colors.concat(colorUsed);
     colorUsed = [];
     existingName = {};
-
+    var $add_class = $('<div class="add_class"></div>');
+    tbClass.append($add_class);
     for (var i = 0; i < 5; i++) {
         var $row = $('<div class="row"></div>');
         for (var j = 0; j < 7; j++) {
@@ -134,32 +143,32 @@ function getWeek_day() {//获取当前周、星期
         }
     }
     now_week=current.week
-    console.log(current.week);
+
     return current;
 
 }
 getWeek_day();
 
 //----------------------------------------------------------------
-var data;
-/*render(data);*/
-$.ajax({
-    type:"get",
-    url:"php/school.php",
-    dataType:"json",
-    success:function (res) {      /*test.json*/
-        if (!res) { alert('网络错误'); return;}
-        // if (!res.ok) {
-        //     alert(res.msg);
-        // }
-        else if (res.obj.length === 0){
-            alert('当前课表为空, 请登录教务系统核对.');
-        }else {
-            data = res;
-            render(data);
-        }
-    }
-});
+// var data;
+// /*render(data);*/
+// $.ajax({
+//     type:"get",
+//     url:"../test.php",
+//     dataType:"json",
+//     success:function (res) {      /*test.json*/
+//         if (!res) { alert('网络错误'); return;}
+//         // if (!res.ok) {
+//         //     alert(res.msg);
+//         // }
+//         else if (res.obj.length === 0){
+//             alert('当前课表为空, 请登录教务系统核对.');
+//         }else {
+//             data = res;
+//             render(data);
+//         }
+//     }
+// });
 
 function render(data) {
     $('#tb-week').html('第' + now_week+ '周');/*data.week*/
@@ -172,6 +181,8 @@ function render(data) {
     }
     showData(data, now_week)
 }
+render(data);
+
 //--------------------------------------------填课表-------------------------------------
 function showData(data, weekNum){
     var occupyPlace = [];
@@ -191,69 +202,42 @@ function showData(data, weekNum){
             colorUsed.push(color);
             existingName[item.courseName] = color;
         }
-
+        console.log(item.week);
         if (occupyPlace.indexOf(day + courseOrder) == -1) {//位置为空
             occupyPlace.push(day + courseOrder);
             if (item.week.slice(weekNum - 1,weekNum) != 1) {
                 color = "#c5c5c5";
             }
             tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-<<<<<<< HEAD
-<<<<<<< HEAD
                 .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-=======
-<<<<<<< HEAD
-                .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-=======
-                .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-<<<<<<< HEAD
-                .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-=======
-                .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
->>>>>>> parent of 3f0e635... 222
-=======
->>>>>>> parent of b6b66b5... 111
->>>>>>> parent of 49402d1... Revert "111"
-<<<<<<< HEAD
-=======
->>>>>>> 8aa0ddac91f30bb4281f1df73e7785d1294fbb00
->>>>>>> 01b8eb5324e24433dc914f8498f213dfbafd0334
-=======
-                .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
->>>>>>> parent of 3f0e635... 222
                 .css({background: color})
                 .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
         } else {
             if (item.week.slice(weekNum - 1,weekNum) == 1) {
                 tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-<<<<<<< HEAD
-<<<<<<< HEAD
                     .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-=======
-<<<<<<< HEAD
-                    .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-=======
-                    .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-<<<<<<< HEAD
-                    .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-=======
-                    .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
->>>>>>> parent of 3f0e635... 222
-=======
->>>>>>> parent of b6b66b5... 111
->>>>>>> parent of 49402d1... Revert "111"
-<<<<<<< HEAD
-=======
->>>>>>> 8aa0ddac91f30bb4281f1df73e7785d1294fbb00
->>>>>>> 01b8eb5324e24433dc914f8498f213dfbafd0334
-=======
-                    .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
->>>>>>> parent of 3f0e635... 222
                     .css({background: color})
                     .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
             }
         }
     }
+    //----------------------------自定义课表------------------------
+    var add_class_box=$("#tb-class>.add_class");
+    for (var i = 0, n = data.custom.length; i < n; i++) {
+        var c_item = data.custom[i], color;
+        var c_day = String(c_item.week_day);
+        var $add_class_content='<div></div>'+c_item.class_name + '@' + c_item.class_place + ' ' + c_item.teacher;
+        color = colors.splice(getColor(), 1)[0];
+        console.log(c_item.week);
+        if (c_item.week.slice(weekNum - 1,weekNum) != 1) {
+            color = "#c5c5c5";
+        }
+        add_class_box.append('<div class="added_class'+i+'" position="absolute" top="10vw" left="10vw">'+$add_class_content+'</div>')
+            // tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
+            //     .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+            //     .css({background: color})
+            //     .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
+        }
 }
 
 // 点击课程查看详细信息
@@ -294,7 +278,6 @@ function clickSelect() {
         $(this).css('-ms-transform','rotate('+now+'deg)');
         $(this).css('-o-transform','rotate('+now+'deg)');
         $(this).css('transform','rotate('+now+'deg)');
-        $("#overlay").css({"display":"block"});
     }
     if (stat == 0) {
         stat = 1;
@@ -624,7 +607,6 @@ $("#submitMyClass").click(function () {
             }
         )
     }
-
     $.ajax({type: "post",
         url: "php/school.php",
         data: {class_name:$(".class_name").val(),
@@ -660,5 +642,5 @@ $("#submitMyClass").click(function () {
             $(".overlay_top").fadeOut(500);
         }
     });
-})
+});
 

@@ -225,7 +225,7 @@ li.checked {
 	float: left;
 	width: 7.2vw;
 	margin-top: 12vw;
-	background: #39a5ce;
+	/*background: #39a5ce;*/
 	border-collapse:collapse;
 	font-size: 4vw;
 	font-weight:bold;
@@ -286,7 +286,11 @@ li.checked {
 	color: #fff;
 	background: #ffffff;
 }
-
+#tb-class .add_class{
+	height: 0vw;
+	position: absolute;
+	top: 12vw;
+}
 #tb-day {
 	display: flex;
 }
@@ -296,6 +300,10 @@ li.checked {
 }
 #tb-day{
 	color:#fc5f46;
+}
+#tb-main{
+	position: absolute;
+	width: 92.8vw;
 }
 .row {
 	display: flex;
@@ -790,14 +798,15 @@ color: transparent;
 	opacity: 0.7;
 	z-index: 5;
 	display: none;
-<<<<<<< HEAD
-	-webkit-filter: blur(15px);
-	-moz-filter: blur(15px);
-	-o-filter: blur(15px);
-	-ms-filter: blur(15px);
-	filter: blur(15px);
+	-webkit-backdrop-filter: blur(15px);
+	/* Google Chrome */
+	backdrop-filter: blur(15px);
+	/*-webkit-filter: blur(15px);*/
+	/*-moz-filter: blur(15px);*/
+	/*-o-filter: blur(15px);*/
+	/*-ms-filter: blur(15px);*/
+	/*filter: blur(15px);*/
 }
-<<<<<<< HEAD
 .cell div {
 	height: 2vw;
 }
@@ -809,33 +818,6 @@ color: transparent;
 	top: 22vw;
 	height: 0;
 }
-.add div{
+.add div {
 	width: 13.25vw;
-=======
-.cell p{
-	line-height: 2vw;
->>>>>>> parent of 3f0e635... 222
-=======
-	-webkit-backdrop-filter: blur(15px);
-	/* Google Chrome */
-	backdrop-filter: blur(15px);
-	/*-webkit-filter: blur(15px);*/
-	/*-moz-filter: blur(15px);*/
-	/*-o-filter: blur(15px);*/
-	/*-ms-filter: blur(15px);*/
-	/*filter: blur(15px);*/
-}
-<<<<<<< HEAD
-.cell p{
-	line-height: 2vw;
-=======
-<<<<<<< HEAD
-.cell div{
-	height: 2vw;
->>>>>>> 8aa0ddac91f30bb4281f1df73e7785d1294fbb00
-=======
-.cell p{
-	line-height: 2vw;
->>>>>>> parent of 3f0e635... 222
->>>>>>> 01b8eb5324e24433dc914f8498f213dfbafd0334
 }

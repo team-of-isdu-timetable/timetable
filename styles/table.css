@@ -782,11 +782,17 @@ color: transparent;
 	-ms-filter: blur(15px);
 	filter: blur(15px);
 }
-<<<<<<< HEAD
-.cell div{
+.cell div {
 	height: 2vw;
-=======
+}
 .cell p{
 	line-height: 2vw;
->>>>>>> parent of b6b66b5... 111
+}
+.add{
+	position: absolute;
+	top: 22vw;
+	height: 0;
+}
+.add div{
+	width: 13.25vw;
 }

@@ -169,6 +169,7 @@ header {
 	border-radius: 0.5vw;
 	box-shadow: 0 0 1vw #ccc;
 	-moz-box-shadow: 0 0 1vw #ccc;
+	z-index: 1;
 
 	overflow-y: scroll;
 	height: 40vw;

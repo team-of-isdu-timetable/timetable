@@ -1,11 +1,18 @@
- test_data={"obj":[
-     {"courseName":"a","teacher":"a","week":"1111111111111111111","property":"a","weekday":"2","courseOrder":"2","room":"a","weekReadable":"a"},
-         {"courseName":"b","teacher":"b","week":"1111111111111111111","property":"b","weekday":"1","courseOrder":"1","room":"b","weekReadable":"b"}],
-     "custom":[
-         {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"1","end_time":"16:00","class_place":"b","note":"aaa"},
-         {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"8:00","week_day":"1","end_time":"9:00","class_place":"b","note":"aaa"},
-         {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"5","end_time":"16:00","class_place":"b","note":"aaa"}]};
-data=test_data
+//  test_data={"obj":[
+//      {"courseName":"a","teacher":"a","week":"1111111111111111111","property":"a","weekday":"2","courseOrder":"2","room":"a","weekReadable":"a"},
+//          {"courseName":"b","teacher":"b","week":"1111111111111111111","property":"b","weekday":"1","courseOrder":"1","room":"b","weekReadable":"b"}],
+//      "custom":[
+//          {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"1","end_time":"16:00","class_place":"b","note":"aaa"},
+//          {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"08:00","week_day":"1","end_time":"09:00","class_place":"b","note":"aaa"},
+//          {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"5","end_time":"16:00","class_place":"b","note":"aaa"}]};
+// data=test_data;
+//----------------------------第一学期or第二学期---------------------------
+ var todayDate = new Date();
+ var month = todayDate.getMonth() + 1,
+     isSummer = false;
+ if (month >= 5 && month <= 9) {
+     isSummer = true;
+ }
 var colors = ['#f27979', '#f8a66f', '#f2c261', '#b8d574', '#6ad4b3', '#71b5e9','b193d9'],
     colorUsed = [],
     existingName = {};
@@ -72,12 +79,6 @@ var days = ['一<br><p>MON</p> ', ' 二<br><p>TUE</p>', '三<br><p>WED</p>', '�
 function init() {
     var $tbDay = $('#tb-day'),
         $tbTime = $('#tb-time');
-    var todayDate = new Date();
-    var month = todayDate.getMonth() + 1,
-        isSummer = false;
-    if (month >= 5 && month <= 9) {
-        isSummer = true;
-    }
     for (var i = 0; i < 7; i++) {
         $tbDay.append('<div>' + days[i] + '</div>');
     }
@@ -150,25 +151,25 @@ function getWeek_day() {//获取当前周、星期
 getWeek_day();
 
 //----------------------------------------------------------------
-// var data;
-// /*render(data);*/
-// $.ajax({
-//     type:"get",
-//     url:"../test.php",
-//     dataType:"json",
-//     success:function (res) {      /*test.json*/
-//         if (!res) { alert('网络错误'); return;}
-//         // if (!res.ok) {
-//         //     alert(res.msg);
-//         // }
-//         else if (res.obj.length === 0){
-//             alert('当前课表为空, 请登录教务系统核对.');
-//         }else {
-//             data = res;
-//             render(data);
-//         }
-//     }
-// });
+var data;
+/*render(data);*/
+$.ajax({
+    type:"get",
+    url:"../test.php",
+    dataType:"json",
+    success:function (res) {      /*test.json*/
+        if (!res) { alert('网络错误'); return;}
+        // if (!res.ok) {
+        //     alert(res.msg);
+        // }
+        else if (res.obj.length === 0){
+            alert('当前课表为空, 请登录教务系统核对.');
+        }else {
+            data = res;
+            render(data);
+        }
+    }
+});
 
 function render(data) {
     $('#tb-week').html('第' + now_week+ '周');/*data.week*/
@@ -181,7 +182,6 @@ function render(data) {
     }
     showData(data, now_week)
 }
-render(data);
 
 //--------------------------------------------填课表-------------------------------------
 function showData(data, weekNum){
@@ -202,7 +202,6 @@ function showData(data, weekNum){
             colorUsed.push(color);
             existingName[item.courseName] = color;
         }
-        console.log(item.week);
         if (occupyPlace.indexOf(day + courseOrder) == -1) {//位置为空
             occupyPlace.push(day + courseOrder);
             if (item.week.slice(weekNum - 1,weekNum) != 1) {
@@ -225,17 +224,28 @@ function showData(data, weekNum){
     var add_class_box=$("#tb-class>.add_class");
     for (var i = 0, n = data.custom.length; i < n; i++) {
         var c_item = data.custom[i], color;
-        var c_day = String(c_item.week_day);
+        var c_day = c_item.week_day;
         var $add_class_content='<div></div>'+c_item.class_name + '@' + c_item.class_place + ' ' + c_item.teacher;
+        var $duringTime,start_hour,start_min,end_hour,end_min,top;
+        start_hour=c_item.start_time.slice(0,2);
+        start_min=c_item.start_time.slice(3,2);
+        end_hour=c_item.end_time.slice(0,2);
+        end_min=c_item.end_time.slice(3,2);
+        $duringTime=(end_hour-start_hour)*60+(end_min-start_min);
+        if (start_hour<=12) {
+            top=((start_hour-8)*60+start_min)/4;
+        }else{
+            if (isSummer) {
+                top=((start_hour-10)*60+start_min)/4;
+            }else{
+                top=((start_hour-10)*60+start_min+30)/4;
+            }
+        }
         color = colors.splice(getColor(), 1)[0];
         if (c_item.class_week.slice(weekNum - 1,weekNum) != 1) {
             color = "#c5c5c5";
         }
-        add_class_box.append('<div class="added_class'+i+'" position="absolute" top="10vw" left="10vw" background="'+color+'" >'+$add_class_content+'</div>')
-            // tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-            //     .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-            //     .css({background: color})
-            //     .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
+        add_class_box.append('<div class="added_class'+i+'"style="height: '+$duringTime/4+'vw;width:13.25vw;position:absolute;top: '+top+'vw;left:'+(c_day*13.25-13.25)+'vw;background:'+ color+';">'+$add_class_content+'</div>');
         }
 }
 

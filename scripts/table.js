@@ -206,8 +206,18 @@ function showData(data, weekNum){
                 .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
 =======
                 .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+<<<<<<< HEAD
+                .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
+                .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+>>>>>>> parent of 3f0e635... 222
+=======
 >>>>>>> parent of b6b66b5... 111
 >>>>>>> parent of 49402d1... Revert "111"
+<<<<<<< HEAD
+=======
+>>>>>>> 8aa0ddac91f30bb4281f1df73e7785d1294fbb00
+>>>>>>> 01b8eb5324e24433dc914f8498f213dfbafd0334
 =======
                 .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
 >>>>>>> parent of 3f0e635... 222
@@ -224,8 +234,18 @@ function showData(data, weekNum){
                     .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
 =======
                     .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+<<<<<<< HEAD
+                    .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
+                    .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+>>>>>>> parent of 3f0e635... 222
+=======
 >>>>>>> parent of b6b66b5... 111
 >>>>>>> parent of 49402d1... Revert "111"
+<<<<<<< HEAD
+=======
+>>>>>>> 8aa0ddac91f30bb4281f1df73e7785d1294fbb00
+>>>>>>> 01b8eb5324e24433dc914f8498f213dfbafd0334
 =======
                     .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
 >>>>>>> parent of 3f0e635... 222

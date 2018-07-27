@@ -90,7 +90,7 @@ $week_day=$_GET['week_day'];
 $teacher=$_GET['teacher'];
 $note=$_GET['note'];
 $custom=array("${class_name}","${class_place}","${class_week}","${start_time}","${end_time}","${week_day}","${teacher}","${note}",);
-
+$jscustom=json_encode($custom);
 $_SESSION['school']=$SCput;
 
 
@@ -104,13 +104,10 @@ $name=1;
 $stmt = $mysqli_con->prepare("SELECT `custom` FROM `timetable` WHERE `id` = ?");
 $stmt->bind_param("s",$_SESSION['id']);
 $stmt->execute();
-$stmt->bind_result($cus);
+$stmt->bind_result($custom);
 $stmt->fetch();
 $stmt->close();
-$_SESSION['custom']=$cus;
-$cu=json_decode($cus);
-$tom[]=$cu;
-$jscustom=json_encode($tom);
+$_SESSION['custom']=$custom;
 $sql = "INSERT INTO timetable (id, name,custom)
 VALUES ('${id}', '${name}', ''${jscustom}')";
 ?>

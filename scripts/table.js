@@ -204,13 +204,29 @@ function showData(data, weekNum){
                 color = "#c5c5c5";
             }
             tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
+<<<<<<< HEAD
                 .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
+<<<<<<< HEAD
+                .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
+                .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+>>>>>>> parent of b6b66b5... 111
+>>>>>>> parent of 49402d1... Revert "111"
                 .css({background: color})
                 .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
         } else {
             if (item.week.slice(weekNum - 1,weekNum) == 1) {
                 tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
+<<<<<<< HEAD
                     .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
+<<<<<<< HEAD
+                    .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
+                    .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+>>>>>>> parent of b6b66b5... 111
+>>>>>>> parent of 49402d1... Revert "111"
                     .css({background: color})
                     .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
             }

@@ -20,7 +20,5 @@
 	$b=json_decode($custom);
 	$c['obj']=$a['obj'];
 	$c['custom']=$b;
-	var_dump($_SESSION['school']);
-    var_dump($a['obj']);
-    var_dump($c);
+		echo $c;
 ?>

@@ -1,6 +1,38 @@
 <?php
 	session_start();
 	error_reporting(0);
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4c92caabe8a65cee&&redirect_uri=https%3A%2F%2Fsduonline.cn%2Fplayground%2Ftimetable%2Findex.php&response_type=code&scope=snsapi_base&state=isdu#wechat_redirect");
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	$output = curl_exec($ch);
+
+
+
+	session_start();
+	error_reporting(0);
+
+	function hashCode32( $s ){
+		$h = 0;
+		$len = strlen($s);
+		for($i = 0; $i < $len; $i++)
+		{
+			$h = overflow32(31 * $h + ord($s[$i]));
+		}
+
+		return $h;
+}
+
+	function overflow32($v){
+		$v = $v % 4294967296;
+		if ($v > 2147483647) return $v - 4294967296;
+		elseif ($v < -2147483648) return $v + 4294967296;
+		else return $v;
+}
 
 
 	$code = $_GET['code'];

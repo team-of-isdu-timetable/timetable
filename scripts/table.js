@@ -220,44 +220,6 @@ function showData(data, weekNum){
             }
         }
     }
-     // for (var i = 0, n = data.custom.length; i < n; i++){
-     //         var c_item = data.custom[i], color;
-     //         var c_day = String(c_item.weekday);
-     //
-     //         if (c_item.courseName in existingName) {
-     //             color = existingName[item.courseName];
-     //         } else {
-     //             if (colors.length == 0) {
-     //                 colors = colorUsed;
-     //                 colorUsed = [];
-     //             }
-     //             color = colors.splice(getColor(), 1)[0];
-     //             colorUsed.push(color);
-     //             existingName[item.courseName] = color;
-     //         }
-     //
-     //         if (occupyPlace.indexOf(day + courseOrder) == -1) {//位置为空
-     //             occupyPlace.push(day + courseOrder);
-     //             if (item.week.slice(weekNum - 1,weekNum) != 1) {
-     //                 color = "#c5c5c5";
-     //             }
-     //             tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-     //                 .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-     //                 .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-     //                 .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-     //                 .css({background: color})
-     //                 .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
-     //         } else {
-     //             if (item.week.slice(weekNum - 1,weekNum) == 1) {
-     //                 tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-     //                     .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-     //                     .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-     //                     .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
-     //                     .css({background: color})
-     //                     .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
-     //             }
-     //         }
-     //     }
 }
 
 // 点击课程查看详细信息

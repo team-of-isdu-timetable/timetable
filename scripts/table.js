@@ -200,11 +200,20 @@ function showData(data, weekNum){
             tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
 <<<<<<< HEAD
                 .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
+<<<<<<< HEAD
+                .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
                 .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+<<<<<<< HEAD
                 .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
 =======
                 .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
 >>>>>>> parent of 3f0e635... 222
+=======
+>>>>>>> parent of b6b66b5... 111
+>>>>>>> parent of 49402d1... Revert "111"
+>>>>>>> 8aa0ddac91f30bb4281f1df73e7785d1294fbb00
                 .css({background: color})
                 .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
         } else {
@@ -212,11 +221,20 @@ function showData(data, weekNum){
                 tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
 <<<<<<< HEAD
                     .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
+<<<<<<< HEAD
+                    .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
                     .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+<<<<<<< HEAD
                     .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
 =======
                     .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
 >>>>>>> parent of 3f0e635... 222
+=======
+>>>>>>> parent of b6b66b5... 111
+>>>>>>> parent of 49402d1... Revert "111"
+>>>>>>> 8aa0ddac91f30bb4281f1df73e7785d1294fbb00
                     .css({background: color})
                     .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
             }
@@ -256,17 +274,17 @@ $('#hide').click(hideInfo);
 //选周
 var stat = 0;
 function clickSelect() {
-    $("#overlay").css({"display":"block"});
     function step(now,fx) {
         $(this).css('-webkit-transform','rotate('+now+'deg)');
         $(this).css('-moz-transform','rotate('+now+'deg)');
         $(this).css('-ms-transform','rotate('+now+'deg)');
         $(this).css('-o-transform','rotate('+now+'deg)');
         $(this).css('transform','rotate('+now+'deg)');
+        $("#overlay").css({"display":"block"});
     }
     if (stat == 0) {
         stat = 1;
-        $('.week-listbtn').css({'top':'3px'});
+        $('.week-listbtn').css({'top':'1px'});
         $('.week-listbtn').animate({borderSpacing: 45 }, {step: step,
             duration:'50' },'linear');
         $('#select-week').slideDown("100");
@@ -321,6 +339,8 @@ function color1(){
     $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #c6c6c6"});
     $(".plus").css({"background-color":" #1588b4"});
     $(".changeBackcolor").css({"display":"none"});
+    $(".changeBackcolor>div>img").css({"display":"none"});
+    $(".color1>img").css({"display":"block"});
      $('#overlay').stop().fadeOut(300);
 }
 function color2(){
@@ -334,6 +354,8 @@ function color2(){
     $("header").css({"background-color":" #3a4043"});
     $(".changeBackcolor").css({"display":"none"});
     $(".cell").css({"opacity":"0.8"});
+    $(".changeBackcolor>div>img").css({"display":"none"});
+    $(".color2>img").css({"display":"block"});
      $('#overlay').stop().fadeOut(300);
 }
 function color3(){
@@ -347,6 +369,8 @@ function color3(){
     $(".plus").css({"background-color":" #fb4d4d"});
     $(".changeBackcolor").css({"display":"none"});
     $("#presentweek").css({"color":"#fff"});
+    $(".changeBackcolor>div>img").css({"display":"none"});
+    $(".color3>img").css({"display":"block"});
      $('#overlay').stop().fadeOut(300);
 }
 function color4(){
@@ -361,6 +385,8 @@ function color4(){
     $("header").css({"background-color":" #000000"});
     $(".changeBackcolor").css({"display":"none"});
     $(".cell").css({"opacity":"0.7"});
+    $(".changeBackcolor>div>img").css({"display":"none"});
+    $(".color4>img").css({"display":"block"});
      $('#overlay').stop().fadeOut(300);
 }
 function openFeedback(){
@@ -586,7 +612,7 @@ $("#submitMyClass").click(function () {
     }
 
     $.ajax({type: "post",
-        url: "php/custom.php",
+        url: "php/school.php",
         data: {class_name:$(".class_name").val(),
             class_place:$("#class_place").val(),
             start_time:start_time,

@@ -72,7 +72,7 @@
 	curl_setopt($SC, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($SC, CURLOPT_FOLLOWLOCATION, 1);
 	$SCput = curl_exec($SC);
-	$adgwa=json_decode($SCput,ture);
+	$adgwa=json_decode($SCput,ture)
 	curl_close($SC);
 	$_SESSION['school']=$SCput;
 	ob_flush();
@@ -122,7 +122,7 @@
                 <!-- <div id="tb-week"></div> -->
                 <div id="tb-main">
                     <div id="tb-day"></div>
-                    <div id="tb-class"><dic class="add"><div></div></div>
+                    <div id="tb-class"></div>
                 </div>
             </div>
         </section>

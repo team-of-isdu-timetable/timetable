@@ -19,8 +19,7 @@
 	if (mysqli_connect_errno()) {
 		printf("Connect failed: %s\n", mysqli_connect_error());
 		exit();
-}	
-	${id}=$_SESSION['id'];
+}
 	$name=1;
 	$stmt = $mysqli_con->prepare("SELECT `custom` FROM `timetable` WHERE `id` = ?");
 	$stmt->bind_param("s",$_SESSION['id']);

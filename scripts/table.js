@@ -1,11 +1,11 @@
-//  test_data={"obj":[
-//      {"courseName":"a","teacher":"a","week":"1111111111111111111","property":"a","weekday":"2","courseOrder":"2","room":"a","weekReadable":"a"},
-//          {"courseName":"b","teacher":"b","week":"1111111111111111111","property":"b","weekday":"1","courseOrder":"1","room":"b","weekReadable":"b"}],
-//      "custom":[
-//          {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"1","end_time":"16:00","class_place":"b","note":"aaa"},
-//          {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"08:00","week_day":"1","end_time":"09:00","class_place":"b","note":"aaa"},
-//          {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"5","end_time":"16:00","class_place":"b","note":"aaa"}]};
-// data=test_data;
+ test_data={"obj":[
+     {"courseName":"a","teacher":"a","week":"1111111111111111111","property":"a","weekday":"2","courseOrder":"2","room":"a","weekReadable":"a"},
+         {"courseName":"b","teacher":"b","week":"1111111111111111111","property":"b","weekday":"1","courseOrder":"1","room":"b","weekReadable":"b"}],
+     "custom":[
+         {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"1","end_time":"16:00","class_place":"b","note":"aaa"},
+         {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"08:00","week_day":"1","end_time":"09:00","class_place":"b","note":"aaa"},
+         {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"5","end_time":"16:00","class_place":"b","note":"aaa"}]};
+data=test_data;
 //----------------------------第一学期or第二学期---------------------------
  var todayDate = new Date();
  var month = todayDate.getMonth() + 1,
@@ -151,25 +151,25 @@ function getWeek_day() {//获取当前周、星期
 getWeek_day();
 
 //----------------------------------------------------------------
-var data;
-/*render(data);*/
-$.ajax({
-    type:"get",
-    url:"../test.php",
-    dataType:"json",
-    success:function (res) {      /*test.json*/
-        if (!res) { alert('网络错误'); return;}
-        // if (!res.ok) {
-        //     alert(res.msg);
-        // }
-        else if (res.obj.length === 0){
-            alert('当前课表为空, 请登录教务系统核对.');
-        }else {
-            data = res;
-            render(data);
-        }
-    }
-});
+// var data;
+ render(data);
+// $.ajax({
+//     type:"get",
+//     url:"../test.php",
+//     dataType:"json",
+//     success:function (res) {      /*test.json*/
+//         if (!res) { alert('网络错误'); return;}
+//         // if (!res.ok) {
+//         //     alert(res.msg);
+//         // }
+//         else if (res.obj.length === 0){
+//             alert('当前课表为空, 请登录教务系统核对.');
+//         }else {
+//             data = res;
+//             render(data);
+//         }
+//     }
+// });
 
 function render(data) {
     $('#tb-week').html('第' + now_week+ '周');/*data.week*/
@@ -259,7 +259,6 @@ function showData(data, weekNum){
             color = "#c5c5c5";
         }
         add_class_box.append('<div class="added_class'+i+'"style="height: '+$duringTime/4+'vw;width:13.25vw;position:absolute;top: '+top+'vw;left:'+(c_day*13.25-13.25)+'vw;background:'+ color+';">'+$add_class_content+'</div>');
-        }
 }
 
 // 点击课程查看详细信息
@@ -285,7 +284,6 @@ function hideInfo() {
     $('#detail').stop().fadeOut(300);
     $('.tool-list').stop().fadeOut(300);
     $('.myclass').stop().fadeOut(300);
-    $('#select-week').slideUp("100");
 
 }
 $('#overlay').click(hideInfo);
@@ -303,13 +301,13 @@ function clickSelect() {
     }
     if (stat == 0) {
         stat = 1;
-        $('.week-listbtn').css({'top':'1px'});
+        $('.week-listbtn').css({'margin-top':'4px'});
         $('.week-listbtn').animate({borderSpacing: 45 }, {step: step,
             duration:'50' },'linear');
         $('#select-week').slideDown("100");
     } else {
         stat = 0;
-        $('.week-listbtn').css({'top':'2px'});
+        $('.week-listbtn').css({'top':'0px'});
         $('.week-listbtn').animate({borderSpacing: -135 }, {step: step,
             duration:'50' },'linear');
         $('#select-week').slideUp("100");
@@ -336,9 +334,9 @@ function weekChange(obj) {
 function showList(){
     var content=$(".tool-list").css("display");
     if (content=="none") {
-        $(".tool-list").css({"display":"block"});
+        $(".tool-list").slideDown("100");
     }else{
-        $(".tool-list").css({"display":"none"});
+        $(".tool-list").slideUp("100");
     }
     $('#overlay').css({"display":"block"});
     
@@ -355,7 +353,7 @@ function color1(){
     $("#table").css({"background-color":" #fff"});
     $("#tb-day div").css({"background-color":" #fff"});
     $("header").css({"background-color":" #1588b4"});
-    $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #c6c6c6"});
+    $(".plus_shadow").css({"box-shadow":"0vw 1vw 1vw #c6c6c6"});
     $(".plus").css({"background-color":" #1588b4"});
     $(".changeBackcolor").css({"display":"none"});
     $(".changeBackcolor>div>img").css({"display":"none"});
@@ -368,7 +366,7 @@ function color2(){
     $("#tb-day").css({"background-color":" #3a4043"});
     $("#table").css({"background-color":" #3a4043"});
     $("#tb-day div").css({"background-color":" #3a4043"});
-    $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #2c3133"});
+    $(".plus_shadow").css({"box-shadow":"0vw 1vw 1vw #2c3133"});
     $(".plus").css({"background-color":" #1588b4"});
     $("header").css({"background-color":" #3a4043"});
     $(".changeBackcolor").css({"display":"none"});
@@ -384,7 +382,7 @@ function color3(){
     $("#table").css({"background-color":" #f5e2ca"});
     $("#tb-day div").css({"background-color":" #f5e2ca"});
     $("header").css({"background-color":" #c43c53"});
-    $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #bfb09d"});
+    $(".plus_shadow").css({"box-shadow":"0vw 1vw 1vw #bfb09d"});
     $(".plus").css({"background-color":" #fb4d4d"});
     $(".changeBackcolor").css({"display":"none"});
     $("#presentweek").css({"color":"#fff"});
@@ -486,39 +484,44 @@ function loseFocus() {
     //------------------------------------选择开始时间-----------------------
     var $startHour = document.querySelector(".choosestarttime>.hour");
     $startHour.addEventListener("touchend", function (){
-        var $Num=$(".choosestarttime>.hour").scrollTop();
-        for (var i=0;i<12;i++) {
-            if (i*24<=$Num && $Num<(i+1)*24) {
-                $Num=i*24
+        setTimeout(function () {
+            var $Num=$(".choosestarttime>.hour").scrollTop();
+            for (var i=0;i<12;i++) {
+                if (i*24<=$Num && $Num<(i+1)*24) {
+                    $Num=i*24
+                }
             }
-        }
-        $(".choosestarttime>.hour").scrollTop($Num);
-        $(".choosestarttime>.hour>.hournum").css({color:"#777777","font-weight":"normal"});
-        $(".choosestarttime>.hour>.hournum").eq($Num/24+2).css({"color":"#1588b4","font-weight": "bold"});
-        if ($Num/24+1<10) {
-            document.querySelector("#choosen_hour").innerHTML="0"+($Num/24+1);
-        }else{
-            document.querySelector("#choosen_hour").innerHTML=($Num/24+1);
-        }
-        })
-
+            $(".choosestarttime>.hour").scrollTop($Num);
+            $(".choosestarttime>.hour>.hournum").css({color:"#777777","font-weight":"normal"});
+            $(".choosestarttime>.hour>.hournum").eq($Num/24+2).css({"color":"#1588b4","font-weight": "bold"});
+            if ($Num/24+1<10) {
+                document.querySelector("#choosen_hour").innerHTML="0"+($Num/24+1);
+            }else{
+                document.querySelector("#choosen_hour").innerHTML=($Num/24+1);
+            }
+        },500);
+        });
     var $startMin = document.querySelector(".choosestarttime>.minute");
     $startMin.addEventListener("touchend", function (){
-        var $minNum=$(".choosestarttime>.minute").scrollTop();
-        for (var j=0;j<60;j++) {
-            if (j*24<=$minNum && $minNum<(j+1)*24) {
-                $minNum=j*24
+        setTimeout(function () {
+            var $minNum = $(".choosestarttime>.minute").scrollTop();
+            for (var j = 0; j < 60; j++) {
+                if (j * 24 <= $minNum && $minNum < (j + 1) * 24) {
+                    $minNum = j * 24
+                }
             }
-        }
-        $(".choosestarttime>.minute").scrollTop($minNum);
-        $(".choosestarttime>.minute>.minutenum").css({color:"#777777","font-weight":"normal"});
-        $(".choosestarttime>.minute>.minutenum").eq($minNum/24+2).css({"color":"#1588b4","font-weight": "bold"});
-        if ($minNum/24+1<10) {
-            document.querySelector("#choosen_minute").innerHTML="0"+($minNum/24+1);
-        }else{
-            document.querySelector("#choosen_minute").innerHTML=($minNum/24+1);
-        }
-    })
+            $(".choosestarttime>.minute").scrollTop($minNum);
+            $(".choosestarttime>.minute>.minutenum").css({color: "#777777", "font-weight": "normal"});
+            $(".choosestarttime>.minute>.minutenum").eq($minNum / 24 + 2).css({
+                "color": "#1588b4",
+                "font-weight": "bold"
+            });
+            if ($minNum / 24 + 1 < 10) {
+                document.querySelector("#choosen_minute").innerHTML = "0" + ($minNum / 24 + 1);
+            } else {
+                document.querySelector("#choosen_minute").innerHTML = ($minNum / 24 + 1);
+            }
+    },500)});
     //  ---------------------------结束时间--------------------------
     var $endHour = document.querySelector(".chooseendtime>.hour");
     $endHour.addEventListener("touchend", function (){
@@ -629,54 +632,194 @@ $("#submitMyClass").click(function () {
             }
         )
     }
-    if (start_time.slice(0,2)<8||start_time.slice(0,2)>21){
-        alert(请选择合适区间);
+    //检查输入的时间------------------------------------------------------------
+    var sub=0;
+    if (start_time.slice(0,2)<8||start_time.slice(0,2)>21||end_time.slice(0,2)<8||end_time.slice(0,2)>21){
+        alert("请选择合适（上课）区间");
     }else{
         if (isSummer){
             if (start_time.slice(0,2)>=12&&start_time.slice(0,2)<14){
-                alert(请选择合适区间);
+                alert("请选择合适（上课）区间，吃饭警告");
+            }else{
+                if (start_time.slice(0,2)>=18&&start_time.slice(0,2)<19) {
+                    alert("请选择合适（上课）区间，吃饭警告");
+            }else{
+                if (end_time.slice(0,2)>=12&&end_time.slice(0,2<14)) {
+                    alert("请选择合适（上课）区间，吃饭警告");
+                }else{if (end_time.slice(0,2)>=18&&end_time.slice(0,2)<19){
+                    alert("请选择合适（上课）区间，吃饭警告");
+                } else{
+                    if (end_time.slice(0,2)-start_time.slice(0,2)<0){
+                        alert("请选择合适（上课）区间");
+                    } else{
+                        if (end_time.slice(0,2)-start_time.slice(0,2)==0) {
+                            if (end_time.slice(3,5)-start_time.slice(3,5)<=0) {
+                                alert("请选择合适（上课）区间");
+                            }else{
+                                sub = 1;
+                            }
+                        }else{
+                            sub = 1;
+                        }
+                    }
+
+                }
+                }
+                }
             }
-        }else{
-            if (start_time.slice(0,2)>=12&&start_time.slice(0,2)<=13&&start_time.slice(3,5)<30){
-                alert(请选择合适区间)
+        }
+        else{
+            if (start_time.slice(0,2)<12) {
+                if (end_time.slice(0,2)-start_time.slice(0,2)<0){
+                    alert("请选择合适（上课）区间");
+                } else{
+                    if (end_time.slice(0,2)-start_time.slice(0,2)==0) {
+                        if (end_time.slice(3,5)-start_time.slice(3,5)<=0) {
+                            alert("请选择合适（上课）区间");
+                        }else{
+                            sub = 1;
+                        }
+                    }else{
+                        sub = 1;
+                    }
+                }
+            }else {
+                if (start_time.slice(0,2)<=13&&start_time.slice(3,5)<30) {
+                    alert("请选择合适（上课）区间，吃饭警告");
+                    sub=0;
+                }else {
+                    if (start_time.slice(0,2)<=17&&start_time.slice(3,5)<=30){
+                        if (end_time.slice(0,2)-start_time.slice(0,2)<0){
+                            alert("请选择合适（上课）区间");
+                        } else{
+                            if (end_time.slice(0,2)-start_time.slice(0,2)==0) {
+                                if (end_time.slice(3,5)-start_time.slice(3,5)<=0) {
+                                    alert("请选择合适（上课）区间");
+                                }else{
+                                    sub = 1;
+                                }
+                            }else{
+                                sub = 1;
+                            }
+                        }
+                    } else{
+                        if (start_time.slice(0,2)<=18&&start_time.slice(3,5)<30){
+                            alert("请选择合适（上课）区间");
+                            sub=0;
+                        } else{
+                            if (end_time.slice(0,2)-start_time.slice(0,2)<0){
+                                alert("请选择合适（上课）区间");
+                            } else{
+                                if (end_time.slice(0,2)-start_time.slice(0,2)==0) {
+                                    if (end_time.slice(3,5)-start_time.slice(3,5)<=0) {
+                                        alert("请选择合适（上课）区间");
+                                    }else{
+                                        sub = 1;
+                                    }
+                                }else{
+                                    sub = 1;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            if (end_time.slice(0,2)<12) {
+                if (end_time.slice(0,2)-start_time.slice(0,2)<0){
+                    alert("请选择合适（上课）区间");
+                } else{
+                    if (end_time.slice(0,2)-start_time.slice(0,2)==0) {
+                        if (end_time.slice(3,5)-start_time.slice(3,5)<=0) {
+                            alert("请选择合适（上课）区间");
+                        }else{
+                            sub = 1;
+                        }
+                    }else{
+                        sub = 1;
+                    }
+                }
+            }else {
+                if (end_time.slice(0,2)<=13&&end_time.slice(3,5)<30) {
+                    alert("请选择合适（上课）区间，吃饭警告");
+                    sub=0;
+                }else {
+                    if (end_time.slice(0,2)<=17&&end_time.slice(3,5)<=30){
+                        if (end_time.slice(0,2)-start_time.slice(0,2)<0){
+                            alert("请选择合适（上课）区间");
+                        } else{
+                            if (end_time.slice(0,2)-start_time.slice(0,2)==0) {
+                                if (end_time.slice(3,5)-start_time.slice(3,5)<=0) {
+                                    alert("请选择合适（上课）区间");
+                                }else{
+                                    sub = 1;
+                                }
+                            }else{
+                                sub = 1;
+                            }
+                        }
+                    } else{
+                        if (end_time.slice(0,2)<=18&&end_time.slice(3,5)<30){
+                            alert("请选择合适（上课）区间");
+                            sub=0;
+                        } else{
+                            if (end_time.slice(0,2)-start_time.slice(0,2)<0){
+                                alert("请选择合适（上课）区间");
+                            } else{
+                                if (end_time.slice(0,2)-start_time.slice(0,2)==0) {
+                                    if (end_time.slice(3,5)-start_time.slice(3,5)<=0) {
+                                        alert("请选择合适（上课）区间");
+                                    }else{
+                                        sub = 1;
+                                    }
+                                }else{
+                                    sub = 1;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
-    $.ajax({type: "post",
-        url: "php/school.php",
-        data: {class_name:$(".class_name").val(),
-            class_place:$("#class_place").val(),
-            start_time:start_time,
-            end_time:end_time,
-            week_day:$("#choosenWeekDay>select").val(),
-            class_week:class_week,
-            teacher:$("#class_teacher").val(),
-            note:$("#note").val()},
-        dataType: "json",
-        success: function(){
-            $(".class_name").val("");
-            $("#class_place").val("");
-            $("#choosen_hour").innerHTML="00";
-            $("#choosen_minute").innerHTML="00";
-            $("#choosen_end_hour").innerHTML="00";
-            $("#choosen_end_minute").innerHTML="00";
-            $("#choosenWeekDay>select").val(mon);
-            $("#chooseAllWeek").css({"color":"#1588b4"});
-            $("#chooseByMyMind").css({"color":"#777777"});
-            $("#class_teacher").val("");
-            $("#note").val("");
-            $(".submitSuccess").fadeIn(500);
-            $(".overlay_top").fadeIn(500);
-            $(".submitSuccess").fadeOut(500);
-            $(".overlay_top").fadeOut(500);
-            init();
-        },
-        error:function () {
-            $(".submitFail").fadeIn(500);
-            $(".overlay_top").fadeIn(500);
-            $(".submitFail").fadeOut(500);
-            $(".overlay_top").fadeOut(500);
-        }
+    if (sub){
+        $.ajax({type: "post",
+            url: "php/school.php",
+            data: {class_name:$(".class_name").val(),
+                class_place:$("#class_place").val(),
+                start_time:start_time,
+                end_time:end_time,
+                week_day:$("#choosenWeekDay>select").val(),
+                class_week:class_week,
+                teacher:$("#class_teacher").val(),
+                note:$("#note").val()},
+            dataType: "json",
+            success: function(){
+                $(".class_name").val("");
+                $("#class_place").val("");
+                $("#choosen_hour").innerHTML="00";
+                $("#choosen_minute").innerHTML="00";
+                $("#choosen_end_hour").innerHTML="00";
+                $("#choosen_end_minute").innerHTML="00";
+                $("#choosenWeekDay>select").val(mon);
+                $("#chooseAllWeek").css({"color":"#1588b4"});
+                $("#chooseByMyMind").css({"color":"#777777"});
+                $("#class_teacher").val("");
+                $("#note").val("");
+                $(".submitSuccess").fadeIn(500);
+                $(".overlay_top").fadeIn(500);
+                $(".submitSuccess").fadeOut(500);
+                $(".overlay_top").fadeOut(500);
+                init();
+            },
+            error:function () {
+                $(".submitFail").fadeIn(500);
+                $(".overlay_top").fadeIn(500);
+                $(".submitFail").fadeOut(500);
+                $(".overlay_top").fadeOut(500);
+            }
+        });
+     }
     });
-});
+
 

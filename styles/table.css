@@ -15,14 +15,19 @@ header {
 	border-top-width:0 ;
 	border-left-width:0 ;
 	border-right-width:0 ;
+	display: -webkit-flex; /* Safari ,Webkit内核的浏览器，必须加上-webkit前缀。*/
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+
+}
+.tool{
 
 }
 .tool-button {
-	float: left;
 	display: inline-block;
-	margin: 0;
 	margin-top: 2vw;
-	margin-left: 4vw;
+	margin-left: 1vw;
 	font-size: 6vw;
 	font-weight: 400;
 	height: 7vw;
@@ -30,21 +35,17 @@ header {
 }
 .tool-button img{
 	width: 12vw;
-	position: relative;
-	bottom: 0.5vw;
 }
 .tool-list li:active{
 	background-color: #c4c6c8;
 }
 .tool-list{
-	padding-top: 0;
 	padding-left: 0;
 	display: none;
 	position: absolute;
 	left: 1vw;
 	list-style-type: none;
 	z-index: 1;
-	margin-top: 10vw;
 	font-size: 4vw;
 	background-color: #ffffff;
 	color:#333333;
@@ -53,6 +54,7 @@ header {
 	height: 30vw;
 	border: 0.05vw solid #d8d8d8;
 	border-radius: 0.5vw	;
+	z-index: 2;
 }
 .tool-list li{
 	text-align: center;
@@ -62,7 +64,7 @@ header {
 	position:fixed;
 	bottom:7vw;
 	right:7vw;
-	z-index:1;
+	z-index:2;
 }
 .plus{
 	width:10vw;
@@ -71,7 +73,6 @@ header {
 	color:#fff;
 	font-size:10vw;
 	background-color:#1588b4;
-	text-align:center;
 	z-index:1;
 	display: table-cell;
 	vertical-align: middle;
@@ -93,30 +94,28 @@ header {
 	height:10vw;
 	border-radius:5vw;
 	color:#fff;
-	box-shadow: 1vw 1vw 1vw #c6c6c6;
+	box-shadow: 0vw 1vw 1vw #c6c6c6;
 	position:fixed;
 	bottom:7vw;
 	right:7vw;
 	opacity: 0.5;
+	z-index: 1;
 }
 .week {
 	display: inline-block;
-	position: relative;
-	left: 45vw;
-	padding-top: 0vw;
+	padding-right: 5vw;
 	height: 10vw;
 }
 #tb-week {
 	display: inline-block;
 	font-size: 4.5vw;
-	padding-top: 2vw;
+	padding-top: 15%;
 }
 .week-listbtn {
 	content:'';
-	position: relative;
-	bottom: 1vw;
 	display:inline-block;
 	margin-left: 1.5vw;
+	margin-bottom: 0.7vw;
 	height:3vw;
 	width:3vw;
 	border:0.3vw solid white;
@@ -139,27 +138,18 @@ header {
 }
 #presentweek{
 	display: inline-block;
-	position:relative;
-	left: 31vw;
-	top: -1vw;
 }
 #presentweek>.words {
 	display: inline-block;
 	font-size: 4.5vw;
 	color: white;
-	position: relative;
-	top: 1vw;
 }
 .week-num {
-	position: relative;
-	bottom: 0.5vw;
 }
 .week-num .select {
 	display: none;
-
 	position: absolute;
-	left: -3vw;
-	top: 10vw;
+	right: -3vw;
 	width: 27vw;
 	font-size: 4vw;
 	color: #5aa2e0;
@@ -222,16 +212,16 @@ li.checked {
 	/*margin-bottom: 6vw;*/
 }
 #tb-time {
-	/*color:#2f6391;*/
 	float: left;
 	width: 7.2vw;
-	margin-top: 12vw;
+	padding-top: 12vw;
 	/*background: #39a5ce;*/
 	border-collapse:collapse;
 	font-size: 4vw;
 	font-weight:bold;
 }
 #tb-time div {
+	color: #2f6391;
 	position: relative;
 	height: 15vw;
 	line-height: 14.7vw;
@@ -244,19 +234,15 @@ li.checked {
 }
 #tb-time div>p {
 	color:#a4a4a4;
-	position: absolute;
-	top: 20vw;
 	left: 0;
 	margin: 0;
-	margin-top: -5vw;
+	margin-top: -4vw;
 	width: 100%;
-	letter-spacing: -0.15vw;
+	letter-spacing: -0.2vw;
 	text-align: center;
 	font-size: 2.5vw;
 	line-height: 3vw;
 	font-weight:normal;
-}
-#tb-time div p{
 	position:relative;
 	top:-0.5vw;
 }
@@ -292,6 +278,9 @@ li.checked {
 	position: absolute;
 	top: 12vw;
 }
+#tb-class .add_class div{
+	border-radius: 0.5vw;
+}
 #tb-day {
 	display: flex;
 }
@@ -317,6 +306,7 @@ li.checked {
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow:ellipsis;
+	border-radius: 0.5vw;
 }
 
 
@@ -330,6 +320,7 @@ button {
 	top: -50%; left: -50%;
 	background: #000;
 	opacity: 0.7;
+	z-index: 1;
 	/* Safari for macOS & iOS */
 	-webkit-backdrop-filter: blur(15px);
 	/* Google Chrome */
@@ -367,6 +358,7 @@ button {
 	background-color: #fff;
 	overflow: auto;
 	border-radius: 0.5vw;
+	z-index: 1;
 }
 .info {
 	font-size: 4.2vw;
@@ -375,11 +367,11 @@ button {
 .changeBackcolor>div>img{
 	width: 10vw;
 	position: absolute;
-	bottom: 3vw;
-	right: 3vw;
+	bottom: 0vw;
+	right: 0vw;
 	display: none;
 }
-.color1 img{
+#color_1{
 	display: block;
 }
 .changeBackcolor-bg{
@@ -390,6 +382,7 @@ button {
 	left: 10%;
 	top:20%;
 	border-radius: 1vw;
+	z-index: 1;
 }
 .color1{
 	height: 25vw;
@@ -399,6 +392,7 @@ button {
 	top: 25%;
 	left: 20%;
 	box-shadow: 1vw 1vw 1vw  #8f9597;
+	z-index: 1;
 	
 }
 .color2{
@@ -409,6 +403,7 @@ button {
 	top: 25%;
 	left: 55%;
 	box-shadow: 1vw 1vw 1vw  #8f9597;
+	z-index: 1;
 	
 }
 .color3{
@@ -419,6 +414,7 @@ button {
 	top: 45%;
 	left: 20%;
 	box-shadow: 1vw 1vw 1vw  #8f9597;
+	z-index: 1;
 }
 .color4{
 	height: 25vw;
@@ -428,6 +424,7 @@ button {
 	top: 45%;
 	left: 55%;
 	box-shadow: 1vw 1vw 1vw  #8f9597;
+	z-index: 1;
 	
 }
 .feedback{
@@ -441,6 +438,7 @@ button {
 	display: none;
 	border-radius: 1vw;
 	line-height: 60vw;
+	z-index: 1;
 }
 .feedback>p{
 	font-size: 4vw;
@@ -583,7 +581,7 @@ button {
 	border:0vw;
 	height:2vw;
 
-	padding-right: 5vw;
+	padding-right: 6vw;
 	width:8vw;
 	font-size: 5vw;
 	color: #1588b4;
@@ -598,7 +596,7 @@ button {
 	font-weight: bolder;
 }
 #choosen_end_hour{
-	margin-left:4vw;
+	margin-left:5vw;
 	border:0vw;
 	height:5vw;
 	width:10vw;
@@ -607,7 +605,7 @@ button {
 }
 
 #choosen_end_minute{
-	margin-right:2vw;
+	margin-right:4vw;
 	border:0vw;
 	height:2vw;
 	width:10vw;
@@ -615,7 +613,7 @@ button {
 	font-size: 5vw;
 }
 #choosen_end_colon{
-	margin-right:3vw;
+	margin-right:1vw;
 	border:0vw;
 	height:5vw;
 	width:2vw;
@@ -631,13 +629,14 @@ color: transparent;
 .myclass{
 	position:fixed;
 	left:15vw;
-	top:15vw;
+	top:23vw;
 	width: 70vw;
 	/*height: 154vw;*/
 	background-color:#fff;
 	border:0.1vw solid #000;
 	border-radius:2vw;
 	display:none;
+	z-index: 1;
 
 }
 .myclass>p{
@@ -699,7 +698,7 @@ color: transparent;
 	display: inline-block;
 }
 #chooseAllWeek{
-	color: #777777;
+	color: #1588b4;
 	margin-left: 1vw;
 	height: 5vw;
 	width: 10vw;

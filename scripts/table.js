@@ -234,11 +234,19 @@ function showData(data, weekNum){
         $duringTime=(end_hour-start_hour)*60+(end_min-start_min);
         if (start_hour<=12) {
             top=((start_hour-8)*60+start_min)/4;
-        }else{if(start_hour<19){
-            if (isSummer) {
-                top=((start_hour-10)*60+start_min)/4;
-            }else{
-                top=((start_hour-10)*60+start_min+30)/4;
+        }else {
+            if (start_hour < 19) {
+                if (isSummer) {
+                    top = ((start_hour - 10) * 60 + start_min) / 4;
+                } else {
+                    top = ((start_hour - 10) * 60 + start_min + 30) / 4;
+                }
+            } else {
+                if (isSummer) {
+                    top = ((start_hour - 11) * 60 + start_min) / 4;
+                } else {
+                    top = ((start_hour - 11) * 60 + start_min + 30) / 4;
+                }
             }
         }
         // else{
@@ -621,7 +629,19 @@ $("#submitMyClass").click(function () {
             }
         )
     }
-    // if (start_time.slice(0,2)<8||start_time>)------------------------------------------------------------------------------------------
+    if (start_time.slice(0,2)<8||start_time.slice(0,2)>21){
+        alert(请选择合适区间);
+    }else{
+        if (isSummer){
+            if (start_time.slice(0,2)>=12&&start_time.slice(0,2)<14){
+                alert(请选择合适区间);
+            }
+        }else{
+            if (start_time.slice(0,2)>=12&&start_time.slice(0,2)<=13&&start_time.slice(3,5)<30){
+                alert(请选择合适区间)
+            }
+        }
+    }
     $.ajax({type: "post",
         url: "php/school.php",
         data: {class_name:$(".class_name").val(),

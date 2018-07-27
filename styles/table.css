@@ -93,11 +93,11 @@ header {
 	height:10vw;
 	border-radius:5vw;
 	color:#fff;
-	box-shadow: 0vw 1vw 3vw #000000;
+	box-shadow: 1vw 1vw 1vw #c6c6c6;
 	position:fixed;
 	bottom:7vw;
 	right:7vw;
-	opacity: 0.4;
+	opacity: 0.5;
 }
 .week {
 	display: inline-block;
@@ -782,6 +782,7 @@ color: transparent;
 	-ms-filter: blur(15px);
 	filter: blur(15px);
 }
+<<<<<<< HEAD
 .cell div {
 	height: 2vw;
 }
@@ -795,4 +796,8 @@ color: transparent;
 }
 .add div{
 	width: 13.25vw;
+=======
+.cell p{
+	line-height: 2vw;
+>>>>>>> parent of 3f0e635... 222
 }

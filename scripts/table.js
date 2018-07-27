@@ -1,9 +1,3 @@
-var u = navigator.userAgent;
-var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-if (isAndroid!==1) {
-    $("body").css({"font-family":"PingFang SC"});
-}
-
 var colors = ['#f27979', '#f8a66f', '#f2c261', '#b8d574', '#6ad4b3', '#71b5e9','b193d9'],
     colorUsed = [],
     existingName = {};
@@ -204,17 +198,25 @@ function showData(data, weekNum){
                 color = "#c5c5c5";
             }
             tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
+<<<<<<< HEAD
                 .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
                 .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
                 .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
+                .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+>>>>>>> parent of 3f0e635... 222
                 .css({background: color})
                 .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
         } else {
             if (item.week.slice(weekNum - 1,weekNum) == 1) {
                 tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
+<<<<<<< HEAD
                     .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
                     .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
                     .html('<p></p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+=======
+                    .html('<p>&nbsp;</p>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+>>>>>>> parent of 3f0e635... 222
                     .css({background: color})
                     .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
             }
@@ -316,7 +318,7 @@ function color1(){
     $("#table").css({"background-color":" #fff"});
     $("#tb-day div").css({"background-color":" #fff"});
     $("header").css({"background-color":" #1588b4"});
-    // $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #c6c6c6"});
+    $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #c6c6c6"});
     $(".plus").css({"background-color":" #1588b4"});
     $(".changeBackcolor").css({"display":"none"});
      $('#overlay').stop().fadeOut(300);
@@ -327,7 +329,7 @@ function color2(){
     $("#tb-day").css({"background-color":" #3a4043"});
     $("#table").css({"background-color":" #3a4043"});
     $("#tb-day div").css({"background-color":" #3a4043"});
-    // $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #2c3133"});
+    $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #2c3133"});
     $(".plus").css({"background-color":" #1588b4"});
     $("header").css({"background-color":" #3a4043"});
     $(".changeBackcolor").css({"display":"none"});
@@ -341,7 +343,7 @@ function color3(){
     $("#table").css({"background-color":" #f5e2ca"});
     $("#tb-day div").css({"background-color":" #f5e2ca"});
     $("header").css({"background-color":" #c43c53"});
-    // $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #bfb09d"});
+    $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #bfb09d"});
     $(".plus").css({"background-color":" #fb4d4d"});
     $(".changeBackcolor").css({"display":"none"});
     $("#presentweek").css({"color":"#fff"});
@@ -355,7 +357,7 @@ function color4(){
     $("#tb-day div").css({"background-color":" #000000"});
     $("header").css({"background-color":" #000000"});
     $(".plus").css({"background-color":" #2a3c4b"});
-    // $(".plus_shadow").css({"box-shadow":" 0 0 0 #4b4f50"});
+    $(".plus_shadow").css({"box-shadow":" 0 0 0 #4b4f50"});
     $("header").css({"background-color":" #000000"});
     $(".changeBackcolor").css({"display":"none"});
     $(".cell").css({"opacity":"0.7"});

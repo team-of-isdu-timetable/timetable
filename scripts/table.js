@@ -228,11 +228,10 @@ function showData(data, weekNum){
         var c_day = String(c_item.week_day);
         var $add_class_content='<div></div>'+c_item.class_name + '@' + c_item.class_place + ' ' + c_item.teacher;
         color = colors.splice(getColor(), 1)[0];
-        console.log(c_item.week);
-        if (c_item.week.slice(weekNum - 1,weekNum) != 1) {
+        if (c_item.class_week.slice(weekNum - 1,weekNum) != 1) {
             color = "#c5c5c5";
         }
-        add_class_box.append('<div class="added_class'+i+'" position="absolute" top="10vw" left="10vw">'+$add_class_content+'</div>')
+        add_class_box.append('<div class="added_class'+i+'" position="absolute" top="10vw" left="10vw" background="'+color+'" >'+$add_class_content+'</div>')
             // tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
             //     .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
             //     .css({background: color})
@@ -634,6 +633,7 @@ $("#submitMyClass").click(function () {
             $(".overlay_top").fadeIn(500);
             $(".submitSuccess").fadeOut(500);
             $(".overlay_top").fadeOut(500);
+            init();
         },
         error:function () {
             $(".submitFail").fadeIn(500);

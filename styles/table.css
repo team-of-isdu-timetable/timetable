@@ -55,6 +55,7 @@ header {
 	border: 0.05vw solid #d8d8d8;
 	border-radius: 0.5vw	;
 	z-index: 2;
+	box-shadow: 0 2vw 4vw #2a2929;
 }
 .tool-list li{
 	text-align: center;
@@ -98,7 +99,7 @@ header {
 	position:fixed;
 	bottom:7vw;
 	right:7vw;
-	opacity: 0.5;
+	opacity: 0.8;
 	z-index: 1;
 }
 .week {
@@ -138,6 +139,7 @@ header {
 }
 #presentweek{
 	display: inline-block;
+	align-self:center;
 }
 #presentweek>.words {
 	display: inline-block;
@@ -164,7 +166,7 @@ header {
 	overflow-y: scroll;
 	height: 40vw;
 	list-style-type: none;
-	margin: 0;
+	margin-right: 5vw;
 	background-color: #fff;
 }
 .week-num .select li {
@@ -350,17 +352,38 @@ button {
 
 }
 #detail {
+	color: #777777;
 	position: fixed;
 	width: 72vw;
 	/*height: 140vw;*/
-	top: 15%; left: 50%;
+	top: 24%; left: 50%;
 	margin-left: -36vw;
 	background-color: #fff;
 	overflow: auto;
 	border-radius: 0.5vw;
 	z-index: 1;
+	box-shadow:0 2vw 6vw #121111;
+	display: none;
+}
+#detail2 {
+	color: #777777;
+	position: fixed;
+	width: 72vw;
+	/*height: 140vw;*/
+	top: 24%; left: 50%;
+	margin-left: -36vw;
+	background-color: #fff;
+	overflow: auto;
+	border-radius: 0.5vw;
+	z-index: 1;
+	box-shadow:0 2vw 6vw #121111;
+	display: none;
 }
 .info {
+	font-size: 4.2vw;
+	margin: 6vw;
+}
+.info2 {
 	font-size: 4.2vw;
 	margin: 6vw;
 }
@@ -458,7 +481,7 @@ button {
 }
 .time p{
 	position:relative;
-	top:3vw;
+	top:4vw;
 	color:red;
 	font-size:15vw;
 	display:inline;
@@ -466,7 +489,7 @@ button {
 }
 .time div{
 	color:#777777;
-	border:0.4vw solid #777777;
+	border:0.3vw solid #777777;
 	border-top-width: 0;
 	border-right-width: 0;
 	border-left-width: 0;
@@ -483,10 +506,10 @@ button {
 	display:inline-block;
 }
 .colon{
-	font-size: 5vw;
+	font-size: 7vw;
 	color:#fb4d4d;
 	position: absolute;
-	left: 47vw;
+	left: 48vw;
 	bottom: 9vw;
 	font-weight: bold;
 }
@@ -587,13 +610,16 @@ button {
 	color: #1588b4;
 }
 #choosen_colon{
-	margin-left: 1.5vw;
+	margin-left: 0.5vw;
 	margin-right:1.5vw;
 	border:0vw;
 	height:5vw;
 	width:2vw;
 	color: #1588b4;
 	font-weight: bolder;
+	line-height: 1.5vw;
+	position: relative;
+	bottom: 0.5vw;
 }
 #choosen_end_hour{
 	margin-left:5vw;
@@ -613,12 +639,16 @@ button {
 	font-size: 5vw;
 }
 #choosen_end_colon{
-	margin-right:1vw;
+	margin-right:2vw;
+	margin-left: -1.5vw;
 	border:0vw;
 	height:5vw;
 	width:2vw;
 	color: #1588b4;
 	font-weight: bolder;
+	line-height: 1.5vw;
+	position: relative;
+	bottom: 0.7vw;
 }
 
 *::-webkit-scrollbar {display:none}
@@ -629,23 +659,25 @@ color: transparent;
 .myclass{
 	position:fixed;
 	left:15vw;
-	top:23vw;
+	top:9vw;
 	width: 70vw;
 	/*height: 154vw;*/
 	background-color:#fff;
 	border:0.1vw solid #000;
-	border-radius:2vw;
+	border-radius:1vw;
 	display:none;
 	z-index: 1;
+	box-shadow: 0 2vw 4vw #2a2929;
 
 }
 .myclass>p{
 	text-align:center;
-	line-height: 14vw;
+	line-height: 11vw;
+	margin-top: 5vw;
 }
 .myclass_form input{
 	font-size: 3.5vw;
-	border:0.4vw solid #777777;
+	border:0.3vw solid #777777;
 	border-top-width: 0;
 	border-right-width: 0;
 	border-left-width: 0;
@@ -669,11 +701,11 @@ color: transparent;
 	color: #1588b4;
 	margin-top: 3vw;
 	margin-left: 50vw;
-	margin-bottom: 2vw;
+	margin-bottom: 7vw;
 
 }
 .chooseWeek{
-	border:0.4vw solid #777777;
+	border:0.3vw solid #777777;
 	border-top-width: 0;
 	border-right-width: 0;
 	border-left-width: 0;
@@ -703,7 +735,7 @@ color: transparent;
 	height: 5vw;
 	width: 10vw;
 	display: inline-block;
-	font-size: 2.5vw;
+	font-size: 3vw;
 }
 #chooseByMyMind{
 	color: #777777;
@@ -711,7 +743,7 @@ color: transparent;
 	height: 5vw;
 	width: 10vw;
 	display: inline-block;
-	font-size: 2.5vw;
+	font-size: 3vw;
 }
 .chooseWeekList{
 	display:none;
@@ -747,6 +779,7 @@ color: transparent;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	padding-left: 3vw;
+	color: #1588b4;
 }
 .submitSuccess{
 	position: fixed;
@@ -820,4 +853,11 @@ color: transparent;
 }
 .add div {
 	width: 13.25vw;
+}
+.delete{
+	color: #1588b4;
+	display: inline-block;
+	margin-left: 50vw;
+	padding-bottom: 5vw;
+
 }

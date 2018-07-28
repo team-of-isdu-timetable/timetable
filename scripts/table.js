@@ -1,11 +1,11 @@
- test_data={"obj":[
-     {"courseName":"a","teacher":"a","week":"1111111111111111111","property":"a","weekday":"2","courseOrder":"2","room":"a","weekReadable":"a"},
-         {"courseName":"b","teacher":"b","week":"1111111111111111111","property":"b","weekday":"1","courseOrder":"1","room":"b","weekReadable":"b"}],
-     "custom":[
-         {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"1","end_time":"16:00","class_place":"b","note":"aaa"},
-         {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"08:00","week_day":"1","end_time":"09:00","class_place":"b","note":"aaa"},
-         {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"5","end_time":"16:00","class_place":"b","note":"aaa"}]};
-data=test_data;
+//  test_data={"obj":[
+//      {"courseName":"a","teacher":"a","week":"1111111111111111111","property":"a","weekday":"2","courseOrder":"2","room":"a","weekReadable":"a"},
+//          {"courseName":"b","teacher":"b","week":"1111111111111111111","property":"b","weekday":"1","courseOrder":"1","room":"b","weekReadable":"b"}],
+//      "custom":[
+//          {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"5","end_time":"16:30","class_place":"b","note":"aaa"},
+//          {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"08:00","week_day":"7","end_time":"08:01","class_place":"b","note":"aaa"},
+//          {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"5","end_time":"16:30","class_place":"b","note":"aaa"}]};
+// data=test_data;
 //----------------------------第一学期or第二学期---------------------------
  var todayDate = new Date();
  var month = todayDate.getMonth() + 1,
@@ -42,6 +42,7 @@ function clear() {
         }
         tbClass.append($row);
     }
+    //-------------------------------------填充-开始时间-选择栏
     for (var i = 0; i < 1; i++) {
         var $hour = '<div class="hour">';
             $hour+='<div class="hournum"></div><div class="hournum"></div>';
@@ -72,9 +73,10 @@ function clear() {
         choosestarttime.append($minute);
         chooseendtime.append($minute);
         }
+        get_data();
     }
 
-var days = ['一<br><p>MON</p> ', ' 二<br><p>TUE</p>', '三<br><p>WED</p>', '四<br><p>THU</p>', '五<br><p>FRI</p>', '六<br><p>SAT</p>', '日<br><p>SUN</p>'];
+var days = ['一<br><p>MON</p> ', '二<br><p>TUE</p>', '三<br><p>WED</p>', '四<br><p>THU</p>', '五<br><p>FRI</p>', '六<br><p>SAT</p>', '日<br><p>SUN</p>'];
 // 初始化表格
 function init() {
     var $tbDay = $('#tb-day'),
@@ -149,28 +151,27 @@ function getWeek_day() {//获取当前周、星期
 
 }
 getWeek_day();
-
-//----------------------------------------------------------------
-// var data;
- render(data);
-// $.ajax({
-//     type:"get",
-//     url:"../test.php",
-//     dataType:"json",
-//     success:function (res) {      /*test.json*/
-//         if (!res) { alert('网络错误'); return;}
-//         // if (!res.ok) {
-//         //     alert(res.msg);
-//         // }
-//         else if (res.obj.length === 0){
-//             alert('当前课表为空, 请登录教务系统核对.');
-//         }else {
-//             data = res;
-//             render(data);
-//         }
-//     }
-// });
-
+ var data;
+function get_data() {
+    $.ajax({
+        type:"get",
+        url:"php/school.php",
+        dataType:"json",
+        success:function (res) {      /*test.json*/
+            if (!res) { alert('网络错误'); return;}
+            // if (!res.ok) {
+            //     alert(res.msg);
+            // }
+            else if (res.obj.length === 0){
+                alert('当前课表为空, 请登录教务系统核对.');
+            }else {
+                data = res;
+                render(data);
+            }
+        }
+    });
+}
+// render(data);
 function render(data) {
     $('#tb-week').html('第' + now_week+ '周');/*data.week*/
     var weeksNum = data.obj[0].week.length;
@@ -226,6 +227,7 @@ function showData(data, weekNum){
         var c_item = data.custom[i], color;
         var c_day = c_item.week_day;
         var $add_class_content='<div></div>'+c_item.class_name + '@' + c_item.class_place + ' ' + c_item.teacher;
+        //'<div></div><p>课程名称：'+c_item.class_name + '</p><p>课程教师：' + c_item.class_place + '</p><p>老师 ' + c_item.teacher+'</p><p>备注'+c_item.note+'</p>'
         var $duringTime,start_hour,start_min,end_hour,end_min,top;
         start_hour=c_item.start_time.slice(0,2);
         start_min=c_item.start_time.slice(3,2);
@@ -249,16 +251,14 @@ function showData(data, weekNum){
                 }
             }
         }
-        // else{
-        //     top=start_hour-11
-        // }
 
-        }
+
         color = colors.splice(getColor(), 1)[0];
         if (c_item.class_week.slice(weekNum - 1,weekNum) != 1) {
             color = "#c5c5c5";
         }
-        add_class_box.append('<div class="added_class'+i+'"style="height: '+$duringTime/4+'vw;width:13.25vw;position:absolute;top: '+top+'vw;left:'+(c_day*13.25-13.25)+'vw;background:'+ color+';">'+$add_class_content+'</div>');
+        add_class_box.append('<div class="added_class"order="'+i+'"s_time="'+c_item.start_time+'" data-day="'+c_day+'" name="'+c_item.class_name+'" note="'+c_item.note+'"style="height: '+$duringTime/4+'vw;width:13.25vw;position:absolute;top: '+top+'vw;left:'+(c_day*13.25-13.25)+'vw;background:'+ color+';overflow: hidden;">'+$add_class_content+'</div>');
+}
 }
 
 // 点击课程查看详细信息
@@ -270,11 +270,28 @@ tbClass.on('click', '.cell', function() {
         return;
     }
     $infos.eq(0).html('课程名称：'+$this.attr('name'));
-    $infos.eq(1).html('上课时间：'+'星期'+days[$this.attr('data-day')-1]+'第'+($this.attr('data-class')) + '大节');
+    $infos.eq(1).html('上课时间：'+'星期'+days[$this.attr('data-day')-1].slice(0,1)+'第'+($this.attr('data-class')) + '大节');
     $infos.eq(2).html('上课地点：'+$this.attr('posi'));
     $infos.eq(3).html('上课老师：'+$this.attr('teacher'));
     $('#overlay').fadeIn(300);
     $('#detail').fadeIn(300);
+});
+//-----------------------------自定义的详细信息
+$(".added_class").click( function() {
+    $(this).addClass("get_marked");
+    var $infos = $('.info2'), $this = $(this);
+    if(!$this.attr('s_time')) {
+        $(".myclass").css({"display":"block"});
+        $('#overlay').fadeIn(300);
+        return;
+    }
+    $infos.eq(0).html('开始时间：'+$this.attr('s_time'));
+    $infos.eq(1).html('上课日期：'+'星期'+days[$this.attr('data-day')-1].slice(0,1));
+    $infos.eq(2).html('课程名称：'+$this.attr('name'));
+    $infos.eq(3).html('备注：'+$this.attr('note'));
+
+    $('#overlay').fadeIn(300);
+    $('#detail2').fadeIn(300);
 });
 function hideInfo() {
     $('#overlay').stop().fadeOut(300);
@@ -282,13 +299,27 @@ function hideInfo() {
     $('.changeBackcolor').stop().fadeOut(300);
     $('.tool-list').stop().fadeOut(300);
     $('#detail').stop().fadeOut(300);
+    $('#detail2').stop().fadeOut(300);
+    $(".get_marked").removeClass("get_marked");
     $('.tool-list').stop().fadeOut(300);
     $('.myclass').stop().fadeOut(300);
 
 }
 $('#overlay').click(hideInfo);
 $('#hide').click(hideInfo);
-
+$(".delete").click(function () {
+    $.ajax({type: "post",
+        url: "php/delete.php",
+        data: {delete_item:$(".get_marked").attr("order")},
+        dataType: "json",
+        success:function () {
+            $("#tb-time").empty();
+            $("#tb-day").empty();
+            $(".add_class").empty();
+            init();
+        }
+    }
+);});
 //选周
 var stat = 0;
 function clickSelect() {
@@ -426,11 +457,13 @@ function chooseStartTime() {
     $(".choosestarttime").css({"display":"block"});
     $(".overlay-transp").css({"display":"block"});
     $(".choosestarttime_place").css({"display":"block"});
+    $(".time>.s_time").css({"border":"0.4vw solid #1588b4","border-top-width":"0","border-left-width":"0","border-right-width":"0"})
 }
 function chooseEndTime() {
     $(".chooseendtime").css({"display":"block"});
     $(".overlay-transp").css({"display":"block"});
     $(".chooseendtime_place").css({"display":"block"});
+    $(".time>.e_time").css({"border":"0.4vw solid #1588b4","border-top-width":"0","border-left-width":"0","border-right-width":"0"});
 }
 function loseFocus() {
     $(".choosestarttime").css({"display":"none"});
@@ -439,48 +472,10 @@ function loseFocus() {
     $(".choosestarttime_place").css({"display":"none"});
     $(".chooseendtime_place").css({"display":"none"});
     $(".chooseWeekList").css({"display":"none"});
+    $(".time>.e_time").css({"border":"0.3vw solid #777777","border-top-width":"0","border-left-width":"0","border-right-width":"0"});
+    $(".time>.s_time").css({"border":"0.3vw solid #777777","border-top-width":"0","border-left-width":"0","border-right-width":"0"});
 
 }
-
-// function submitMyClass(){
-//     var myClassName=getElementById("#myClassName");
-//     var myClassPort=getElementById("#myClassPort");
-//         myClassTime=getElementById("#myClassTime");
-//         myClassWeek=getElementById("#myClassWeek");
-//         myClassTeacher=getElementById("#myClassTeacher");
-//         myClassPS=getElementById("myClassPS");
-//         myClass=new array;
-//         for (var i = myClass.length;i<10 ;i++) {
-//             myClass[i]={name:myClassName,port:myClassPort,time:myClassTime,week:myClassWeek,teacher:myClassTeacher,ps:myClassPS};
-//             break;
-// }
-/////
-
-///
-///
-//
-////
-
-// function submmitMyClass(){
-//     var form=document.getElementById("form");
-//     var name_arr=new Array;
-//     var value_arr= new Array;
-//     for(var i=0;i<form.elements.length;i++){
-//         if(form.elements[i].type!="submit"){
-//                     name_arr.push(form.elements[i].name);
-//                     value_arr.push(form.elements[i].value);
-//                 }
-//     }
-//     var myClass=new Object;
-//     for(var j=0;j<10;j++){
-//         var myClass[j]=new Array;}
-//     var j=0 
-//     if (typeof(myClass[j]!=="undefined"){
-//         j=j+1;
-//     }else if{
-//         for(var i=0;i<name_arr.length;i++){
-//                     myClass[j+1][name_arr[i]]=value_arr[i];        
-//             }
     //------------------------------------选择开始时间-----------------------
     var $startHour = document.querySelector(".choosestarttime>.hour");
     $startHour.addEventListener("touchend", function (){
@@ -525,6 +520,7 @@ function loseFocus() {
     //  ---------------------------结束时间--------------------------
     var $endHour = document.querySelector(".chooseendtime>.hour");
     $endHour.addEventListener("touchend", function (){
+        setTimeout(function () {
         var $Num=$(".chooseendtime>.hour").scrollTop();
 
         for (var i=0;i<12;i++) {
@@ -543,10 +539,11 @@ function loseFocus() {
         }else{
             document.querySelector("#choosen_end_hour").innerHTML=($Num/24+1);
         }
-    })
+    },500)});
 
     var $endMin = document.querySelector(".chooseendtime>.minute");
     $endMin.addEventListener("touchend", function (){
+        setTimeout(function () {
         var $minNum=$(".chooseendtime>.minute").scrollTop();
         for (var j=0;j<60;j++) {
             if (j*24<=$minNum && $minNum<(j+1)*24) {
@@ -561,7 +558,7 @@ function loseFocus() {
         }else{
             document.querySelector("#choosen_end_minute").innerHTML=($minNum/24+1);
         }
-    })
+    },500)});
     //-------------------------am  pm-----------------------------
     $(".choosestarttime>.a_pm>.am").click(function(){
         $(".choosestarttime>.a_pm>.am").css({color:"#1588b4","font-size":"5vw"});
@@ -644,7 +641,7 @@ $("#submitMyClass").click(function () {
                 if (start_time.slice(0,2)>=18&&start_time.slice(0,2)<19) {
                     alert("请选择合适（上课）区间，吃饭警告");
             }else{
-                if (end_time.slice(0,2)>=12&&end_time.slice(0,2<14)) {
+                if (end_time.slice(0,2)>=12&&end_time.slice(0,2)<14) {
                     alert("请选择合适（上课）区间，吃饭警告");
                 }else{if (end_time.slice(0,2)>=18&&end_time.slice(0,2)<19){
                     alert("请选择合适（上课）区间，吃饭警告");
@@ -784,8 +781,8 @@ $("#submitMyClass").click(function () {
     }
     if (sub){
         $.ajax({type: "post",
-            url: "php/school.php",
-            data: {class_name:$(".class_name").val(),
+            url: "php/custom.php",
+            data: {class_name:$("#class_name").val(),
                 class_place:$("#class_place").val(),
                 start_time:start_time,
                 end_time:end_time,
@@ -795,13 +792,13 @@ $("#submitMyClass").click(function () {
                 note:$("#note").val()},
             dataType: "json",
             success: function(){
-                $(".class_name").val("");
+                $("#class_name").val("");
                 $("#class_place").val("");
-                $("#choosen_hour").innerHTML="00";
+                $("#choosen_hour").innerHTML="08";
                 $("#choosen_minute").innerHTML="00";
-                $("#choosen_end_hour").innerHTML="00";
+                $("#choosen_end_hour").innerHTML="08";
                 $("#choosen_end_minute").innerHTML="00";
-                $("#choosenWeekDay>select").val(mon);
+                $("#choosenWeekDay>select").val("1");
                 $("#chooseAllWeek").css({"color":"#1588b4"});
                 $("#chooseByMyMind").css({"color":"#777777"});
                 $("#class_teacher").val("");
@@ -810,6 +807,9 @@ $("#submitMyClass").click(function () {
                 $(".overlay_top").fadeIn(500);
                 $(".submitSuccess").fadeOut(500);
                 $(".overlay_top").fadeOut(500);
+                $("#tb-time").empty();
+                $("#tb-day").empty();
+                $(".add_class").empty();
                 init();
             },
             error:function () {

@@ -1,8 +1,8 @@
 <?php
 	error_reporting(0);
 	session_start();
-	$mysqli_con=mysqli_connect("localhost","isdu_timetable","cGOomDAMOPcJos9u&","isdu_timetable");
-
+	$mysqli_con=mysqli_connect("localhost","root","991003","isdu_timetable");
+	$id=2;
 	if (mysqli_connect_errno()) {
 		printf("Connect failed: %s\n", mysqli_connect_error());
 		exit();
@@ -18,13 +18,15 @@
 		 }  
 		 return $array;  
 		}  
-	$stmt = $mysqli_con->prepare("SELECT `custom` FROM `timetable` WHERE `id` = ?");
-	$stmt->bind_param("s",$_SESSION['id']);
+	$id=1;
+	$stmt = $mysqli_con->prepare("SELECT `custom` FROM `time` WHERE `id` = ?");
+	$stmt->bind_param("s",$id);
 	$stmt->execute();
 	$stmt->bind_result($cus);
 	$stmt->fetch();
 	$stmt->close();
 	$custom=$cus;
+	$_SESSION['custom']=$cus;
 	$school=$_SESSION['school'];
 	$a=json_decode($school);
 	$b=object_array($a);

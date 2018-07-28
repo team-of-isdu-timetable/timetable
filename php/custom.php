@@ -2,7 +2,7 @@
 	error_reporting(0);
 	$custom=$_POST;
 	$id=1;
-	$mysqli_con=mysqli_connect("localhost","root","991003","isdu_timetable");
+	$mysqli_con=mysqli_connect("localhost","root","kdm565","isdu_timetable");
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();

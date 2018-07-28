@@ -1,7 +1,13 @@
 <?php
 	error_reporting(0);
 	session_start();
-	$mysqli_con=mysqli_connect("localhost","root","991003","isdu_timetable");
+	$s=array("courseName"=>"高数","property"=>"必修","teacher"=>"高数","week"=>"11111111111111111111111","weekday"=>"1","courseOrder"=>"1","room"=>"233","weekReadable"=>"1-18周");
+	$t=array("courseName"=>"高数","property"=>"必修","teacher"=>"高数","week"=>"11111111111111111111111","weekday"=>"1","courseOrder"=>"2","room"=>"233","weekReadable"=>"1-18周");
+	$v=array($s,$t);
+	$y=json_encode($v);
+	
+	$u=json_decode($y);
+	$mysqli_con=mysqli_connect("localhost","root","kdm565","isdu_timetable");
 	$id=2;
 	if (mysqli_connect_errno()) {
 		printf("Connect failed: %s\n", mysqli_connect_error());
@@ -30,7 +36,7 @@
 	$school=$_SESSION['school'];
 	$a=json_decode($school);
 	$b=object_array($a);
-	$c['obj']=$b['obj'];
+	$c['obj']=$u;
 	$d=json_decode($custom);
 	$c['custom']=$d;
 	echo json_encode($c);

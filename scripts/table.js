@@ -315,22 +315,22 @@ function hideInfo() {
 }
 $('#overlay').click(hideInfo);
 $('#hide').click(hideInfo);
-$(".delete").click(function () {
-    $.ajax({type: "post",
-        url: "php/delete.php",
-        data: {delete_item:$(".get_marked").attr("order")},
-        dataType: "json",
-        success:function () {
-            $("#tb-time").empty();
-            $("#tb-day").empty();
-            $(".add_class").empty();
-            $("#select-week").empty();
-            $(".choosestarttime").empty();
-            $(".chooseendtime").empty();
-            init();
-        }
-    }
-);});
+// $(".delete").click(function () {
+//     $.ajax({type: "post",
+//         url: "php/delete.php",
+//         data: {delete_item:$(".get_marked").attr("order")},
+//         dataType: "json",
+//         success:function () {
+//             $("#tb-time").empty();
+//             $("#tb-day").empty();
+//             $(".add_class").empty();
+//             $("#select-week").empty();
+//             $(".choosestarttime").empty();
+//             $(".chooseendtime").empty();
+//             init();
+//         }
+//     }
+// );});
 //选周
 var stat = 0;
 function clickSelect() {

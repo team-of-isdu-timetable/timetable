@@ -1,14 +1,15 @@
 <?php
 	error_reporting(0);
+	session_start();
 	$custom=$_POST;
-	$id=1;
-	$mysqli_con=mysqli_connect("localhost","root","kdm565","isdu_timetable");
+	$id=$_SESSION['id'];
+	$mysqli_con=mysqli_connect("localhost","isdu_timetable","cGOomDAMOPcJos9u&","isdu_timetable");
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 } else if(1) {
 	
-	$stmt = $mysqli_con->prepare("SELECT `custom` FROM `time` WHERE `id` = ?");
+	$stmt = $mysqli_con->prepare("SELECT `custom` FROM `table` WHERE `id` = ?");
 	$stmt->bind_param("s",$id);
 	$stmt->execute();
 	$stmt->bind_result($b);
@@ -24,8 +25,8 @@ if (mysqli_connect_errno()) {
 	
 	
 	//var_dump($r);
-	$stmt = $mysqli_con->prepare("UPDATE `time` SET`custom`=? WHERE id=1 ");
-    $stmt->bind_param("s", $a);
+	$stmt = $mysqli_con->prepare("UPDATE `table` SET`custom`=? WHERE id=? ");
+    $stmt->bind_param("ss", $a,$id);
     $stmt->execute();
     $stmt->close();
 	

@@ -107,6 +107,8 @@ $SCput = curl_exec($SC);
 curl_close($SC);
 
 }
+$l=array();
+$custom=json_encode($l);
 $_SESSION['school']=$SCput;
 $mysqli_con=mysqli_connect("localhost","isdu_timetable","cGOomDAMOPcJos9u&","isdu_timetable");
 	if (mysqli_connect_errno()) {

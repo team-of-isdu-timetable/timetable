@@ -209,13 +209,13 @@ function showData(data, weekNum){
                 color = "#c5c5c5";
             }
             tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-                .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+                .html(item.courseName + '@' + item.room + ' ' + item.teacher)
                 .css({background: color})
                 .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
         } else {
             if (item.week.slice(weekNum - 1,weekNum) == 1) {
                 tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-                    .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
+                    .html(item.courseName + '@' + item.room + ' ' + item.teacher)
                     .css({background: color})
                     .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
             }
@@ -226,7 +226,7 @@ function showData(data, weekNum){
     for (var i = 0, n = data.custom.length; i < n; i++) {
         var c_item = data.custom[i], color;
         var c_day = c_item.week_day;
-        var $add_class_content='<div></div>'+c_item.class_name + '@' + c_item.class_place + ' ' + c_item.teacher;
+        var $add_class_content='<br>'+c_item.start_time + '<br>' + c_item.end_time + ' <br>' + c_item.teacher;
         //'<div></div><p>课程名称：'+c_item.class_name + '</p><p>课程教师：' + c_item.class_place + '</p><p>老师 ' + c_item.teacher+'</p><p>备注'+c_item.note+'</p>'
         var $duringTime,start_hour,start_min,end_hour,end_min,top;
         start_hour=c_item.start_time.slice(0,2);
@@ -257,8 +257,8 @@ function showData(data, weekNum){
         if (c_item.class_week.slice(weekNum - 1,weekNum) != 1) {
             color = "#c5c5c5";
         }
-        alert($duringTime);
-        add_class_box.append('<div class="added_class" order="'+i+'"s_time="'+c_item.start_time+'" data-day="'+c_day+'" name="'+c_item.class_name+'" note="'+c_item.note+'"style="height: '+$duringTime/4+'vw;width:13.25vw;position:absolute;top: '+top+'vw;left:'+(c_day*13.25-13.25)+'vw;background:'+ color+';overflow: hidden;">'+$add_class_content+'</div>');
+        // alert($duringTime);
+        add_class_box.append('<div class="added_class" onclick="showMyClass($(this))" order="'+i+'"s_time="'+c_item.start_time+'" data-day="'+c_day+'" name="'+c_item.class_name+'" note="'+c_item.note+'"style="height: '+$duringTime/4+'vw;width:13.25vw;position:absolute;top: '+top+'vw;left:'+(c_day*13.25-13.25)+'vw;background:'+ color+';overflow: hidden;">'+$add_class_content+'</div>');
 }
 }
 
@@ -280,27 +280,18 @@ $(".cell").click( function() {
 //-----------------------------自定义的详细信息
 $(".added_class").css({"opacity":"1"});
 
-// function showMyClass() {-----------------------------死于此   删除自定义
-//     $(this).addClass("get_marked");
-//     var $infos = $('.info2'), $this = $(this);
-//     // if(!$this.attr('s_time')) {
-//     //     $(".myclass").css({"display":"block"});
-//     //     $('#overlay').fadeIn(300);
-//     //     return;
-//     // }
-//
-//     $infos.eq(0).html('开始时间：'+$this.attr('s_time'));
-//     console.log($this.innerHTML);
-//     $infos.eq(1).html('上课日期：'+'星期'+days[$this.attr('data-day')-1].slice(0,1));
-//
-//     $infos.eq(2).html('课程名称：'+$this.attr('name'));
-//     $infos.eq(3).html('备注：'+$this.attr('note'));
-//
-//
-//     $("#overlay").fadeIn(300);
-//     $("#detail2").fadeIn(300);
-//     alert("2");
-// }
+function showMyClass(obj) {
+    $(".add_class").children("div.checked").removeClass("checked");
+    obj.addClass("get_marked");
+    var $infos = $('.info2');
+    $infos.eq(0).html('开始时间：'+$this.attr('s_time'));
+    $infos.eq(1).html('上课日期：'+'星期'+days[$this.attr('data-day')-1].slice(0,1));
+    $infos.eq(2).html('课程名称：'+$this.attr('name'));
+    $infos.eq(3).html('备注：'+$this.attr('note'));
+    $("#overlay").fadeIn(300);
+    $("#detail2").fadeIn(300);
+    alert("2");
+}
 function hideInfo() {
     $('#overlay').stop().fadeOut(300);
     $('.feedback').stop().fadeOut(300);
@@ -315,22 +306,23 @@ function hideInfo() {
 }
 $('#overlay').click(hideInfo);
 $('#hide').click(hideInfo);
-// $(".delete").click(function () {
-//     $.ajax({type: "post",
-//         url: "php/delete.php",
-//         data: {delete_item:$(".get_marked").attr("order")},
-//         dataType: "json",
-//         success:function () {
-//             $("#tb-time").empty();
-//             $("#tb-day").empty();
-//             $(".add_class").empty();
-//             $("#select-week").empty();
-//             $(".choosestarttime").empty();
-//             $(".chooseendtime").empty();
-//             init();
-//         }
-//     }
-// );});
+$(".delete").click(function () {
+    $.ajax({type: "post",
+        url: "php/delete.php",
+        data: {delete_item:$(".get_marked").attr("order")},
+        dataType: "json",
+        success:function () {
+            // $("#tb-time").empty();
+            // $("#tb-day").empty();
+            // $(".add_class").empty();
+            // $("#select-week").empty();
+            // $(".choosestarttime").empty();
+            // $(".chooseendtime").empty();
+            // init();
+            alert(将在下次登陆消失);
+        }
+    }
+);});
 //选周
 var stat = 0;
 function clickSelect() {
@@ -358,6 +350,7 @@ function clickSelect() {
 function weekChange(obj) {
     $("#select-week").children("li.checked").removeClass("checked");
     obj.addClass("checked");
+    $('#select-week').slideUp("100");
     var weekNum = obj.index() + 1;
     if (weekNum==0){
         $('#tb-week').html("放假中");
@@ -818,13 +811,14 @@ $("#submitMyClass").click(function () {
                 $(".overlay_top").fadeIn(500);
                 $(".submitSuccess").fadeOut(500);
                 $(".overlay_top").fadeOut(500);
-                $("#tb-time").empty();
-                $("#tb-day").empty();
-                $(".add_class").empty();
-                $("#select-week").empty();
-                $(".choosestarttime").empty();
-                $(".chooseendtime").empty();
-                init();
+                // $("#tb-time").empty();
+                // $("#tb-day").empty();
+                // $(".add_class").empty();
+                // $("#select-week").empty();
+                // $(".choosestarttime").empty();
+                // $(".chooseendtime").empty();
+                // init();
+                alert(将在下次登陆出现);
             },
             error:function () {
                 $(".submitFail").fadeIn(500);

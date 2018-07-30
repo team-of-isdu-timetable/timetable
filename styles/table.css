@@ -846,6 +846,9 @@ color: transparent;
 .cell p{
 	line-height: 2vw;
 }
+.cell{
+	padding-top: 1vw;
+}
 .add{
 	position: absolute;
 	top: 22vw;

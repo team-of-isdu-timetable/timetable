@@ -11,33 +11,6 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $output = curl_exec($ch);
 
-
-
-session_start();
-error_reporting(0);
-
-function hashCode32( $s )
-{
-$h = 0;
-$len = strlen($s);
-for($i = 0; $i < $len; $i++)
-{
-$h = overflow32(31 * $h + ord($s[$i]));
-}
-
-return $h;
-}
-
-function overflow32($v)
-{
-$v = $v % 4294967296;
-if ($v > 2147483647) return $v - 4294967296;
-elseif ($v < -2147483648) return $v + 4294967296;
-else return $v;
-}
-
-if(1)
-{
 $code = $_GET['code'];
 
 $table = curl_init();
@@ -53,39 +26,12 @@ curl_close($table);
 
 $jsoninfo = json_decode($tableput,true);
 
-}
-/*if(1) {
 
 
-$hashCode = hashCode32($code);
-$url = "https://sduonline.cn/isdu-new/oauth/info/".$code."/".$hashCode;
-$sc = curl_init();
-curl_setopt($sc, CURLOPT_URL, $url);
-curl_setopt($sc, CURLOPT_HEADER, 0);
-curl_setopt($sc, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
-curl_setopt($sc, CURLOPT_SSL_VERIFYPEER, FALSE);
-curl_setopt($sc, CURLOPT_SSL_VERIFYHOST, FALSE);
-curl_setopt($sc, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($sc, CURLOPT_FOLLOWLOCATION, 1);
-$scput = curl_exec($sc);
-curl_close($sc);
-$_SESSION['code'] = $code;
-$_SESSION['openID'] = $jsoninfo['obj']['info']['openId'];
-$_SESSION['unionID'] = $jsoninfo['obj']['info']['unionID'];
-$_SESSION['headimgurl'] = $jsoninfo['obj']['info']['headImgUrl'];
-$_SESSION['nickname'] = $jsoninfo['obj']['info']['nickname'];
 
-$jsoninfo = json_decode($scput,true);
-var_dump($scput);
-}
-
-*/
-
-ob_flush();
 
 $_SESSION['id'] = $jsoninfo['obj']['id'];
 $_SESSION['token'] = $jsoninfo['obj']['token'];
-if(isset($_SESSION['id'])) {
 
 $headers = array();
 $id = $_SESSION['id'];
@@ -106,19 +52,19 @@ curl_setopt($SC, CURLOPT_FOLLOWLOCATION, 1);
 $SCput = curl_exec($SC);
 curl_close($SC);
 
-}
 $l=array();
 $custom=json_encode($l);
 $_SESSION['school']=$SCput;
 $mysqli_con=mysqli_connect("localhost","isdu_timetable","cGOomDAMOPcJos9u&","isdu_timetable");
-	if (mysqli_connect_errno()) {
-		printf("Connect failed: %s\n", mysqli_connect_error());
-		exit();
-	}
-	$stmt = $mysqli_con->prepare("INSERT INTO `table` (`id`, `custom`) VALUES (?, ?) ");
-        $stmt->bind_param("ss", $_SESSION['id'], $custom);
-        $stmt->execute();
-        $stmt->close();
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
+$stmt = $mysqli_con->prepare("INSERT INTO `table` (`id`, `custom`) VALUES (?, ?) ");
+$stmt->bind_param("s s", $_SESSION['id'], $custom);
+$stmt->execute();
+$stmt->close();
+ob_flush();
 ?>
 <!DOCTYPE html>
 <html>

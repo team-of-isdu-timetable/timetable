@@ -25,7 +25,7 @@ if (mysqli_connect_errno()) {
 	
 	
 	//var_dump($r);
-	$stmt = $mysqli_con->prepare("UPDATE `table` SET`custom`=? WHERE id=? ");
+	$stmt = $mysqli_con->prepare("UPDATE `table` SET`custom`=? WHERE `id`=? ");
     $stmt->bind_param("s s", $a,$id);
     $stmt->execute();
     $stmt->close();

@@ -62,7 +62,7 @@ function clear() {
         var $minute = '<div class="minute">';
         $minute+='<div class="minutenum" ></div><div class="minutenum" ></div>';
         for (var j = 0; j < 60; j++) {
-            if (j<9) {
+            if (j<=9) {
                 $minute+='<div class="minutenum" >'+ "0"+(j) +'</div>';
             }else{
                 $minute+='<div class="minutenum" >'+ (j) +'</div>';
@@ -159,18 +159,20 @@ function get_data() {
         dataType:"json",
         success:function (res) {      /*test.json*/
             if (!res) { alert('网络错误'); return;}
-            // if (!res.ok) {
-            //     alert(res.msg);
-            // }
-            else if (res.obj.length === 0){
-                alert('当前课表为空, 请登录教务系统核对.');
-            }else {
-                data = res;
-                render(data);
+            else{
+                if (res.obj==null) {
+                    alert("当前课表为空, 请登录教务系统核对.");
+                 }else{
+                    if (res.obj.length==0) {
+                        alert('当前课表为空, 请登录教务系统核对.');
+                    }
+                 else{
+                    data = res;
+                 render(data);
+                    }
+                } }
             }
-        }
     });
-}
 // render(data);
 function render(data) {
     $('#tb-week').html('第' + now_week+ '周');/*data.week*/
@@ -319,7 +321,7 @@ $(".delete").click(function () {
             // $(".choosestarttime").empty();
             // $(".chooseendtime").empty();
             // init();
-            alert(将在下次登陆消失);
+            alert("将在下次登陆消失");
         }
     }
 );});
@@ -515,7 +517,7 @@ function loseFocus() {
                 "color": "#1588b4",
                 "font-weight": "bold"
             });
-            if ($minNum / 24 + 1 < 10) {
+            if ($minNum / 24 + 1 <= 10) {
                 document.querySelector("#choosen_minute").innerHTML = "0" + ($minNum / 24);
             } else {
                 document.querySelector("#choosen_minute").innerHTML = ($minNum / 24);
@@ -818,7 +820,7 @@ $("#submitMyClass").click(function () {
                 // $(".choosestarttime").empty();
                 // $(".chooseendtime").empty();
                 // init();
-                alert(将在下次登陆出现);
+                alert("将在下次登陆出现");
             },
             error:function () {
                 $(".submitFail").fadeIn(500);

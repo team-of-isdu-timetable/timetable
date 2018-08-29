@@ -348,6 +348,13 @@ function clickSelect() {
     };
 }
 function weekChange(obj) {
+    function step(now,fx) {
+        $(this).css('-webkit-transform','rotate('+now+'deg)');
+        $(this).css('-moz-transform','rotate('+now+'deg)');
+        $(this).css('-ms-transform','rotate('+now+'deg)');
+        $(this).css('-o-transform','rotate('+now+'deg)');
+        $(this).css('transform','rotate('+now+'deg)');
+    }
     $("#select-week").children("li.checked").removeClass("checked");
     obj.addClass("checked");
     $('#select-week').slideUp("100");

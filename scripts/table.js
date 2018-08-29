@@ -13,7 +13,7 @@
  if (month >= 5 && month <= 9) {
      isSummer = true;
  }
-var colors = ['#f27979', '#f8a66f', '#f2c261', '#b8d574', '#6ad4b3', '#71b5e9','b193d9'],
+var colors = ['#f27979', '#f8a66f', '#f2c261', '#b8d574', '#6ad4b3', '#71b5e9','#b193d9'],
     colorUsed = [],
     existingName = {};
 function getColor() {
@@ -191,7 +191,6 @@ function showData(data, weekNum){
         var item = data.obj[i], color;
         var day = String(item.weekday),
             courseOrder = String(item.courseOrder);
-            
         if (item.courseName in existingName) {
             color = existingName[item.courseName];
         } else {

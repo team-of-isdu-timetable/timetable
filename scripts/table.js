@@ -352,6 +352,11 @@ function weekChange(obj) {
     obj.addClass("checked");
     $('#select-week').slideUp("100");
     var weekNum = obj.index() + 1;
+    stat = 0;
+    $('.week-listbtn').css({'top':'0px'});
+    $('.week-listbtn').animate({borderSpacing: -135 }, {step: step,
+        duration:'50' },'linear');
+    $('#select-week').slideUp("100");
     if (weekNum==0){
         $('#tb-week').html("放假中");
     } else{

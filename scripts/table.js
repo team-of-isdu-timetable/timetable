@@ -1,4 +1,4 @@
-//  test_data={"obj":[
+﻿//  test_data={"obj":[
 //      {"courseName":"a","teacher":"a","week":"1111111111111111111","property":"a","weekday":"2","courseOrder":"2","room":"a","weekReadable":"a"},
 //          {"courseName":"b","teacher":"b","week":"1111111111111111111","property":"b","weekday":"1","courseOrder":"1","room":"b","weekReadable":"b"}],
 //      "custom":[
@@ -159,20 +159,18 @@ function get_data() {
         dataType:"json",
         success:function (res) {      /*test.json*/
             if (!res) { alert('网络错误'); return;}
-            else{
-                if (res.obj==null) {
-                    alert("当前课表为空, 请登录教务系统核对.");
-                 }else{
-                    if (res.obj.length==0) {
-                        alert('当前课表为空, 请登录教务系统核对.');
-                    }
-                 else{
-                    data = res;
-                 render(data);
-                    }
-                } }
+            // if (!res.ok) {
+            //     alert(res.msg);
+            // }
+            else if (res.obj.length === 0){
+                alert('当前课表为空, 请登录教务系统核对.');
+            }else {
+                data = res;
+                render(data);
             }
+        }
     });
+}
 // render(data);
 function render(data) {
     $('#tb-week').html('第' + now_week+ '周');/*data.week*/
@@ -517,7 +515,7 @@ function loseFocus() {
                 "color": "#1588b4",
                 "font-weight": "bold"
             });
-            if ($minNum / 24 + 1 <= 10) {
+            if ($minNum / 24 + 1 <=10) {
                 document.querySelector("#choosen_minute").innerHTML = "0" + ($minNum / 24);
             } else {
                 document.querySelector("#choosen_minute").innerHTML = ($minNum / 24);
@@ -559,7 +557,7 @@ function loseFocus() {
         $(".chooseendtime>.minute").scrollTop($minNum);
         $(".chooseendtime>.minute>.minutenum").css({color:"#777777","font-weight":"normal"});
         $(".chooseendtime>.minute>.minutenum").eq($minNum/24+2).css({"color":"#1588b4","font-weight": "bold"});
-        if ($minNum/24+1<10) {
+        if ($minNum/24+1<=10) {
             document.querySelector("#choosen_end_minute").innerHTML="0"+($minNum/24);
         }else{
             document.querySelector("#choosen_end_minute").innerHTML=($minNum/24);
@@ -820,7 +818,7 @@ $("#submitMyClass").click(function () {
                 // $(".choosestarttime").empty();
                 // $(".chooseendtime").empty();
                 // init();
-                alert("将在下次登陆出现");
+                alert(将在下次登陆出现);
             },
             error:function () {
                 $(".submitFail").fadeIn(500);

@@ -402,6 +402,7 @@ function color1(){
     $(".plus_shadow").css({"box-shadow":"0vw 1vw 1vw #c6c6c6"});
     $(".plus").css({"background-color":" #1588b4"});
     $(".changeBackcolor").css({"display":"none"});
+    $(".cell").css({"opacity":"1"});
     $(".changeBackcolor>div>img").css({"display":"none"});
     $(".color1>img").css({"display":"block"});
      $('#overlay').stop().fadeOut(300);
@@ -432,6 +433,7 @@ function color3(){
     $(".plus").css({"background-color":" #fb4d4d"});
     $(".changeBackcolor").css({"display":"none"});
     $("#presentweek").css({"color":"#fff"});
+    $(".cell").css({"opacity":"1"});
     $(".changeBackcolor>div>img").css({"display":"none"});
     $(".color3>img").css({"display":"block"});
      $('#overlay').stop().fadeOut(300);

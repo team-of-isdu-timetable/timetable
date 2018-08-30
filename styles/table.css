@@ -145,6 +145,7 @@ header {
 	display: inline-block;
 	font-size: 4.5vw;
 	color: white;
+	margin-left: 10vw;
 }
 .week-num {
 }
@@ -848,6 +849,8 @@ color: transparent;
 }
 .cell{
 	padding-top: 1vw;
+	margin-left: 0.5vw;
+	margin-top: 0.3vw;
 }
 .add{
 	position: absolute;

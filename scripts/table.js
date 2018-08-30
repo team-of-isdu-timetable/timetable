@@ -829,7 +829,7 @@ $("#submitMyClass").click(function () {
                 // $(".choosestarttime").empty();
                 // $(".chooseendtime").empty();
                 // init();
-                alert(将在下次登陆出现);
+                alert("将在下次登陆出现");
             },
             error:function () {
                 $(".submitFail").fadeIn(500);

@@ -1,6 +1,9 @@
 <?php
 	error_reporting(0);
 	session_start();
+<<<<<<< HEAD
+	echo $_SESSION['school'];
+=======
 	
 	$mysqli_con=mysqli_connect("localhost","isdu_timetable","cGOomDAMOPcJos9u&","isdu_timetable");
 	$id=$_SESSION['id'];
@@ -35,4 +38,5 @@
 	$c['custom']=$d;
 	echo json_encode($c);
 	
+>>>>>>> 298858eeba89cfabee421e7e583ccd75859f7284
 ?>

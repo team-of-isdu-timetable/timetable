@@ -95,12 +95,20 @@ header {
 	height:10vw;
 	border-radius:5vw;
 	color:#fff;
+<<<<<<< HEAD
+	box-shadow: 0vw 1vw 3vw #000000;
+	position:fixed;
+	bottom:7vw;
+	right:7vw;
+	opacity: 0.4;
+=======
 	box-shadow: 0vw 1vw 1vw #c6c6c6;
 	position:fixed;
 	bottom:7vw;
 	right:7vw;
 	opacity: 0.8;
 	z-index: 1;
+>>>>>>> 298858eeba89cfabee421e7e583ccd75859f7284
 }
 .week {
 	display: inline-block;
@@ -215,6 +223,10 @@ li.checked {
 	/*margin-bottom: 6vw;*/
 }
 #tb-time {
+<<<<<<< HEAD
+	/*color:#2f6391;*/
+=======
+>>>>>>> 298858eeba89cfabee421e7e583ccd75859f7284
 	float: left;
 	width: 7.2vw;
 	padding-top: 12vw;
@@ -323,11 +335,14 @@ button {
 	top: -50%; left: -50%;
 	background: #000;
 	opacity: 0.7;
+<<<<<<< HEAD
+=======
 	z-index: 1;
 	/* Safari for macOS & iOS */
 	-webkit-backdrop-filter: blur(15px);
 	/* Google Chrome */
 	backdrop-filter: blur(15px);
+>>>>>>> 298858eeba89cfabee421e7e583ccd75859f7284
 	/*-webkit-filter: blur(15px);*/
 	/*-moz-filter: blur(15px);*/
 	/*-o-filter: blur(15px);*/
@@ -342,9 +357,12 @@ button {
 	opacity: 0;
 	display: none;
 	z-index: 1;
+<<<<<<< HEAD
+=======
 	-webkit-backdrop-filter: blur(15px);
 	/* Google Chrome */
 	backdrop-filter: blur(15px);
+>>>>>>> 298858eeba89cfabee421e7e583ccd75859f7284
 	/*-webkit-filter: blur(15px);*/
 	/*-moz-filter: blur(15px);*/
 	/*-o-filter: blur(15px);*/
@@ -362,6 +380,8 @@ button {
 	background-color: #fff;
 	overflow: auto;
 	border-radius: 0.5vw;
+<<<<<<< HEAD
+=======
 	z-index: 1;
 	box-shadow:0 2vw 6vw #121111;
 	display: none;
@@ -379,6 +399,7 @@ button {
 	z-index: 1;
 	box-shadow:0 2vw 6vw #121111;
 	display: none;
+>>>>>>> 298858eeba89cfabee421e7e583ccd75859f7284
 }
 .info {
 	font-size: 4.2vw;
@@ -391,11 +412,19 @@ button {
 .changeBackcolor>div>img{
 	width: 10vw;
 	position: absolute;
+<<<<<<< HEAD
+	bottom: 3vw;
+	right: 3vw;
+	display: none;
+}
+.color1 img{
+=======
 	bottom: 0vw;
 	right: 0vw;
 	display: none;
 }
 #color_1{
+>>>>>>> 298858eeba89cfabee421e7e583ccd75859f7284
 	display: block;
 }
 .changeBackcolor-bg{
@@ -832,15 +861,22 @@ color: transparent;
 	opacity: 0.7;
 	z-index: 5;
 	display: none;
+<<<<<<< HEAD
+=======
 	-webkit-backdrop-filter: blur(15px);
 	/* Google Chrome */
 	backdrop-filter: blur(15px);
+>>>>>>> 298858eeba89cfabee421e7e583ccd75859f7284
 	/*-webkit-filter: blur(15px);*/
 	/*-moz-filter: blur(15px);*/
 	/*-o-filter: blur(15px);*/
 	/*-ms-filter: blur(15px);*/
 	/*filter: blur(15px);*/
 }
+<<<<<<< HEAD
+.cell div{
+	height: 2vw;
+=======
 .cell div {
 	height: 2vw;
 }
@@ -866,4 +902,5 @@ color: transparent;
 	margin-left: 50vw;
 	padding-bottom: 5vw;
 
+>>>>>>> 298858eeba89cfabee421e7e583ccd75859f7284
 }

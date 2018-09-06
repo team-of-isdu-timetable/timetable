@@ -16,15 +16,8 @@ if (mysqli_connect_errno()) {
 	$stmt->fetch();
 	$stmt->close();
 	$g=json_decode($b);
-	//$v=array_merge($custom,$g);
 	$g[]=$custom;
 	$a=json_encode($g);
-	
-	echo($a);
-	//echo$a;
-	
-	
-	//var_dump($r);
 	$stmt = $mysqli_con->prepare("UPDATE `table` SET`custom`=? WHERE `id`=? ");
     $stmt->bind_param("s s", $a,$id);
     $stmt->execute();

@@ -19,16 +19,10 @@ if (mysqli_connect_errno()) {
 	//$v=array_merge($custom,$g);
 	$f=array_search(${number},$g);
 	$a=json_encode($f);
-	
-	echo($a);
-	//echo$a;
-	
-	
-	//var_dump($r);
 	$stmt = $mysqli_con->prepare("UPDATE `table` SET`custom`=? WHERE `id`=? ");
     $stmt->bind_param("s s", $a,$id);
     $stmt->execute();
     $stmt->close();
-	
+	echo($a);
 }
 ?>

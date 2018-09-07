@@ -15,8 +15,8 @@ var colors = ['#f27979', '#f8a66f', '#f2c261', '#b8d574', '#6ad4b3', '#71b5e9','
 //          {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"5","end_time":"16:30","class_place":"b","note":"aaa"}]};
 // data=test_data;
 //----------------------------第一学期or第二学期---------------------------
- var todayDate = new Date();
- var month = todayDate.getMonth() + 1,
+TodayDate = new Date();
+ var month = TodayDate.getMonth() + 1,
      isSummer = false;
  if (month >= 5 && month <= 9) {
      isSummer = true;
@@ -696,45 +696,9 @@ $("#submitMyClass").click(function () {
                             sub = 1;
                         }
                     }
-
-    $.ajax({type: "post",
-        url: "text.php",
-        data: {class_name:$(".class_name").val(),
-            class_place:$("#class_place").val(),
-            start_time:start_time,
-            end_time:end_time,
-            week_day:$("#choosenWeekDay>select").val(),
-            class_week:class_week,
-            teacher:$("#class_teacher").val(),
-            note:$("#note").val()},
-        dataType: "json",
-        success: function(){
-            $(".class_name").val("");
-            $("#class_place").val("");
-            $("#choosen_hour").innerHTML="00";
-            $("#choosen_minute").innerHTML="00";
-            $("#choosen_end_hour").innerHTML="00";
-            $("#choosen_end_minute").innerHTML="00";
-            $("#choosenWeekDay>select").val(mon);
-            $("#chooseAllWeek").css({"color":"#1588b4"});
-            $("#chooseByMyMind").css({"color":"#777777"});
-            $("#class_teacher").val("");
-            $("#note").val("");
-            $(".submitSuccess").fadeIn(500);
-            $(".overlay_top").fadeIn(500);
-            $(".submitSuccess").fadeOut(500);
-            $(".overlay_top").fadeOut(500);
-        },
-        error:function () {
-            $(".submitFail").fadeIn(500);
-            $(".overlay_top").fadeIn(500);
-            $(".submitFail").fadeOut(500);
-            $(".overlay_top").fadeOut(500);
-                }
-                })
                 }
             }
-        }
+        }}}
         else{
             if (start_time.slice(0,2)<12) {
                 if (end_time.slice(0,2)-start_time.slice(0,2)<0){

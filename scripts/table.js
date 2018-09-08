@@ -4,8 +4,6 @@ if (isAndroid!==1) {
     $("body").css({"font-family":"PingFang SC"});
 }
 
-var colors = ['#f27979', '#f8a66f', '#f2c261', '#b8d574', '#6ad4b3', '#71b5e9','b193d9'],
-
 ﻿//  test_data={"obj":[
 //      {"courseName":"a","teacher":"a","week":"1111111111111111111","property":"a","weekday":"2","courseOrder":"2","room":"a","weekReadable":"a"},
 //          {"courseName":"b","teacher":"b","week":"1111111111111111111","property":"b","weekday":"1","courseOrder":"1","room":"b","weekReadable":"b"}],
@@ -15,7 +13,7 @@ var colors = ['#f27979', '#f8a66f', '#f2c261', '#b8d574', '#6ad4b3', '#71b5e9','
 //          {"class_name":"b","teacher":"b","class_week":"1111111111111111111","start_time":"15:00","week_day":"5","end_time":"16:30","class_place":"b","note":"aaa"}]};
 // data=test_data;
 //----------------------------第一学期or第二学期---------------------------
-TodayDate = new Date();
+ var TodayDate = new Date();
  var month = TodayDate.getMonth() + 1,
      isSummer = false;
  if (month >= 5 && month <= 9) {
@@ -217,15 +215,12 @@ function showData(data, weekNum){
                 color = "#c5c5c5";
             }
             tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-
-                .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
                 .html(item.courseName + '@' + item.room + ' ' + item.teacher)
                 .css({background: color})
                 .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
         } else {
             if (item.week.slice(weekNum - 1,weekNum) == 1) {
                 tbClass.find('.row').eq(item.courseOrder - 1).find('div').eq(day - 1)
-                    .html('<div></div>'+item.courseName + '@' + item.room + ' ' + item.teacher)
                     .html(item.courseName + '@' + item.room + ' ' + item.teacher)
                     .css({background: color})
                     .attr({name: item.courseName, posi: item.room, teacher: item.teacher});
@@ -343,11 +338,9 @@ function clickSelect() {
         $(this).css('-ms-transform','rotate('+now+'deg)');
         $(this).css('-o-transform','rotate('+now+'deg)');
         $(this).css('transform','rotate('+now+'deg)');
-        $("#overlay").css({"display":"block"});
     }
     if (stat == 0) {
         stat = 1;
-        $('.week-listbtn').css({'top':'1px'});
         $('.week-listbtn').css({'margin-top':'4px'});
         $('.week-listbtn').animate({borderSpacing: 45 }, {step: step,
             duration:'50' },'linear');
@@ -413,8 +406,6 @@ function color1(){
     $("#table").css({"background-color":" #fff"});
     $("#tb-day div").css({"background-color":" #fff"});
     $("header").css({"background-color":" #1588b4"});
-    $(".plus").css({"background-color":" #1588b4"});
-    $(".changeBackcolor").css({"display":"none"});
     $(".plus_shadow").css({"box-shadow":"0vw 1vw 1vw #c6c6c6"});
     $(".plus").css({"background-color":" #1588b4"});
     $(".changeBackcolor").css({"display":"none"});
@@ -445,10 +436,6 @@ function color3(){
     $("#table").css({"background-color":" #f5e2ca"});
     $("#tb-day div").css({"background-color":" #f5e2ca"});
     $("header").css({"background-color":" #c43c53"});
-    // $(".plus_shadow").css({"box-shadow":"1vw 1vw 1vw #bfb09d"});
-    $(".plus").css({"background-color":" #fb4d4d"});
-    $(".changeBackcolor").css({"display":"none"});
-    $("#presentweek").css({"color":"#fff"});
     $(".plus_shadow").css({"box-shadow":"0vw 1vw 1vw #bfb09d"});
     $(".plus").css({"background-color":" #fb4d4d"});
     $(".changeBackcolor").css({"display":"none"});

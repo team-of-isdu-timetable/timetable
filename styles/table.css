@@ -95,11 +95,6 @@ header {
 	height:10vw;
 	border-radius:5vw;
 	color:#fff;
-	box-shadow: 0vw 1vw 3vw #000000;
-	position:fixed;
-	bottom:7vw;
-	right:7vw;
-	opacity: 0.4;
 	box-shadow: 0vw 1vw 1vw #c6c6c6;
 	position:fixed;
 	bottom:7vw;
@@ -397,11 +392,6 @@ button {
 .changeBackcolor>div>img{
 	width: 10vw;
 	position: absolute;
-	bottom: 3vw;
-	right: 3vw;
-	display: none;
-}
-.color1 img{
 	bottom: 0vw;
 	right: 0vw;
 	display: none;
@@ -852,8 +842,6 @@ color: transparent;
 	/*-ms-filter: blur(15px);*/
 	/*filter: blur(15px);*/
 }
-.cell div{
-	height: 2vw;
 .cell div {
 	height: 2vw;
 }
